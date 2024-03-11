@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>FKUI Vite development environment</title>
+    </head>
+    <body>
+        <div id="app"></div>
+
+        <script type="module">
+            import { setup } from "/src/local.ts";
+            import App from "{{ entrypoint }}";
+
+            const selector = "#app";
+            try {
+                await setup({
+                    rootComponent: App,
+                    selector,
+                });
+            } catch (err) {
+                console.error(err);
+                const pre = document.createElement("pre");
+                pre.innerText = err.stack ?? String(err);
+                document.querySelector(selector).replaceWith(pre);
+            }
+        </script>
+    </body>
+</html>

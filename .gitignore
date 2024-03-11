@@ -1,0 +1,14 @@
+.eslintcache
+*.tgz
+*.zip
+node_modules/
+
+# Build artifacts
+*.tsbuildinfo
+dist/
+temp/
+
+# Jest output
+.jest-cache/
+coverage/
+jest-junit.xml

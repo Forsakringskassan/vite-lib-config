@@ -1,0 +1,28 @@
+{
+  "name": "plugin-vue3",
+  "version": "1.0.0",
+  "private": true,
+  "keywords": [],
+  "homepage": "https://github.com/Forsakringskassan/vite-lib-config",
+  "bugs": "https://github.com/Forsakringskassan/vite-lib-config/issues",
+  "repository": {
+    "url": "https://github.com/Forsakringskassan/vite-lib-config.git"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js"
+    }
+  },
+  "dependencies": {
+    "@vitejs/plugin-vue": "4.6.2"
+  },
+  "devDependencies": {
+    "vue": "3.4.19"
+  },
+  "engines": {
+    "node": ">= 16"
+  }
+}

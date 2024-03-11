@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "esModuleInterop": true
+    },
+    "include": [],
+    "exclude": ["**/*.spec.ts"],
+    "references": [
+        {
+            "path": "./tsconfig.babel.json"
+        },
+        {
+            "path": "./tsconfig.esm.json"
+        }
+    ]
+}

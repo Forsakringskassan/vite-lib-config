@@ -1,0 +1,134 @@
+{
+  "name": "@forsakringskassan/vite-lib-config",
+  "version": "1.6.0",
+  "description": "Försäkringskassan toolchain to build libraries with Vite",
+  "keywords": [
+    "vite"
+  ],
+  "homepage": "https://github.com/Forsakringskassan/vite-lib-config",
+  "bugs": "https://github.com/Forsakringskassan/vite-lib-config/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Forsakringskassan/vite-lib-config.git"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js"
+    },
+    "./babel": {
+      "types": "./dist/babel.config.d.ts",
+      "require": "./dist/babel.config.js"
+    },
+    "./vite": {
+      "types": "./dist/vite.config.d.ts",
+      "require": "./dist/vite.config.js"
+    },
+    "./assets/*": "./assets/*"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "fk-api-extractor": "bin/api-extractor.js",
+    "fk-build-vue-lib": "bin/build-vue-lib.js"
+  },
+  "files": [
+    "*.d.ts",
+    "assets",
+    "bin",
+    "dist"
+  ],
+  "workspaces": [
+    "internal/*"
+  ],
+  "scripts": {
+    "prebuild": "tsc -b",
+    "build": "node build.mjs",
+    "eslint": "eslint --cache .",
+    "eslint:fix": "eslint --fix .",
+    "prepack": "release-prepack --bundle",
+    "postpack": "release-postpack",
+    "prepare": "husky",
+    "prepublishOnly": "release-prepack --bundle",
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write .",
+    "pretest": "run-s prettier:check eslint",
+    "test": "jest"
+  },
+  "commitlint": {
+    "extends": "@forsakringskassan/commitlint-config"
+  },
+  "lint-staged": {
+    "*.{json,md,css,scss,html}": "prettier --write",
+    "*.{js,cjs,mjs,vue,ts}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "prettier": "@forsakringskassan/prettier-config",
+  "release": {
+    "extends": "@forsakringskassan/semantic-release-config"
+  },
+  "jest": {
+    "preset": "@forsakringskassan/jest-config"
+  },
+  "dependencies": {
+    "@microsoft/api-extractor": "7.42.3",
+    "@vue/babel-preset-app": "5.0.8",
+    "dedent": "1.5.1",
+    "deepmerge": "4.3.1",
+    "find-up": "6.3.0",
+    "glob": "10.3.10",
+    "is-ci": "3.0.1",
+    "picocolors": "1.0.0",
+    "semver": "7.6.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.24.0",
+    "@babel/plugin-transform-nullish-coalescing-operator": "7.23.4",
+    "@forsakringskassan/apimock-express": "1.1.0",
+    "@forsakringskassan/commitlint-config": "1.2.0",
+    "@forsakringskassan/eslint-config": "10.3.0",
+    "@forsakringskassan/eslint-config-cli": "10.3.0",
+    "@forsakringskassan/eslint-config-jest": "10.3.0",
+    "@forsakringskassan/eslint-config-typescript": "10.3.0",
+    "@forsakringskassan/jest-config": "29.4.0",
+    "@forsakringskassan/prettier-config": "1.4.0",
+    "@html-validate/release-scripts": "6.2.0",
+    "@types/babel__core": "7.20.5",
+    "@types/dedent": "0.7.2",
+    "@types/is-ci": "3.0.4",
+    "@types/jest": "29.5.12",
+    "@types/node": "16.18.74",
+    "esbuild": "0.20.1",
+    "husky": "9.0.11",
+    "lint-staged": "15.2.2",
+    "npm-pkg-lint": "2.2.0",
+    "npm-run-all2": "6.1.2",
+    "plugin-vue2": "1.0.0",
+    "plugin-vue3": "1.0.0",
+    "ts-node": "10.9.2",
+    "typescript": "5.4.2",
+    "vite": "4.5.2",
+    "vue": "2.7.16"
+  },
+  "peerDependencies": {
+    "@babel/core": "^7",
+    "@babel/plugin-transform-nullish-coalescing-operator": "^7",
+    "@forsakringskassan/apimock-express": "^1.1",
+    "typescript": "^5",
+    "vite": "^4",
+    "vue": "^2.7 || ^3"
+  },
+  "engines": {
+    "node": ">= 16",
+    "npm": ">= 7"
+  },
+  "externalDependencies": [
+    "@microsoft/api-extractor",
+    "@vue/babel-preset-app",
+    "vite"
+  ]
+}

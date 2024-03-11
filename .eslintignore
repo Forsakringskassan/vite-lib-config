@@ -1,0 +1,6 @@
+dist/
+coverage/
+node_modules/
+temp/
+
+/vite.d.ts
