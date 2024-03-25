@@ -7,6 +7,7 @@ node_modules/
 *.tsbuildinfo
 dist/
 temp/
+testbed/lib/
 
 # Jest output
 .jest-cache/

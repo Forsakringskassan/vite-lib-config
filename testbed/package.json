@@ -1,0 +1,16 @@
+{
+  "name": "testbed",
+  "version": "1.7.0",
+  "private": true,
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.es.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "prebuild": "tsc",
+    "build": "fk-build-vue-lib",
+    "postbuild": "fk-api-extractor --patch-augmentations api-extractor.json"
+  },
+  "devDependencies": {
+    "@forsakringskassan/vite-lib-config": "file:.."
+  }
+}

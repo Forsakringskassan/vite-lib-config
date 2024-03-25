@@ -41,7 +41,8 @@
     "dist"
   ],
   "workspaces": [
-    "internal/*"
+    "internal/*",
+    "testbed"
   ],
   "scripts": {
     "prebuild": "tsc -b",
