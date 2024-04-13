@@ -111,7 +111,7 @@
     "plugin-vue2": "1.0.0",
     "plugin-vue3": "1.0.0",
     "ts-node": "10.9.2",
-    "typescript": "5.4.4",
+    "typescript": "5.4.5",
     "vite": "4.5.3",
     "vue": "2.7.16"
   },
