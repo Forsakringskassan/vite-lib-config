@@ -84,7 +84,7 @@
     "glob": "10.3.12",
     "is-ci": "3.0.1",
     "picocolors": "1.0.0",
-    "semver": "7.6.0"
+    "semver": "7.6.1"
   },
   "devDependencies": {
     "@babel/core": "7.24.5",
