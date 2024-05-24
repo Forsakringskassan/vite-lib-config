@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [1.7.6](https://github.com/Forsakringskassan/vite-lib-config/compare/v1.7.5...v1.7.6) (2024-05-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @microsoft/api-extractor to v7.43.5 ([5edf93e](https://github.com/Forsakringskassan/vite-lib-config/commit/5edf93ea4695351277627ef0720592d7f014e6aa))
+* **deps:** update dependency @microsoft/api-extractor to v7.43.6 ([61e9a6f](https://github.com/Forsakringskassan/vite-lib-config/commit/61e9a6fb925642308355988935bc19883eaf0345))
+* **deps:** update dependency @microsoft/api-extractor to v7.43.7 ([16655e9](https://github.com/Forsakringskassan/vite-lib-config/commit/16655e90ff359844b3522f24ae49669bb378e7b3))
+* **deps:** update dependency picocolors to v1.0.1 ([b403800](https://github.com/Forsakringskassan/vite-lib-config/commit/b403800936323e9b8cec64360455902e74c53569))
+
 ## [1.7.5](https://github.com/Forsakringskassan/vite-lib-config/compare/v1.7.4...v1.7.5) (2024-05-17)
 
 
