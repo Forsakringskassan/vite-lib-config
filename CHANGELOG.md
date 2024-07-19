@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.7.11](https://github.com/Forsakringskassan/vite-lib-config/compare/v1.7.10...v1.7.11) (2024-07-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency glob to v10.4.5 ([bf7323e](https://github.com/Forsakringskassan/vite-lib-config/commit/bf7323e72e591f01eac6888eee254749dec6042d))
+
 ## [1.7.10](https://github.com/Forsakringskassan/vite-lib-config/compare/v1.7.9...v1.7.10) (2024-06-28)
 
 
