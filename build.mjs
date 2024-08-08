@@ -18,7 +18,7 @@ async function build(options) {
         metafile: true,
         platform: "node",
         logLevel: "info",
-        target: "node16",
+        target: "node18",
         format: "cjs",
         external: [...peerDependencies, ...externalDependencies],
         ...options,
