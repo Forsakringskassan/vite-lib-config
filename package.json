@@ -24,7 +24,8 @@
     },
     "./vite": {
       "types": "./dist/vite.config.d.ts",
-      "require": "./dist/vite.config.js"
+      "require": "./dist/vite.config.cjs",
+      "import": "./dist/vite.config.mjs"
     },
     "./assets/*": "./assets/*"
   },
@@ -32,7 +33,7 @@
   "types": "./dist/index.d.ts",
   "bin": {
     "fk-api-extractor": "bin/api-extractor.js",
-    "fk-build-vue-lib": "bin/build-vue-lib.js"
+    "fk-build-vue-lib": "bin/build-vue-lib.mjs"
   },
   "files": [
     "*.d.ts",

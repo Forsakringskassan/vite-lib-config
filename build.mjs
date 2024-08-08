@@ -56,10 +56,29 @@ async function run() {
         entryPoints: [
             "src/api-extractor.ts",
             "src/babel.config.ts",
-            "src/cli.ts",
             "src/index.ts",
-            "src/vite.config.ts",
         ],
+    });
+    await build({
+        entryPoints: ["src/vite.config.ts"],
+        format: "cjs",
+        outExtension: { ".js": ".cjs" },
+    });
+    await build({
+        entryPoints: ["src/vite.config.ts"],
+        format: "esm",
+        outExtension: { ".js": ".mjs" },
+    });
+    await build({
+        entryPoints: ["src/cli.ts"],
+        format: "esm",
+        outExtension: { ".js": ".mjs" },
+        banner: {
+            js: [
+                `import { createRequire } from "node:module";`,
+                `const require = createRequire(import.meta.url);`,
+            ].join("\n"),
+        },
     });
 
     /* copy this one as-is instead of running api-extractor as it doesnt handle

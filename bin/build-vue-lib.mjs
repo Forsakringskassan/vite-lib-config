@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { cli } = require("../dist/cli");
+import { cli } from "../dist/cli.mjs";
 
 const argv = process.argv.slice(2);
 cli(argv).catch((err) => {

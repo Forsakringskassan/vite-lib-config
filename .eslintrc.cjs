@@ -10,6 +10,15 @@ module.exports = {
         },
 
         {
+            /* ensure we lint *.cjs and *.mjs files as well */
+            files: ["bin/*.mjs"],
+            rules: {
+                "import/extensions": ["error", "always"],
+                "import/no-unresolved": "off",
+            },
+        },
+
+        {
             files: "*.ts",
             extends: ["@forsakringskassan/typescript"],
         },
