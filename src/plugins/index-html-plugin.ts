@@ -71,8 +71,8 @@ export function indexHtmlPlugin(): Plugin {
         },
 
         transformIndexHtml: {
-            enforce: "pre",
-            async transform() {
+            order: "pre",
+            async handler() {
                 const content = await fs.readFile(templateFile, "utf-8");
                 return content.replace(/{{([^}]+)}}/g, (match, key) => {
                     return templateData[key.trim()] ?? match;
