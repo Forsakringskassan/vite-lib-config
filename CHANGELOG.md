@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## [1.8.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v1.7.13...v1.8.0) (2024-08-09)
+
+
+### Features
+
+* **deps:** require node 18 or later ([ae04a79](https://github.com/Forsakringskassan/vite-lib-config/commit/ae04a79da62bfee4b66427830cce1b954ff8b464))
+* **deps:** support vite v5 ([f1e32a4](https://github.com/Forsakringskassan/vite-lib-config/commit/f1e32a4c8877442f77c8150e69610325bf52844d))
+* **deps:** update dependency find-up to v7 ([5507e3f](https://github.com/Forsakringskassan/vite-lib-config/commit/5507e3f55202c02b94f5ff42663fd68e911ac270))
+* use ESM for CLI binary ([1a9d81f](https://github.com/Forsakringskassan/vite-lib-config/commit/1a9d81ffda4dd7100fafed286ec145b469d312d6))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @microsoft/api-extractor to v7.47.5 ([c5f8ea4](https://github.com/Forsakringskassan/vite-lib-config/commit/c5f8ea4ba9fd83ab4b8130ace3807c7757c870b0))
+
 ## [1.7.13](https://github.com/Forsakringskassan/vite-lib-config/compare/v1.7.12...v1.7.13) (2024-08-02)
 
 
