@@ -109,12 +109,11 @@
     "lint-staged": "15.2.9",
     "npm-pkg-lint": "2.4.1",
     "npm-run-all2": "6.2.2",
-    "plugin-vue2": "1.0.0",
     "plugin-vue3": "1.0.0",
     "ts-node": "10.9.2",
     "typescript": "5.5.4",
     "vite": "5.4.2",
-    "vue": "2.7.16"
+    "vue": "3.4.21"
   },
   "peerDependencies": {
     "@babel/core": "^7",
@@ -122,7 +121,7 @@
     "@forsakringskassan/apimock-express": "^1.1",
     "typescript": "^5",
     "vite": "^4.0.0 || ^5.0.0",
-    "vue": "^2.7 || ^3"
+    "vue": "^3.0.0"
   },
   "engines": {
     "node": ">= 18",

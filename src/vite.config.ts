@@ -2,7 +2,6 @@ import { vitePlugin as apimockPlugin } from "@forsakringskassan/apimock-express"
 import deepmerge from "deepmerge";
 import colors from "picocolors";
 import { type Plugin, type UserConfig as ViteUserConfig } from "vite";
-import vue2plugin from "plugin-vue2";
 import vue3plugin from "plugin-vue3";
 import { indexHtmlPlugin, packageJsonPlugin } from "./plugins";
 import { type FKConfig } from "./fk-config";
@@ -73,7 +72,7 @@ export function vuePlugin(config?: Record<string, unknown>): Plugin {
 
     switch (vueMajor) {
         case 2:
-            return vue2plugin(resolvedConfig);
+            throw new Error("Vue 2 is no longer supported");
         case 3:
             return vue3plugin(resolvedConfig);
     }
