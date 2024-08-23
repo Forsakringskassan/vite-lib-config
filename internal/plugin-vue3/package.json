@@ -20,7 +20,7 @@
     "@vitejs/plugin-vue": "4.6.2"
   },
   "devDependencies": {
-    "vue": "3.4.21"
+    "vue": "3.4.38"
   },
   "engines": {
     "node": ">= 16"
