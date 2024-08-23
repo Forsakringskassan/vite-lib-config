@@ -1,14 +1,14 @@
 import fs from "node:fs/promises";
-import { existsSync } from "node:fs";
+import path from "node:path/posix";
 import { build as viteBuild, createLogger } from "vite";
 import colors from "picocolors";
 import * as babel from "@babel/core";
 
 const cjsSrcFile = "temp/index.cjs.js";
-const esSrcFile = "temp/index.es.js";
-const dstDir = "lib";
-const cjsDstFile = `${dstDir}/index.cjs.js`;
-const esDstFile = `${dstDir}/index.es.js`;
+const esmSrcFile = "temp/index.es.js";
+const dstDir = "dist";
+const cjsDstFile = `${dstDir}/cjs/index.cjs.js`;
+const esmDstFile = `${dstDir}/esm/index.esm.js`;
 const logger = createLogger();
 
 function displayTime(time: number): string {
@@ -70,9 +70,8 @@ export async function cli(): Promise<void> {
     const startTime = Date.now();
     await viteBuild();
 
-    if (!existsSync(dstDir)) {
-        await fs.mkdir(dstDir);
-    }
+    await fs.mkdir(path.dirname(cjsDstFile), { recursive: true });
+    await fs.mkdir(path.dirname(esmDstFile), { recursive: true });
 
     console.log();
     console.log(
@@ -81,7 +80,7 @@ export async function cli(): Promise<void> {
     );
 
     await Promise.all([
-        transpile(esSrcFile, esDstFile),
+        transpile(esmSrcFile, esmDstFile),
         transpile(cjsSrcFile, cjsDstFile),
     ]);
 

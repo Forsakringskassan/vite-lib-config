@@ -142,7 +142,7 @@ const defaultConfig = {
                 },
                 assetFileNames(assetInfo): string {
                     if (assetInfo.name === "style.css") {
-                        return "lib/style.css";
+                        return "dist/style.css";
                     }
                     return assetInfo.name ?? "";
                 },
