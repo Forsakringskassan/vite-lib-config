@@ -1,5 +1,63 @@
 # CHANGELOG
 
+## [2.0.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v1.8.1...v2.0.0) (2024-08-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** Vue 2 is no longer supported, update to Vue 3
+* The folder output structure and filenames has changed.
+
+* `lib/index.cjs.js` has been moved to `dist/cjs/index.cjs.js`
+* `lib/index.es.js` has been moved to `dist/esm/index.esm.js`
+
+Previous structure:
+
+```
+lib
+├── index.cjs.js
+├── index.es.js
+└── types
+    ├── index.d.ts
+    └── tsdoc-metadata.json
+```
+
+New structure:
+
+```
+dist
+├── cjs
+│   └── index.cjs.js
+├── esm
+│   └── index.esm.js
+└── types
+    └─ index.d.ts
+```
+
+To adapt to these changes references in your `package.json` must be updated:
+
+```diff
+ "exports": {
+   ".": {
+-    "require": "./lib/index.cjs.js",
+-    "import": "./lib/index.es.js"
++    "require": "./dist/cjs/index.cjs.js",
++    "import": "./dist/esm/index.esm.js"
+   },
+ },
+-"main": "./lib/index.cjs.js",
+-"module": "./lib/index.es.js"
++"main": "./dist/cjs/index.cjs.js",
++"module": "./dist/esm/index.esm.js"
+```
+
+### Features
+
+* always clean output folder before build ([7bc0d60](https://github.com/Forsakringskassan/vite-lib-config/commit/7bc0d6034e587aa4d57e44c18a72a2838218aec9))
+* change output folder structure ([813af11](https://github.com/Forsakringskassan/vite-lib-config/commit/813af110d3657fd8043fc90f8f7fbb6ce95f19db))
+* **deps:** drop support for Vue 2 ([24ede1f](https://github.com/Forsakringskassan/vite-lib-config/commit/24ede1f45974722bf9eb62263407279a4184b74c))
+* generate package.json with type for hybrid packages ([7e8e568](https://github.com/Forsakringskassan/vite-lib-config/commit/7e8e568120c7057583b8788902d4489edb6e54df))
+
 ## [1.8.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v1.8.0...v1.8.1) (2024-08-23)
 
 
