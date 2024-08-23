@@ -68,10 +68,12 @@ async function transpile(src: string, dst: string): Promise<void> {
 
 export async function cli(): Promise<void> {
     const startTime = Date.now();
-    await viteBuild();
 
+    await fs.rm(dstDir, { recursive: true, force: true });
     await fs.mkdir(path.dirname(cjsDstFile), { recursive: true });
     await fs.mkdir(path.dirname(esmDstFile), { recursive: true });
+
+    await viteBuild();
 
     console.log();
     console.log(
