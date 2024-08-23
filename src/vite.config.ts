@@ -4,7 +4,7 @@ import colors from "picocolors";
 import { type Plugin, type UserConfig as ViteUserConfig } from "vite";
 import vue2plugin from "plugin-vue2";
 import vue3plugin from "plugin-vue3";
-import { indexHtmlPlugin } from "./plugins";
+import { indexHtmlPlugin, packageJsonPlugin } from "./plugins";
 import { type FKConfig } from "./fk-config";
 import {
     detectInternalDependencies,
@@ -102,7 +102,7 @@ const internalDependencies = detectInternalDependencies(
     allDependencies,
 );
 
-const defaultPlugins = [indexHtmlPlugin(), vuePlugin()];
+const defaultPlugins = [indexHtmlPlugin(), packageJsonPlugin(), vuePlugin()];
 
 const defaultConfig = {
     fk: {},
