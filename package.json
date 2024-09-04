@@ -106,7 +106,7 @@
     "@types/node": "18.19.48",
     "esbuild": "0.23.1",
     "husky": "9.1.5",
-    "lint-staged": "15.2.9",
+    "lint-staged": "15.2.10",
     "npm-pkg-lint": "3.6.8",
     "npm-run-all2": "6.2.2",
     "plugin-vue3": "1.0.0",
