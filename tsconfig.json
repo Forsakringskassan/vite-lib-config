@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "skipLibCheck": true
     },
     "include": [],
     "exclude": ["**/*.spec.ts"],
