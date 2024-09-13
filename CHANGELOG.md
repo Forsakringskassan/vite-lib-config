@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.0.2](https://github.com/Forsakringskassan/vite-lib-config/compare/v2.0.1...v2.0.2) (2024-09-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency picocolors to v1.1.0 ([e29f71f](https://github.com/Forsakringskassan/vite-lib-config/commit/e29f71f50ee618bc837fd3b7edbc3ee7c6d30d28))
+
 ## [2.0.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v2.0.0...v2.0.1) (2024-08-30)
 
 
