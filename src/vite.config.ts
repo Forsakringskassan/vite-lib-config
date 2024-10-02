@@ -15,6 +15,7 @@ import {
 
 export { type FKConfig } from "./fk-config";
 export {
+    /* eslint-disable-next-line import/named -- false positive */
     type MockEntry,
     vitePlugin as apimockPlugin,
 } from "@forsakringskassan/apimock-express";
