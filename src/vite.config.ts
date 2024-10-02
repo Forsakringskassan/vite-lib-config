@@ -108,14 +108,6 @@ const defaultConfig = {
     fk: {},
     plugins: defaultPlugins,
 
-    resolve: {
-        alias: Object.fromEntries(
-            internalDependencies.map((it) => {
-                return [it.name, it.srcPath];
-            }),
-        ),
-    },
-
     optimizeDeps: {
         /**
          * Vite treats monorepo packages as sourcecode and performs no prebundling by default.
