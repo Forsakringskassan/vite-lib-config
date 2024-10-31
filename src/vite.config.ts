@@ -3,7 +3,12 @@ import deepmerge from "deepmerge";
 import colors from "picocolors";
 import { type Plugin, type UserConfig as ViteUserConfig } from "vite";
 import vue3plugin from "plugin-vue3";
-import { indexHtmlPlugin, packageJsonPlugin } from "./plugins";
+import {
+    babelPlugin,
+    customMappingPlugin,
+    indexHtmlPlugin,
+    packageJsonPlugin,
+} from "./plugins";
 import { type FKConfig } from "./fk-config";
 import {
     detectInternalDependencies,
@@ -107,7 +112,13 @@ const internalDependencies = detectInternalDependencies(
     allDependencies,
 );
 
-const defaultPlugins = [indexHtmlPlugin(), packageJsonPlugin(), vuePlugin()];
+const defaultPlugins = [
+    indexHtmlPlugin(),
+    packageJsonPlugin(),
+    vuePlugin(),
+    customMappingPlugin(),
+    babelPlugin(),
+];
 
 const defaultConfig = {
     fk: {},
@@ -126,22 +137,16 @@ const defaultConfig = {
         emptyOutDir: false,
         minify: false,
         sourcemap: true,
-        outDir: "",
+        outDir: "dist/[custom-format]",
         lib: {
             entry: "src/index.ts",
             formats: ["es", "cjs"],
         },
         rollupOptions: {
             output: {
-                entryFileNames: `temp/index.[format].js`,
+                entryFileNames: `index.[custom-format].js`,
                 globals: {
                     vue: "Vue",
-                },
-                assetFileNames(assetInfo): string {
-                    if (assetInfo.name === "style.css") {
-                        return "dist/style.css";
-                    }
-                    return assetInfo.name ?? "";
                 },
             },
             external: Array.from(external),

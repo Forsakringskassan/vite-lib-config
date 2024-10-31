@@ -1,14 +1,8 @@
-import path from "node:path/posix";
 import { type Plugin } from "vite";
 
 const mapping = {
     es: "module",
     cjs: "commonjs",
-} as const;
-
-const folder = {
-    es: "esm",
-    cjs: "cjs",
 } as const;
 
 export function packageJsonPlugin(): Plugin {
@@ -25,7 +19,7 @@ export function packageJsonPlugin(): Plugin {
             };
             this.emitFile({
                 type: "asset",
-                fileName: path.join("dist", folder[format], "package.json"),
+                fileName: "package.json",
                 source: JSON.stringify(pkg, null, 2),
             });
         },
