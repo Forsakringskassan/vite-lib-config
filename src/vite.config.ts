@@ -30,6 +30,7 @@ interface PackageJson {
     version: string;
     dependencies?: Record<string, string>;
     peerDependencies?: Record<string, string>;
+    externalDependencies?: string[];
 }
 
 function isExternal(externals: Array<string | RegExp>, name: string): boolean {
@@ -83,8 +84,12 @@ const vueMajor = detectVueMajor();
 const packageJson = readJsonFile("package.json") as PackageJson;
 const dependencies = Object.keys(packageJson.dependencies ?? {});
 const peerDependencies = Object.keys(packageJson.peerDependencies ?? {});
+const externalDependencies = packageJson.externalDependencies;
 const allDependencies = [...dependencies, ...peerDependencies].sort();
-const external = new Set([...allDependencies]);
+const external = new Set([
+    ...(externalDependencies ?? dependencies),
+    ...peerDependencies,
+]);
 
 console.log(
     "Building",

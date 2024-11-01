@@ -2,6 +2,26 @@
 
 Toolchain for building Vue framework libraries.
 
+-   Hybrid ESM/CJS packages.
+-   Transpiled with Babel.
+-   Supports monorepo.
+
+## Configuration
+
+### Bundled dependencies
+
+By default all dependencies (`dependencies` and `peerDependencies`) are marked as external and not bundled in output files.
+This can be overriden by setting `externalDependencies` in `package.json`:
+
+```diff
+     "dependencies": {
+         "lodash": "^4.17.20"
+     },
++    "externalDependencies": [
++        "lodash"
++    ],
+```
+
 ## Usage
 
 ### `babel.config.js`
