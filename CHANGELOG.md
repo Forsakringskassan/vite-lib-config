@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.2.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v2.1.0...v2.2.0) (2024-11-04)
+
+
+### Features
+
+* bundle core-js directly in generated bundle ([3914ee5](https://github.com/Forsakringskassan/vite-lib-config/commit/3914ee58378a48d4b197b6a9e82ea2f24948f3c3))
+
 ## [2.1.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v2.0.3...v2.1.0) (2024-11-04)
 
 
