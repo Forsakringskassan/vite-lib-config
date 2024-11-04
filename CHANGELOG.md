@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## [2.1.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v2.0.3...v2.1.0) (2024-11-04)
+
+
+### Features
+
+* support marking packages as bundled ([a8d59c2](https://github.com/Forsakringskassan/vite-lib-config/commit/a8d59c2562326196a20a32d835a4c886b74a9517))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @microsoft/api-extractor to v7.47.10 ([c33efa0](https://github.com/Forsakringskassan/vite-lib-config/commit/c33efa02974979cda738b767f511927d02855e7c))
+* **deps:** update dependency @microsoft/api-extractor to v7.47.11 ([b6abd96](https://github.com/Forsakringskassan/vite-lib-config/commit/b6abd96b5d800768b895c7e42359b4dd722d5c98))
+* **deps:** update dependency picocolors to v1.1.1 ([b6bf24f](https://github.com/Forsakringskassan/vite-lib-config/commit/b6bf24f39df70160b3df7f078b71b7d6f64c4450))
+* remove resolve.alias mapping ([551a9ed](https://github.com/Forsakringskassan/vite-lib-config/commit/551a9ede7357de5d5e43dc49172fada64043c926)), closes [#2](https://github.com/Forsakringskassan/vite-lib-config/issues/2)
+
 ## [2.0.3](https://github.com/Forsakringskassan/vite-lib-config/compare/v2.0.2...v2.0.3) (2024-09-20)
 
 
