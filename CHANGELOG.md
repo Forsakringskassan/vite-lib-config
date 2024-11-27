@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [2.2.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v2.2.0...v2.2.1) (2024-11-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @microsoft/api-extractor to v7.47.12 ([b5b338e](https://github.com/Forsakringskassan/vite-lib-config/commit/b5b338e7a8e03b24fd776faacac3b69d7cdaff74))
+* **deps:** update dependency @microsoft/api-extractor to v7.48.0 ([7b3d5d1](https://github.com/Forsakringskassan/vite-lib-config/commit/7b3d5d10f52dd59e48905187ecb2047e4aac000d))
+* should not apply babel in devmode ([dc0fb32](https://github.com/Forsakringskassan/vite-lib-config/commit/dc0fb325a515e936a80042788787ddae90453448))
+
 ## [2.2.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v2.1.0...v2.2.0) (2024-11-04)
 
 
