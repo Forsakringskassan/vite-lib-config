@@ -10,6 +10,7 @@ export function babelPlugin(): Plugin {
     return {
         name: "fk:babel",
         enforce: "post",
+        apply: "build",
         async transform(src, id) {
             const { pathname: filename } = new URL(id, "file://");
             if (!filter.test(filename)) {
