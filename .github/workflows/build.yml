@@ -25,7 +25,7 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                vite-version: [4.x, 5.x]
+                vite-version: [5.x]
         steps:
             - uses: actions/checkout@v4
             - name: Use Node.js 20.x
