@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## [3.0.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v2.3.0...v3.0.0) (2024-12-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** require Vite v5 or later
+
+### Features
+
+* **deps:** require vite v5 or later ([6f06eda](https://github.com/Forsakringskassan/vite-lib-config/commit/6f06eda410f0c050aac9cdd1c54abc2c63e513a3))
+* **deps:** support vite v6 ([0ddf630](https://github.com/Forsakringskassan/vite-lib-config/commit/0ddf630bbaadb49f2f4de0b38daeb912c5e16980))
+* **deps:** update dependency @vitejs/plugin-vue to v5 ([a566bce](https://github.com/Forsakringskassan/vite-lib-config/commit/a566bcee997f7aecf2ca5827be1ec253739fe879))
+
+
+### Bug Fixes
+
+* fix esm support for vite configuration ([4a2d171](https://github.com/Forsakringskassan/vite-lib-config/commit/4a2d171a55239f1090c78dfcf2f11001587e39f0))
+
 ## [2.3.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v2.2.1...v2.3.0) (2024-12-06)
 
 
