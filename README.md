@@ -2,9 +2,9 @@
 
 Toolchain for building Vue framework libraries.
 
--   Hybrid ESM/CJS packages.
--   Transpiled with Babel.
--   Supports monorepo.
+- Hybrid ESM/CJS packages.
+- Transpiled with Babel.
+- Supports monorepo.
 
 ## Configuration
 
