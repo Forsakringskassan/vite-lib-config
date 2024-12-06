@@ -42,7 +42,6 @@
     "dist"
   ],
   "workspaces": [
-    "internal/*",
     "testbed"
   ],
   "scripts": {
@@ -78,6 +77,7 @@
   },
   "dependencies": {
     "@microsoft/api-extractor": "7.48.0",
+    "@vitejs/plugin-vue": "5.2.1",
     "@vue/babel-preset-app": "5.0.8",
     "dedent": "1.5.3",
     "deepmerge": "4.3.1",
@@ -109,7 +109,6 @@
     "lint-staged": "15.2.10",
     "npm-pkg-lint": "3.10.4",
     "npm-run-all2": "7.0.1",
-    "plugin-vue3": "1.0.0",
     "ts-node": "10.9.2",
     "typescript": "5.7.2",
     "vite": "6.0.2",

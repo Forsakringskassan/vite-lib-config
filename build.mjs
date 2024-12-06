@@ -63,11 +63,26 @@ async function run() {
         entryPoints: ["src/vite.config.ts"],
         format: "cjs",
         outExtension: { ".js": ".cjs" },
+        alias: {
+            "@vitejs/plugin-vue":
+                "./node_modules/@vitejs/plugin-vue/dist/index.cjs",
+        },
     });
     await build({
         entryPoints: ["src/vite.config.ts"],
         format: "esm",
         outExtension: { ".js": ".mjs" },
+        alias: {
+            "@vitejs/plugin-vue":
+                "./node_modules/@vitejs/plugin-vue/dist/index.mjs",
+        },
+        banner: {
+            js: [
+                `import { dirname as $_dirname } from "node:path";`,
+                `import { fileURLToPath as $_fileURLToPath } from "node:url";`,
+                `const __dirname = $_dirname($_fileURLToPath(import.meta.url));`,
+            ].join("\n"),
+        },
     });
     await build({
         entryPoints: ["src/cli.ts"],
