@@ -38,8 +38,14 @@ jobs:
               run: npm run --if-present build
             - name: Install Vite ${{ matrix.vite-version }}
               run: npm install --no-save $(npx -y npm-min-peer vite --major ${{ matrix.vite-version }} --with-name)
-            - name: Testbed
-              run: npm run -w testbed build
+            - name: Testbed (commonjs)
+              run: |
+                  npm pkg -w testbed set type=commonjs
+                  npm run -w testbed build
+            - name: Testbed (esm)
+              run: |
+                  npm pkg -w testbed set type=module
+                  npm run -w testbed build
 
     testbed:
         runs-on: ubuntu-latest
@@ -54,5 +60,11 @@ jobs:
                   npm ci
             - name: Build
               run: npm run --if-present build
-            - name: Testbed
-              run: npm run -w testbed build
+            - name: Testbed (commonjs)
+              run: |
+                  npm pkg -w testbed set type=commonjs
+                  npm run -w testbed build
+            - name: Testbed (esm)
+              run: |
+                  npm pkg -w testbed set type=module
+                  npm run -w testbed build

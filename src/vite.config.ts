@@ -2,7 +2,7 @@ import { vitePlugin as apimockPlugin } from "@forsakringskassan/apimock-express"
 import deepmerge from "deepmerge";
 import colors from "picocolors";
 import { type Plugin, type UserConfig as ViteUserConfig } from "vite";
-import vue3plugin from "plugin-vue3";
+import vue3plugin from "@vitejs/plugin-vue";
 import {
     babelPlugin,
     customMappingPlugin,
