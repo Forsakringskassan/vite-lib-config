@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [3.1.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v3.0.0...v3.1.0) (2024-12-20)
+
+### Features
+
+* **deps:** update dependency is-ci to v4 ([92f5a47](https://github.com/Forsakringskassan/vite-lib-config/commit/92f5a4790d06efc6498b77b0055ed45b15e45d49))
+
+### Bug Fixes
+
+* **deps:** update dependency @microsoft/api-extractor to v7.48.1 ([e83aa19](https://github.com/Forsakringskassan/vite-lib-config/commit/e83aa19b9e62ad7e7987d90808b560ad3bcff5c2))
+
 ## [3.0.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v2.3.0...v3.0.0) (2024-12-06)
 
 
