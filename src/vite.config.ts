@@ -2,7 +2,9 @@ import { vitePlugin as apimockPlugin } from "@forsakringskassan/apimock-express"
 import deepmerge from "deepmerge";
 import colors from "picocolors";
 import { type Plugin, type UserConfig as ViteUserConfig } from "vite";
-import vue3plugin from "@vitejs/plugin-vue";
+import vue3plugin, {
+    type Options as Vue3PluginOptions,
+} from "@vitejs/plugin-vue";
 import {
     babelPlugin,
     customMappingPlugin,
@@ -69,9 +71,17 @@ export function vuePlugin(config?: Record<string, unknown>): Plugin {
                  * Keep whitespaces in contents coming from a slot and displayed in a pre for instance.
                  */
                 whitespace: "preserve",
+
+                /**
+                 * Any element starting with `<ce-[...]>` is considered a custom
+                 * element (webcomponent).
+                 */
+                isCustomElement(tagName) {
+                    return tagName.startsWith("ce-");
+                },
             },
         },
-    } as const;
+    } satisfies Vue3PluginOptions;
 
     const resolvedConfig = config
         ? deepmerge(defaultConfig, config, { arrayMerge: overwriteMerge })
