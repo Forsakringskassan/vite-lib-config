@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [3.2.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v3.1.0...v3.2.0) (2025-01-10)
+
+### Features
+
+* support custom elements with `ce-` prefix ([1a1b776](https://github.com/Forsakringskassan/vite-lib-config/commit/1a1b77649290d7df26d9077ce92527701f9bf088))
+
 ## [3.1.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v3.0.0...v3.1.0) (2024-12-20)
 
 ### Features
