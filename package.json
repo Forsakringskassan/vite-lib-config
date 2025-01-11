@@ -76,7 +76,7 @@
     "preset": "@forsakringskassan/jest-config"
   },
   "dependencies": {
-    "@microsoft/api-extractor": "7.48.1",
+    "@microsoft/api-extractor": "7.49.0",
     "@vitejs/plugin-vue": "5.2.1",
     "@vue/babel-preset-app": "5.0.8",
     "dedent": "1.5.3",
