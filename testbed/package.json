@@ -8,9 +8,11 @@
   "scripts": {
     "prebuild": "tsc",
     "build": "fk-build-vue-lib",
-    "postbuild": "fk-api-extractor --patch-augmentations api-extractor.json"
+    "postbuild": "fk-api-extractor --patch-augmentations api-extractor.json",
+    "start": "vite"
   },
   "devDependencies": {
-    "@forsakringskassan/vite-lib-config": "file:.."
+    "@forsakringskassan/vite-lib-config": "file:..",
+    "vue": "^3.5.13"
   }
 }

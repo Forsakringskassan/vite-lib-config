@@ -22,5 +22,9 @@ module.exports = {
             files: "*.ts",
             extends: ["@forsakringskassan/typescript"],
         },
+        {
+            files: "*.vue",
+            extends: ["@forsakringskassan/vue"],
+        },
     ],
 };
