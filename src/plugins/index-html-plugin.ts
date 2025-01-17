@@ -7,9 +7,11 @@ import {
     type ViteDevServer,
 } from "vite";
 import { type FKConfig } from "../fk-config";
+import { lookupFile } from "../utils/lookupFile";
 
 interface TemplateData {
     entrypoint: string;
+    entrypointVue: string;
     [key: string]: string | undefined;
 }
 
@@ -43,7 +45,8 @@ function middleware(server: ViteDevServer): Connect.NextHandleFunction {
 
 export function indexHtmlPlugin(): Plugin {
     const templateData: TemplateData = {
-        entrypoint: "/src/vite-dev/app.vue",
+        entrypointVue: "/src/vite-dev/app.vue",
+        entrypoint: `/${lookupFile("src/local")}`,
     };
     return {
         name: "fk:virtual-entrypoint",
