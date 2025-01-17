@@ -84,7 +84,15 @@ Use `--help` to see full description.
 
 ### Dev-server
 
-Create `src/local.ts` exporting a single function `setup`:
+```json
+{
+    "scripts": {
+        "start": "vite"
+    }
+}
+```
+
+Create `src/local.{ts,mts,mjs,js}` exporting a single function `setup`:
 
 ```
 import { createApp } from "vue";

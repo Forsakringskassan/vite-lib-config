@@ -19,6 +19,7 @@ import {
     prettyList,
     readJsonFile,
 } from "./utils";
+import { lookupFile } from "./utils/lookupFile";
 
 export { type FKConfig } from "./fk-config";
 export {
@@ -149,7 +150,7 @@ const defaultConfig = {
         sourcemap: true,
         outDir: "dist/[custom-format]",
         lib: {
-            entry: "src/index.ts",
+            entry: lookupFile("src/index"),
             formats: ["es", "cjs"],
         },
         rollupOptions: {
