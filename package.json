@@ -105,7 +105,7 @@
     "@types/is-ci": "3.0.4",
     "@types/jest": "29.5.14",
     "@types/node": "18.19.74",
-    "@types/semver": "^7.5.8",
+    "@types/semver": "7.5.8",
     "esbuild": "0.24.2",
     "husky": "9.1.7",
     "lint-staged": "15.4.2",
