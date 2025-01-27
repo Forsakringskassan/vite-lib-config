@@ -12,6 +12,9 @@ import { UserConfig as UserConfig_2 } from 'vite';
 export { apimockPlugin }
 
 // @public (undocumented)
+export const defaultPlugins: Plugin_2<any>[];
+
+// @public (undocumented)
 export function defineConfig(config?: UserConfig): UserConfig;
 
 // @public (undocumented)

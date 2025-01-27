@@ -122,7 +122,10 @@ const internalDependencies = detectInternalDependencies(
     allDependencies,
 );
 
-const defaultPlugins = [
+/**
+ * @public
+ */
+export const defaultPlugins = [
     indexHtmlPlugin(),
     packageJsonPlugin(),
     vuePlugin(),
