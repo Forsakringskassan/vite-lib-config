@@ -8,8 +8,6 @@ export function lookupFile(nameWithoutExtension: string): string {
             return fileName;
         }
     }
-
-    throw new Error(
-        `Entry is missing. ${nameWithoutExtension}.{${extensions.join(",")}}`,
-    );
+    /* No file found, return default file extension and let Esbuild / Vite fail later on */
+    return `${nameWithoutExtension}.ts`;
 }
