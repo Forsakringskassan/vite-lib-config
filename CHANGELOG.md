@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [3.3.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v3.2.1...v3.3.0) (2025-01-27)
+
+### Features
+
+* allow js and mjs files ([072537f](https://github.com/Forsakringskassan/vite-lib-config/commit/072537f4ce66506c03ee82affeb69f6db760fc90))
+
 ## [3.2.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v3.2.0...v3.2.1) (2025-01-17)
 
 ### Bug Fixes
