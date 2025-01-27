@@ -108,3 +108,20 @@ export function setup(options: SetupOptions): void {
 If the `setup` function is async (i.e. returns a `Promise`) it will be awaited before continuing.
 
 Create `src/vite-dev/app.vue` containing the root component you want to serve as a development environment.
+
+### Appending Plugins
+
+If you need to use custom plugins in your library, remember to also include the default plugins, these will otherwise by overwritten.
+
+#### `vite.config.ts`
+
+```ts
+import {
+    defineConfig,
+    defaultPlugins,
+} from "@forsakringskassan/vite-lib-config/vite";
+
+export default defineConfig({
+    plugins: [...defaultPlugins, myFancyPlugin],
+});
+```
