@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [3.4.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v3.3.0...v3.4.0) (2025-01-28)
+
+### Features
+
+* export default plugins list ([373a97d](https://github.com/Forsakringskassan/vite-lib-config/commit/373a97de86cc2fb089cb270c95b04ef841c12b19))
+
+### Bug Fixes
+
+* do not throw inside lookupFile ([010edbf](https://github.com/Forsakringskassan/vite-lib-config/commit/010edbfb4c344b220082dfceb4d9785173a7dc94))
+
 ## [3.3.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v3.2.1...v3.3.0) (2025-01-27)
 
 ### Features
