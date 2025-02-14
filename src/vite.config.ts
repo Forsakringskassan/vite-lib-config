@@ -12,13 +12,7 @@ import {
     packageJsonPlugin,
 } from "./plugins";
 import { type FKConfig } from "./fk-config";
-import {
-    detectInternalDependencies,
-    detectMonorepoPackages,
-    detectVueMajor,
-    prettyList,
-    readJsonFile,
-} from "./utils";
+import { detectVueMajor, prettyList, readJsonFile } from "./utils";
 import { lookupFile } from "./utils/lookupFile";
 
 export { type FKConfig } from "./fk-config";
@@ -114,15 +108,6 @@ console.log(
 );
 console.log();
 
-/* hardcoded path to monorepo root package */
-const packages = detectMonorepoPackages("./package.json", "../../package.json");
-
-/** array of all packages within the monorepo this package depends on */
-const internalDependencies = detectInternalDependencies(
-    packages,
-    allDependencies,
-);
-
 /**
  * @public
  */
@@ -137,15 +122,6 @@ export const defaultPlugins = [
 const defaultConfig = {
     fk: {},
     plugins: defaultPlugins,
-
-    optimizeDeps: {
-        /**
-         * Vite treats monorepo packages as sourcecode and performs no prebundling by default.
-         * See https://vitejs.dev/guide/dep-pre-bundling.html#monorepos-and-linked-dependencies
-         */
-        include: internalDependencies.map((it) => it.name),
-        force: false,
-    },
 
     build: {
         emptyOutDir: false,
