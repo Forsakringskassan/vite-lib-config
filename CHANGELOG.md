@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [3.4.2](https://github.com/Forsakringskassan/vite-lib-config/compare/v3.4.1...v3.4.2) (2025-02-14)
+
+### Bug Fixes
+
+* **deps:** update dependency semver to v7.7.1 ([73c58c8](https://github.com/Forsakringskassan/vite-lib-config/commit/73c58c8bea5ffd4eb1b1d749e9d4ad7d146ab7d6))
+
 ## [3.4.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v3.4.0...v3.4.1) (2025-02-07)
 
 ### Bug Fixes
