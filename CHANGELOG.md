@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [3.4.3](https://github.com/Forsakringskassan/vite-lib-config/compare/v3.4.2...v3.4.3) (2025-02-17)
+
+### Bug Fixes
+
+* **deps:** update dependency @microsoft/api-extractor to v7.50.0 ([7fc001a](https://github.com/Forsakringskassan/vite-lib-config/commit/7fc001a19333f790d7bcb998b9b62f8e18f806c2))
+* in dev mode rebuilding internal package is not detected (fixes SFKUI-6500) ([f600cfa](https://github.com/Forsakringskassan/vite-lib-config/commit/f600cfaf314e3556a02e7f97be0bf00a58b3c44f))
+
 ## [3.4.2](https://github.com/Forsakringskassan/vite-lib-config/compare/v3.4.1...v3.4.2) (2025-02-14)
 
 ### Bug Fixes
