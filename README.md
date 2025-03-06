@@ -109,6 +109,14 @@ If the `setup` function is async (i.e. returns a `Promise`) it will be awaited b
 
 Create `src/vite-dev/app.vue` containing the root component you want to serve as a development environment.
 
+When running in dev mode an optional filename (or part of filename) can be given to run instead of default `src/vite-dev/app.vue`:
+
+```
+vite -- MyAwesomeExample
+```
+
+would search for any `.vue` file matching the given pattern (fuzzy).
+
 ### Appending Plugins
 
 If you need to use custom plugins in your library, remember to also include the default plugins, these will otherwise by overwritten.

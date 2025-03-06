@@ -1,10 +1,12 @@
 import { vitePlugin as apimockPlugin } from "@forsakringskassan/apimock-express";
+import uFuzzy from "@leeoniya/ufuzzy";
 import deepmerge from "deepmerge";
 import colors from "picocolors";
 import { type Plugin, type UserConfig as ViteUserConfig } from "vite";
 import vue3plugin, {
     type Options as Vue3PluginOptions,
 } from "@vitejs/plugin-vue";
+import { glob } from "glob";
 import {
     babelPlugin,
     customMappingPlugin,
@@ -90,6 +92,32 @@ export function vuePlugin(config?: Record<string, unknown>): Plugin {
     }
 }
 
+async function findEntrypoint(pattern: string | null): Promise<string> {
+    const defaultEntrypoint = "/src/vite-dev/app.vue";
+    if (!pattern) {
+        return defaultEntrypoint;
+    }
+
+    const uf = new uFuzzy({ intraIns: Infinity });
+    const files = await glob("**/*.vue", { posix: true, nodir: true });
+    const idxs = uf.filter(files, pattern);
+    if (!idxs || idxs.length === 0) {
+        throw new Error(`No files matching "${pattern}"`);
+    }
+    const info = uf.info(idxs, files, pattern);
+    const order = uf.sort(info, files, pattern);
+    const matches = order.map((it) => files[info.idx[it]]);
+
+    if (matches.length > 1) {
+        console.error(
+            `Multiple files matching "${pattern}", using first one from:`,
+            matches,
+        );
+    }
+
+    return matches[0];
+}
+
 const vueMajor = detectVueMajor();
 const packageJson = readJsonFile("package.json") as PackageJson;
 const dependencies = Object.keys(packageJson.dependencies ?? {});
@@ -156,11 +184,23 @@ function overwriteMerge<T>(_a: T[], b: T[]): T[] {
 /**
  * @public
  */
-export function defineConfig(config?: UserConfig): UserConfig {
-    const { mocks = [] } = config?.fk ?? {};
+export async function defineConfig(
+    config: UserConfig = {},
+): Promise<UserConfig> {
+    const argv = process.argv.slice(2);
+    const positional = argv.filter((it) => !it.startsWith("-"));
+
+    config.fk ??= {};
+    const { mocks = [] } = config.fk;
 
     if (mocks.length > 0) {
         defaultConfig.plugins.push(apimockPlugin(mocks));
+    }
+
+    const userEntrypoint = positional.length > 0 && !config.fk.entrypoint;
+    if (userEntrypoint) {
+        const entrypoint = await findEntrypoint(positional[0]);
+        config.fk.entrypoint = `/${entrypoint}`;
     }
 
     let result: UserConfig & { fk: FKConfig };
@@ -189,6 +229,9 @@ export function defineConfig(config?: UserConfig): UserConfig {
         "Bundled dependencies:",
         prettyList(allDependencies, (it) => isBundled(external, it)),
     );
+    if (userEntrypoint) {
+        console.log("Entrypoint:", config.fk.entrypoint);
+    }
     console.groupEnd();
     console.log();
 
