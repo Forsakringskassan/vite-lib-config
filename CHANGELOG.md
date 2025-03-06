@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [3.5.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v3.4.4...v3.5.0) (2025-03-06)
+
+### Features
+
+* allow user to specify dev entrypoint using CLI ([33fa4e4](https://github.com/Forsakringskassan/vite-lib-config/commit/33fa4e4b66cd6b7dcbf6ee291c31ba973ace6038))
+
+### Bug Fixes
+
+* **deps:** update dependency @microsoft/api-extractor to v7.51.0 ([d24bee9](https://github.com/Forsakringskassan/vite-lib-config/commit/d24bee954be7de9d25e50292f8c2dc2d8feb335c))
+* **deps:** update dependency @microsoft/api-extractor to v7.51.1 ([#45](https://github.com/Forsakringskassan/vite-lib-config/issues/45)) ([196b1e5](https://github.com/Forsakringskassan/vite-lib-config/commit/196b1e53e6c4da4d13476fe483b384db1aa715e5))
+
 ## [3.4.4](https://github.com/Forsakringskassan/vite-lib-config/compare/v3.4.3...v3.4.4) (2025-02-28)
 
 ### Bug Fixes
