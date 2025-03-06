@@ -15,7 +15,7 @@ export { apimockPlugin }
 export const defaultPlugins: Plugin_2<any>[];
 
 // @public (undocumented)
-export function defineConfig(config?: UserConfig): UserConfig;
+export function defineConfig(config?: UserConfig): Promise<UserConfig>;
 
 // @public (undocumented)
 export interface FKConfig {
