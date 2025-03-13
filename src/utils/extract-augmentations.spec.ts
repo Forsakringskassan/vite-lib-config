@@ -2,7 +2,7 @@ import dedent from "dedent";
 import { extractAugmentations } from "./extract-augmentations";
 
 describe("extractAugmentations()", () => {
-    it("should find global external augmentation", () => {
+    it("should find module augmentation", () => {
         expect.assertions(2);
         const content = dedent`
             declare module "foo" {
@@ -28,7 +28,37 @@ describe("extractAugmentations()", () => {
         `);
     });
 
-    it("should find multiple global external augmentations", () => {
+    it("should find global augmentation", () => {
+        expect.assertions(2);
+        const content = dedent`
+            declare global {
+                namespace foo {
+                    interface Bar {
+                        /**
+                         * Does something useful
+                         */
+                        usefulFunction(): void;
+                    }
+                }
+            }
+        `;
+        const result = extractAugmentations(content);
+        expect(result).toHaveLength(1);
+        expect(result[0]).toMatchInlineSnapshot(`
+            "declare global {
+                namespace foo {
+                    interface Bar {
+                        /**
+                         * Does something useful
+                         */
+                        usefulFunction(): void;
+                    }
+                }
+            }"
+        `);
+    });
+
+    it("should find multiple augmentations", () => {
         expect.assertions(3);
         const content = dedent`
             declare module "foo" {
