@@ -107,7 +107,7 @@
     "@types/jest": "29.5.14",
     "@types/node": "18.19.80",
     "@types/semver": "7.5.8",
-    "esbuild": "0.25.0",
+    "esbuild": "0.25.1",
     "husky": "9.1.7",
     "lint-staged": "15.4.3",
     "npm-pkg-lint": "3.10.11",
