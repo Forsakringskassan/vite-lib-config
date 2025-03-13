@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [3.6.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v3.5.0...v3.6.0) (2025-03-13)
+
+### Features
+
+* **api-extractor:** handle `declare global` augmentations ([afd3401](https://github.com/Forsakringskassan/vite-lib-config/commit/afd3401340f1f3a286ba202975dc7cce685502e5))
+
 ## [3.5.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v3.4.4...v3.5.0) (2025-03-06)
 
 ### Features
