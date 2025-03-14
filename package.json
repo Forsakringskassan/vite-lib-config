@@ -77,7 +77,7 @@
   },
   "dependencies": {
     "@leeoniya/ufuzzy": "1.0.18",
-    "@microsoft/api-extractor": "7.51.1",
+    "@microsoft/api-extractor": "7.52.1",
     "@vitejs/plugin-vue": "5.2.1",
     "@vue/babel-preset-app": "5.0.8",
     "dedent": "1.5.3",
