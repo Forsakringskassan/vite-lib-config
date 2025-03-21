@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [3.6.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v3.6.0...v3.6.1) (2025-03-21)
+
+### Bug Fixes
+
+* **deps:** update dependency @microsoft/api-extractor to v7.52.1 ([3bc2d8b](https://github.com/Forsakringskassan/vite-lib-config/commit/3bc2d8b8af097cf080943b117e609266736c26fd))
+* **deps:** update dependency @vitejs/plugin-vue to v5.2.2 ([2f9e644](https://github.com/Forsakringskassan/vite-lib-config/commit/2f9e6444c6a4fc947a7d372e160ec944cc97be65))
+* **deps:** update dependency @vitejs/plugin-vue to v5.2.3 ([f80f747](https://github.com/Forsakringskassan/vite-lib-config/commit/f80f74769f483c3eb54cd62829bbeab923321069))
+
 ## [3.6.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v3.5.0...v3.6.0) (2025-03-13)
 
 ### Features
