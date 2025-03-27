@@ -105,7 +105,7 @@
     "@types/dedent": "0.7.2",
     "@types/is-ci": "3.0.4",
     "@types/jest": "29.5.14",
-    "@types/node": "18.19.81",
+    "@types/node": "18.19.83",
     "@types/semver": "7.5.8",
     "esbuild": "0.25.1",
     "husky": "9.1.7",
