@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## [4.0.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v3.6.6...v4.0.0) (2025-05-15)
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** nodejs v20 or later required
+
+### Features
+
+* **deps:** require nodejs v20 or later ([48a4dfe](https://github.com/Forsakringskassan/vite-lib-config/commit/48a4dfe8d579ef5e417209c24fc8aacff0f12156))
+* **deps:** update dependency glob to v11 ([7c1e29d](https://github.com/Forsakringskassan/vite-lib-config/commit/7c1e29dc32243fd9a8cd3864b741662fdeb1dec5))
+
+### Bug Fixes
+
+* **deps:** update dependency @vitejs/plugin-vue to v5.2.4 ([daaccc6](https://github.com/Forsakringskassan/vite-lib-config/commit/daaccc649b70996ee3f318c00c09eb9c908bbee8))
+
 ## [3.6.6](https://github.com/Forsakringskassan/vite-lib-config/compare/v3.6.5...v3.6.6) (2025-05-09)
 
 ### Bug Fixes
