@@ -61,13 +61,6 @@
   "commitlint": {
     "extends": "@forsakringskassan/commitlint-config/no-jira"
   },
-  "lint-staged": {
-    "*.{json,md,css,scss,html}": "prettier --write",
-    "*.{js,cjs,mjs,vue,ts}": [
-      "prettier --write",
-      "eslint --fix"
-    ]
-  },
   "prettier": "@forsakringskassan/prettier-config",
   "release": {
     "extends": "@forsakringskassan/semantic-release-config"
@@ -92,7 +85,7 @@
     "@babel/core": "7.27.1",
     "@babel/plugin-transform-nullish-coalescing-operator": "7.27.1",
     "@forsakringskassan/apimock-express": "2.2.0",
-    "@forsakringskassan/commitlint-config": "1.4.2",
+    "@forsakringskassan/commitlint-config": "2.0.1",
     "@forsakringskassan/eslint-config": "11.9.6",
     "@forsakringskassan/eslint-config-cli": "11.9.0",
     "@forsakringskassan/eslint-config-jest": "11.9.5",
@@ -109,7 +102,6 @@
     "@types/semver": "7.7.0",
     "esbuild": "0.25.4",
     "husky": "9.1.7",
-    "lint-staged": "15.5.2",
     "npm-pkg-lint": "3.10.11",
     "npm-run-all2": "8.0.1",
     "ts-node": "10.9.2",
