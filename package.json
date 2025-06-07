@@ -85,7 +85,7 @@
     "@babel/core": "7.27.4",
     "@babel/plugin-transform-nullish-coalescing-operator": "7.27.1",
     "@forsakringskassan/apimock-express": "2.2.0",
-    "@forsakringskassan/commitlint-config": "2.0.1",
+    "@forsakringskassan/commitlint-config": "2.0.2",
     "@forsakringskassan/eslint-config": "11.9.10",
     "@forsakringskassan/eslint-config-cli": "11.9.0",
     "@forsakringskassan/eslint-config-jest": "11.9.10",
