@@ -162,7 +162,7 @@ const defaultConfig = {
         },
         rollupOptions: {
             output: {
-                entryFileNames: `index.[custom-format].js`,
+                entryFileNames: `[name].[custom-format].js`,
                 globals: {
                     vue: "Vue",
                 },
