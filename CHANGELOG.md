@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [4.0.2](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.0.1...v4.0.2) (2025-06-12)
+
+### Bug Fixes
+
+* define dynamic fileName in dist folder (refs SB-4982) ([40214f4](https://github.com/Forsakringskassan/vite-lib-config/commit/40214f4f2425e17848a02366f7a52d3c05e26bc3))
+
 ## [4.0.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.0.0...v4.0.1) (2025-05-23)
 
 ### Bug Fixes
