@@ -1,6 +1,6 @@
 {
   "name": "@forsakringskassan/vite-lib-config",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "Försäkringskassan toolchain to build libraries with Vite",
   "keywords": [
     "vite"

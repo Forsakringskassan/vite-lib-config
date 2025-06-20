@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [4.0.3](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.0.2...v4.0.3) (2025-06-20)
+
+### Bug Fixes
+
+* **deps:** update dependency glob to v11.0.3 ([1444e04](https://github.com/Forsakringskassan/vite-lib-config/commit/1444e047191f0789ecde43e98068a2b5e6923e8e))
+
 ## [4.0.2](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.0.1...v4.0.2) (2025-06-12)
 
 ### Bug Fixes
