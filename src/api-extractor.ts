@@ -1,7 +1,7 @@
 import { existsSync } from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
-import { globSync } from "glob";
+import { glob, globSync } from "glob";
 import isCI from "is-ci";
 import { findUp } from "find-up";
 import { Extractor, ExtractorConfig } from "@microsoft/api-extractor";
@@ -99,6 +99,34 @@ async function patchAugmentations(config: ExtractorConfig): Promise<void> {
     console.groupEnd();
 }
 
+async function patchDeclareVarVls(declarationDir: string): Promise<void> {
+    console.group(
+        `Patching vue-tsc dts files in "${declarationDir}" (microsoft/rushstack#5146)`,
+    );
+
+    let numPatchedFiles = 0;
+    const filenames = await glob("**/*.vue.d.ts", { cwd: declarationDir });
+    const promises = filenames.map(async (filename) => {
+        const filePath = path.join(declarationDir, filename);
+        const content = await fs.readFile(filePath, "utf-8");
+        const updated = content.replace(
+            /declare var (__VLS_\d+)/,
+            "declare const $1",
+        );
+        if (content !== updated) {
+            await fs.writeFile(filePath, updated, "utf-8");
+            numPatchedFiles++;
+            console.log(filename);
+        }
+    });
+    await Promise.all(promises);
+
+    console.groupEnd();
+    console.log(
+        `${numPatchedFiles} file${numPatchedFiles === 1 ? "" : "s"} patched\n`,
+    );
+}
+
 export async function run(argv: string[]): Promise<void> {
     const flags = argv.filter((it) => it.startsWith("--"));
     const positional = argv.filter((it) => !it.startsWith("--"));
@@ -109,6 +137,9 @@ export async function run(argv: string[]): Promise<void> {
   --help                     Show this help.
   --patch-augmentations      Post-process generated dts file to include module
                              augmentations.
+  --patch-declare-var-vls    Pre-process dts files to workaround
+                             vue-tsc/api-extractor incompatibility (see
+                             microsoft/rushstack#5146)
 
 By default \`api-extractor.json\` is used as configuration file but you can
 specify custom configuration filenames as the positional argument to this tool,
@@ -131,6 +162,10 @@ only.
     }
     console.groupEnd();
     console.log();
+
+    if (flags.includes("--patch-declare-var-vls")) {
+        await patchDeclareVarVls("temp/types");
+    }
 
     for (const filePath of configFiles) {
         const config = ExtractorConfig.loadFileAndPrepare(filePath);
