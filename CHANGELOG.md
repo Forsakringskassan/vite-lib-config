@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [4.1.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.0.3...v4.1.0) (2025-06-30)
+
+### Features
+
+* **api-extractor:** add --patch-declare-var-vls to workaround vue-tsc generated types ([e5771dc](https://github.com/Forsakringskassan/vite-lib-config/commit/e5771dc1dc6bef7f3feb18997e78d905b3c4c2f2))
+* **deps:** support vite v7 ([08dffc8](https://github.com/Forsakringskassan/vite-lib-config/commit/08dffc8adb3fcee665c81eb6a1bdbad5cc9d7235))
+* **deps:** update dependency @vitejs/plugin-vue to v6 ([be61dc3](https://github.com/Forsakringskassan/vite-lib-config/commit/be61dc3516bfcaa7c34f6f1c9000f15f468c3c43))
+
 ## [4.0.3](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.0.2...v4.0.3) (2025-06-20)
 
 ### Bug Fixes
