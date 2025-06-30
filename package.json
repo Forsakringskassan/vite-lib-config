@@ -71,7 +71,7 @@
   "dependencies": {
     "@leeoniya/ufuzzy": "1.0.18",
     "@microsoft/api-extractor": "7.52.8",
-    "@vitejs/plugin-vue": "5.2.4",
+    "@vitejs/plugin-vue": "6.0.0",
     "@vue/babel-preset-app": "5.0.8",
     "dedent": "1.6.0",
     "deepmerge": "4.3.1",
@@ -118,7 +118,7 @@
     "vue": "^3.0.0"
   },
   "engines": {
-    "node": ">= 20",
+    "node": ">= 20.19",
     "npm": ">= 7"
   },
   "externalDependencies": [
