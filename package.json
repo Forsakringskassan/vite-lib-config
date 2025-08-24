@@ -72,7 +72,7 @@
     "@leeoniya/ufuzzy": "1.0.18",
     "@microsoft/api-extractor": "7.52.11",
     "@vitejs/plugin-vue": "6.0.1",
-    "@vue/babel-preset-app": "5.0.8",
+    "@vue/babel-preset-app": "5.0.9",
     "dedent": "1.6.0",
     "deepmerge": "4.3.1",
     "find-up": "7.0.0",
