@@ -69,7 +69,7 @@
     "preset": "@forsakringskassan/jest-config"
   },
   "dependencies": {
-    "@leeoniya/ufuzzy": "1.0.18",
+    "@leeoniya/ufuzzy": "1.0.19",
     "@microsoft/api-extractor": "7.52.11",
     "@vitejs/plugin-vue": "6.0.1",
     "@vue/babel-preset-app": "5.0.9",
