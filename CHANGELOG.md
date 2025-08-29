@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [4.1.3](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.1.2...v4.1.3) (2025-08-29)
+
+### Bug Fixes
+
+* **deps:** update dependency @leeoniya/ufuzzy to v1.0.19 ([1aaa279](https://github.com/Forsakringskassan/vite-lib-config/commit/1aaa279543d194a2de7a08bed12c04727e82da0e))
+* **deps:** update dependency @microsoft/api-extractor to v7.52.11 ([b3201d9](https://github.com/Forsakringskassan/vite-lib-config/commit/b3201d9faac034fcd8fc493bf2d7eb7894ad3d51))
+* **deps:** update dependency @vue/babel-preset-app to v5.0.9 ([d5e40ad](https://github.com/Forsakringskassan/vite-lib-config/commit/d5e40ad7d03108f29c70346a1f27daf66126d6a4))
+
 ## [4.1.2](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.1.1...v4.1.2) (2025-08-08)
 
 ### Bug Fixes
