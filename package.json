@@ -99,7 +99,7 @@
     "@types/jest": "29.5.14",
     "@types/node": "20.19.16",
     "@types/semver": "7.7.1",
-    "esbuild": "0.25.9",
+    "esbuild": "0.25.10",
     "npm-pkg-lint": "4.0.5",
     "npm-run-all2": "8.0.4",
     "ts-node": "10.9.2",
