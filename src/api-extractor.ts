@@ -123,7 +123,7 @@ async function patchDeclareVarVls(declarationDir: string): Promise<void> {
 
     console.groupEnd();
     console.log(
-        `${numPatchedFiles} file${numPatchedFiles === 1 ? "" : "s"} patched\n`,
+        `${String(numPatchedFiles)} file${numPatchedFiles === 1 ? "" : "s"} patched\n`,
     );
 }
 
@@ -150,7 +150,7 @@ only.
 
     const configFiles = await getConfigFiles(positional);
     const numFiles = configFiles.length;
-    const strFiles = `${numFiles} file${numFiles === 1 ? "" : "s"}`;
+    const strFiles = `${String(numFiles)} file${numFiles === 1 ? "" : "s"}`;
 
     if (isCI) {
         console.group(`Running API Extractor in CI mode on ${strFiles}:`);
@@ -181,7 +181,7 @@ only.
             console.error(
                 [
                     "API Extractor completed with",
-                    `${errorCount} error(s) and ${warningCount} warning(s)`,
+                    `${String(errorCount)} error(s) and ${String(warningCount)} warning(s)`,
                 ].join("\n"),
             );
             process.exitCode = 1;

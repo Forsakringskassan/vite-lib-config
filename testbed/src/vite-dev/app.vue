@@ -8,6 +8,7 @@ function increment(): void {
 }
 
 onMounted(() => {
+    /* eslint-disable-next-line no-console -- expected to log */
     console.log(`The initial count is ${count.value}.`);
 });
 </script>

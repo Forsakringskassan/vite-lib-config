@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "node:path";
 import { globSync } from "glob";
-import { Package } from "../package";
+import { type Package } from "../package";
 import { readJsonFile } from "./read-json-file";
 
 interface PackageJson {
@@ -28,8 +28,9 @@ export function detectMonorepoPackages(...pkgPaths: string[]): Package[] {
             .map((it) => globSync(`${rootDir}/${it}/package.json`))
             .flat()
             .map((filename): Package => {
+                const pkg = readJsonFile(filename) as { name: string };
                 return {
-                    name: readJsonFile(filename).name,
+                    name: pkg.name,
                     pkgPath: filename,
                     srcPath: path.resolve(path.dirname(filename), "src"),
                 };

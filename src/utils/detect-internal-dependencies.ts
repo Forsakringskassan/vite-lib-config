@@ -13,7 +13,7 @@ export function detectInternalDependencies(
     console.group("Detecting monorepo dependencies:");
     if (num > 0) {
         const ies = num === 1 ? "y" : "ies";
-        console.log(`${num} internal dependenc${ies} found.\n`);
+        console.log(`${String(num)} internal dependenc${ies} found.\n`);
     } else {
         console.log("No internal dependencies found");
     }
