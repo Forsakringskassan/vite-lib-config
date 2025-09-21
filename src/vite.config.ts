@@ -19,7 +19,6 @@ import { lookupFile } from "./utils/lookupFile";
 
 export { type FKConfig } from "./fk-config";
 export {
-    /* eslint-disable-next-line import/named -- false positive */
     type MockEntry,
     vitePlugin as apimockPlugin,
 } from "@forsakringskassan/apimock-express";
@@ -123,7 +122,7 @@ const packageJson = readJsonFile("package.json") as PackageJson;
 const dependencies = Object.keys(packageJson.dependencies ?? {});
 const peerDependencies = Object.keys(packageJson.peerDependencies ?? {});
 const externalDependencies = packageJson.externalDependencies;
-const allDependencies = [...dependencies, ...peerDependencies].sort();
+const allDependencies = [...dependencies, ...peerDependencies].sort(); // eslint-disable-line sonarjs/no-alphabetical-sort -- technical debt but if good enough as it is
 const external = new Set([
     ...(externalDependencies ?? dependencies),
     ...peerDependencies,
@@ -132,7 +131,7 @@ const external = new Set([
 console.log(
     "Building",
     colors.cyan(packageJson.name),
-    `v${packageJson.version} (Vue ${vueMajor})`,
+    `v${packageJson.version} (Vue ${String(vueMajor)})`,
 );
 console.log();
 
@@ -204,6 +203,7 @@ export async function defineConfig(
     }
 
     let result: UserConfig & { fk: FKConfig };
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
     if (config) {
         result = deepmerge<UserConfig & { fk: FKConfig }>(
             defaultConfig,

@@ -27,6 +27,7 @@ function isHtmlPage(url: string | undefined): url is string {
 }
 
 function middleware(server: ViteDevServer): Connect.NextHandleFunction {
+    /* eslint-disable-next-line @typescript-eslint/no-misused-promises -- technical debt */
     return async (req, res, next) => {
         const { url } = req;
         if (isHtmlPage(url)) {
@@ -38,7 +39,7 @@ function middleware(server: ViteDevServer): Connect.NextHandleFunction {
                 res.end("Internal Server Error");
             }
         } else {
-            return next();
+            next();
         }
     };
 }
@@ -77,7 +78,8 @@ export function indexHtmlPlugin(): Plugin {
             order: "pre",
             async handler() {
                 const content = await fs.readFile(templateFile, "utf-8");
-                return content.replace(/{{([^}]+)}}/g, (match, key) => {
+                /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
+                return content.replace(/{{([^}]+)}}/g, (match, key: string) => {
                     return templateData[key.trim()] ?? match;
                 });
             },
