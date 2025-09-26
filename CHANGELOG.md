@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [4.2.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.1.5...v4.2.0) (2025-09-26)
+
+### Features
+
+* **deps:** update dependency find-up to v8 ([f9e00fb](https://github.com/Forsakringskassan/vite-lib-config/commit/f9e00fb7be834387f54506ab6e1940c3077e15d9))
+
 ## [4.1.5](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.1.4...v4.1.5) (2025-09-19)
 
 ### Bug Fixes
