@@ -1,19 +1,19 @@
+import { type Plugin, type UserConfig as ViteUserConfig } from "vite";
 import { vitePlugin as apimockPlugin } from "@forsakringskassan/apimock-express";
 import uFuzzy from "@leeoniya/ufuzzy";
-import deepmerge from "deepmerge";
-import colors from "picocolors";
-import { type Plugin, type UserConfig as ViteUserConfig } from "vite";
 import vue3plugin, {
     type Options as Vue3PluginOptions,
 } from "@vitejs/plugin-vue";
+import deepmerge from "deepmerge";
 import { glob } from "glob";
+import colors from "picocolors";
+import { type FKConfig } from "./fk-config";
 import {
     babelPlugin,
     customMappingPlugin,
     indexHtmlPlugin,
     packageJsonPlugin,
 } from "./plugins";
-import { type FKConfig } from "./fk-config";
 import { detectVueMajor, prettyList, readJsonFile } from "./utils";
 import { lookupFile } from "./utils/lookupFile";
 
