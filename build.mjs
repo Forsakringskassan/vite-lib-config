@@ -1,7 +1,7 @@
 import fs from "node:fs";
+import { Extractor, ExtractorConfig } from "@microsoft/api-extractor";
 import esbuild from "esbuild";
 import isCI from "is-ci";
-import { Extractor, ExtractorConfig } from "@microsoft/api-extractor";
 
 const pkg = JSON.parse(fs.readFileSync("package.json", "utf-8"));
 const externalDependencies = Object.values(pkg.externalDependencies);

@@ -1,5 +1,5 @@
-import * as babel from "@babel/core";
 import { type Plugin } from "vite";
+import * as babel from "@babel/core";
 
 const filter = /\.(js|ts|vue)$/;
 

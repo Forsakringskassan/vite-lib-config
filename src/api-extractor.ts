@@ -1,10 +1,10 @@
 import { existsSync } from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
+import { Extractor, ExtractorConfig } from "@microsoft/api-extractor";
+import { findUp } from "find-up";
 import { glob, globSync } from "glob";
 import isCI from "is-ci";
-import { findUp } from "find-up";
-import { Extractor, ExtractorConfig } from "@microsoft/api-extractor";
 import { extractAugmentations } from "./utils";
 
 /**

@@ -1,5 +1,5 @@
-import { major } from "semver";
 import { version } from "vue";
+import { major } from "semver";
 
 export function detectVueMajor(): 2 | 3 {
     try {
