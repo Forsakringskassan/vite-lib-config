@@ -83,7 +83,7 @@
   "devDependencies": {
     "@babel/core": "7.28.5",
     "@babel/plugin-transform-nullish-coalescing-operator": "7.27.1",
-    "@forsakringskassan/apimock-express": "2.10.1",
+    "@forsakringskassan/apimock-express": "2.11.0",
     "@forsakringskassan/commitlint-config": "3.2.0",
     "@forsakringskassan/eslint-config": "13.1.4",
     "@forsakringskassan/eslint-config-cli": "13.1.0",
