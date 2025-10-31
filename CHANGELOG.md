@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [4.2.3](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.2.2...v4.2.3) (2025-10-31)
+
+### Bug Fixes
+
+* **deps:** update dependency @microsoft/api-extractor to v7.53.2 ([a591999](https://github.com/Forsakringskassan/vite-lib-config/commit/a591999606c5b3ac760ab5927dd648767fdd1067))
+* **deps:** update dependency @microsoft/api-extractor to v7.53.3 ([6c54e3d](https://github.com/Forsakringskassan/vite-lib-config/commit/6c54e3de2c6e4fecf8cc04a9ccd4d6953f77a491))
+
 ## [4.2.2](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.2.1...v4.2.2) (2025-10-17)
 
 ### Bug Fixes
