@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## [4.3.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.2.4...v4.3.0) (2025-12-12)
+
+### Features
+
+* **deps:** update dependency glob to v12 ([1dc88c6](https://github.com/Forsakringskassan/vite-lib-config/commit/1dc88c6e7cf56e19d502bc48727f63a5fa487548))
+* **deps:** update dependency glob to v13 ([5d59ba3](https://github.com/Forsakringskassan/vite-lib-config/commit/5d59ba30e65fb5e3d9e262c4f96a278fcbc160f6))
+
+### Bug Fixes
+
+* **deps:** update dependency @microsoft/api-extractor to v7.55.0 ([b2afd23](https://github.com/Forsakringskassan/vite-lib-config/commit/b2afd23efe429a51092380b0e60df9a1e427c0d2))
+* **deps:** update dependency @microsoft/api-extractor to v7.55.1 ([98892a0](https://github.com/Forsakringskassan/vite-lib-config/commit/98892a0ca319c225fd7b35ed510cf17351e66f58))
+* **deps:** update dependency @microsoft/api-extractor to v7.55.2 ([004f1d0](https://github.com/Forsakringskassan/vite-lib-config/commit/004f1d04d6146023937346470876aaa2e36294f0))
+* **deps:** update dependency @vitejs/plugin-vue to v6.0.2 ([8745a16](https://github.com/Forsakringskassan/vite-lib-config/commit/8745a161812fe20a6c0cf57c52d7edcc4966ca48))
+
 ## [4.2.4](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.2.3...v4.2.4) (2025-11-14)
 
 ### Bug Fixes
