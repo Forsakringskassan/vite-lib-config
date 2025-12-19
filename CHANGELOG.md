@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [4.3.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.3.0...v4.3.1) (2025-12-19)
+
+### Bug Fixes
+
+* **deps:** update dependency @vitejs/plugin-vue to v6.0.3 ([e0ce1ab](https://github.com/Forsakringskassan/vite-lib-config/commit/e0ce1ab337f372c1e56640d1c6172f20259ceeb3))
+
 ## [4.3.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.2.4...v4.3.0) (2025-12-12)
 
 ### Features
