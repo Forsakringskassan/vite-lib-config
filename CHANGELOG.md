@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [4.3.2](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.3.1...v4.3.2) (2025-12-26)
+
+### Bug Fixes
+
+* **deps:** update dependency dedent to v1.7.1 ([c1b9e76](https://github.com/Forsakringskassan/vite-lib-config/commit/c1b9e76943a8f1a339d956b41d879ceca098231e))
+
 ## [4.3.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.3.0...v4.3.1) (2025-12-19)
 
 ### Bug Fixes
