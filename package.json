@@ -81,8 +81,8 @@
     "semver": "7.7.3"
   },
   "devDependencies": {
-    "@babel/core": "7.28.5",
-    "@babel/plugin-transform-nullish-coalescing-operator": "7.27.1",
+    "@babel/core": "7.28.6",
+    "@babel/plugin-transform-nullish-coalescing-operator": "7.28.6",
     "@forsakringskassan/apimock-express": "2.12.0",
     "@forsakringskassan/commitlint-config": "3.3.2",
     "@forsakringskassan/eslint-config": "13.2.10",
