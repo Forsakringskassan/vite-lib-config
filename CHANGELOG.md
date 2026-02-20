@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [4.3.5](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.3.4...v4.3.5) (2026-02-20)
+
+### Bug Fixes
+
+* **deps:** update dependency glob to v13.0.2 ([c1a9d8f](https://github.com/Forsakringskassan/vite-lib-config/commit/c1a9d8fc0d1934af877dd3fe72a804cadda5a044))
+* **deps:** update dependency glob to v13.0.3 ([322f5c9](https://github.com/Forsakringskassan/vite-lib-config/commit/322f5c92d6dcdc3fa1f44a71d178aced9d15fec1))
+
 ## [4.3.4](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.3.3...v4.3.4) (2026-02-13)
 
 ### Bug Fixes
