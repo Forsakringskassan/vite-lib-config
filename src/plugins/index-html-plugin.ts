@@ -7,7 +7,7 @@ import {
     type ViteDevServer,
 } from "vite";
 import { type FKConfig } from "../fk-config";
-import { lookupFile } from "../utils/lookupFile";
+import { lookupFile } from "../utils/lookup-file";
 
 interface TemplateData {
     entrypoint: string;
@@ -77,11 +77,14 @@ export function indexHtmlPlugin(): Plugin {
         transformIndexHtml: {
             order: "pre",
             async handler() {
-                const content = await fs.readFile(templateFile, "utf-8");
-                /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
-                return content.replace(/{{([^}]+)}}/g, (match, key: string) => {
-                    return templateData[key.trim()] ?? match;
-                });
+                const content = await fs.readFile(templateFile, "utf8");
+                return content.replaceAll(
+                    /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
+                    /{{([^}]+)}}/g,
+                    (match, key: string) => {
+                        return templateData[key.trim()] ?? match;
+                    },
+                );
             },
         },
 

@@ -12,7 +12,7 @@ import { extractAugmentations } from "./utils";
  */
 async function getConfigFiles(configFiles: string[]): Promise<string[]> {
     if (configFiles.length > 0) {
-        return configFiles.map((it) => globSync(it)).flat();
+        return configFiles.flatMap((it) => globSync(it));
     } else {
         const result = await findUp("api-extractor.json");
         return result ? [result] : [];
@@ -30,7 +30,7 @@ async function findReferencedFiles(
         return;
     }
     visited.add(filename);
-    const content = await fs.readFile(filename, "utf-8");
+    const content = await fs.readFile(filename, "utf8");
     const matches = content.matchAll(/^(?:import|export)[^"]*"([^"]+)";?$/gm);
     for (const match of Array.from(matches)) {
         const modname = match[1];
@@ -63,7 +63,7 @@ async function patchAugmentations(config: ExtractorConfig): Promise<void> {
     }
 
     async function extract(filename: string): Promise<string[]> {
-        const content = await fs.readFile(filename, "utf-8");
+        const content = await fs.readFile(filename, "utf8");
         return extractAugmentations(content);
     }
 
@@ -71,9 +71,9 @@ async function patchAugmentations(config: ExtractorConfig): Promise<void> {
         filename: string,
         augmentations: string[],
     ): Promise<void> {
-        const content = await fs.readFile(filename, "utf-8");
+        const content = await fs.readFile(filename, "utf8");
         const patched = [content, ...augmentations].join("\n\n");
-        await fs.writeFile(filename, patched, "utf-8");
+        await fs.writeFile(filename, patched, "utf8");
     }
 
     console.log();
@@ -108,13 +108,13 @@ async function patchDeclareVarVls(declarationDir: string): Promise<void> {
     const filenames = await glob("**/*.vue.d.ts", { cwd: declarationDir });
     const promises = filenames.map(async (filename) => {
         const filePath = path.join(declarationDir, filename);
-        const content = await fs.readFile(filePath, "utf-8");
+        const content = await fs.readFile(filePath, "utf8");
         const updated = content.replace(
             /declare var (__VLS_\d+)/,
             "declare const $1",
         );
         if (content !== updated) {
-            await fs.writeFile(filePath, updated, "utf-8");
+            await fs.writeFile(filePath, updated, "utf8");
             numPatchedFiles++;
             console.log(filename);
         }
@@ -128,10 +128,10 @@ async function patchDeclareVarVls(declarationDir: string): Promise<void> {
 }
 
 export async function run(argv: string[]): Promise<void> {
-    const flags = argv.filter((it) => it.startsWith("--"));
+    const flags = new Set(argv.filter((it) => it.startsWith("--")));
     const positional = argv.filter((it) => !it.startsWith("--"));
 
-    if (flags.includes("--help")) {
+    if (flags.has("--help")) {
         console.log("usage: fk-api-extractor [OPTIONS..] [FILENAME..]");
         console.log(`
   --help                     Show this help.
@@ -163,7 +163,7 @@ only.
     console.groupEnd();
     console.log();
 
-    if (flags.includes("--patch-declare-var-vls")) {
+    if (flags.has("--patch-declare-var-vls")) {
         await patchDeclareVarVls("temp/types");
     }
 
@@ -187,7 +187,7 @@ only.
             process.exitCode = 1;
         }
 
-        if (flags.includes("--patch-augmentations")) {
+        if (flags.has("--patch-augmentations")) {
             await patchAugmentations(config);
         }
     }

@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "node:fs";
 import path from "node:path";
 import { globSync } from "glob";
 import { type Package } from "../package";
@@ -25,8 +25,7 @@ export function detectMonorepoPackages(...pkgPaths: string[]): Package[] {
         }
 
         return workspaces
-            .map((it) => globSync(`${rootDir}/${it}/package.json`))
-            .flat()
+            .flatMap((it) => globSync(`${rootDir}/${it}/package.json`))
             .map((filename): Package => {
                 const pkg = readJsonFile(filename) as { name: string };
                 return {

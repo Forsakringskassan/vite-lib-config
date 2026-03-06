@@ -3,7 +3,7 @@ import { Extractor, ExtractorConfig } from "@microsoft/api-extractor";
 import esbuild from "esbuild";
 import isCI from "is-ci";
 
-const pkg = JSON.parse(fs.readFileSync("package.json", "utf-8"));
+const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
 const externalDependencies = Object.values(pkg.externalDependencies);
 const peerDependencies = Object.keys(pkg.peerDependencies);
 
@@ -99,7 +99,9 @@ async function run() {
     await apiExtractor("api-extractor.lib.json");
 }
 
-run().catch((err) => {
+try {
+    await run();
+} catch (err) {
     console.error(err);
     process.exit(1);
-});
+}
