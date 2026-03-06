@@ -14,7 +14,7 @@ export function extractAugmentations(content: string): string[] {
          * module" block itself, if it refers to an external package we include
          * the full declaration */
         if (name.startsWith(".")) {
-            const exported = withoutDeclaration.replace(
+            const exported = withoutDeclaration.replaceAll(
                 /^(\s*)interface/g,
                 "$1export interface",
             );

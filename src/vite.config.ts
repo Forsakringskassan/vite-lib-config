@@ -15,7 +15,7 @@ import {
     packageJsonPlugin,
 } from "./plugins";
 import { detectVueMajor, prettyList, readJsonFile } from "./utils";
-import { lookupFile } from "./utils/lookupFile";
+import { lookupFile } from "./utils/lookup-file";
 
 export { type FKConfig } from "./fk-config";
 export {
@@ -99,7 +99,7 @@ async function findEntrypoint(pattern: string | null): Promise<string> {
 
     const uf = new uFuzzy({ intraIns: Infinity });
     const files = await glob("**/*.vue", { posix: true, nodir: true });
-    const idxs = uf.filter(files, pattern);
+    const idxs = uf.filter(files, pattern); // eslint-disable-line unicorn/no-array-method-this-argument -- false positive
     if (!idxs || idxs.length === 0) {
         throw new Error(`No files matching "${pattern}"`);
     }
@@ -122,7 +122,9 @@ const packageJson = readJsonFile("package.json") as PackageJson;
 const dependencies = Object.keys(packageJson.dependencies ?? {});
 const peerDependencies = Object.keys(packageJson.peerDependencies ?? {});
 const externalDependencies = packageJson.externalDependencies;
-const allDependencies = [...dependencies, ...peerDependencies].sort(); // eslint-disable-line sonarjs/no-alphabetical-sort -- technical debt but if good enough as it is
+const allDependencies = [...dependencies, ...peerDependencies].toSorted(
+    (a, b) => a.localeCompare(b),
+);
 const external = new Set([
     ...(externalDependencies ?? dependencies),
     ...peerDependencies,
