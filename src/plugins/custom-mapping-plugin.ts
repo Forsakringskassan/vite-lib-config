@@ -11,20 +11,20 @@ const folder = {
 export function customMappingPlugin(): Plugin {
     return {
         name: "fk:custom-mapping",
-
-        renderStart(options) {
-            const { format } = options;
+        outputOptions(options) {
+            const { format, dir, entryFileNames } = options;
             if (format !== "es" && format !== "cjs") {
                 return;
             }
             const replacement = folder[format];
-            options.dir = options.dir?.replace("[custom-format]", replacement);
-            if (typeof options.entryFileNames === "string") {
-                options.entryFileNames = options.entryFileNames.replace(
-                    "[custom-format]",
-                    replacement,
-                );
-            }
+            return {
+                ...options,
+                dir: dir?.replace("[custom-format]", replacement),
+                entryFileNames:
+                    typeof entryFileNames === "string"
+                        ? entryFileNames.replace("[custom-format]", replacement)
+                        : entryFileNames,
+            };
         },
     };
 }
