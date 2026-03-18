@@ -9,7 +9,8 @@
     "prebuild": "tsc",
     "build": "fk-build-vue-lib",
     "postbuild": "fk-api-extractor --patch-augmentations api-extractor.json",
-    "start": "vite"
+    "start": "vite",
+    "test": "node --test dist.test.mjs"
   },
   "devDependencies": {
     "@forsakringskassan/vite-lib-config": "file:..",

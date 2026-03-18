@@ -10,7 +10,7 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                node-version: [20.x, 22.x]
+                node-version: [20.x, 22.x, 24.x]
         steps:
             - uses: actions/checkout@v6
             - name: Use Node.js ${{ matrix.node-version }}
@@ -28,7 +28,7 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                vite-version: [5.x, 6.x, 7.x]
+                vite-version: [5.x, 6.x, 7.x, 8.x]
         steps:
             - uses: actions/checkout@v6
             - name: Use Node.js 20.x
@@ -43,12 +43,16 @@ jobs:
               run: npm install --no-save $(npx -y npm-min-peer vite --major ${{ matrix.vite-version }} --with-name)
             - name: Testbed (commonjs)
               run: |
+                  rm -rf testbed/dist
                   npm pkg -w testbed set type=commonjs
                   npm run -w testbed build
+                  npm run -w testbed test
             - name: Testbed (esm)
               run: |
+                  rm -rf testbed/dist
                   npm pkg -w testbed set type=module
                   npm run -w testbed build
+                  npm run -w testbed test
 
     testbed:
         runs-on: ubuntu-latest
@@ -65,9 +69,13 @@ jobs:
               run: npm run --if-present build
             - name: Testbed (commonjs)
               run: |
+                  rm -rf testbed/dist
                   npm pkg -w testbed set type=commonjs
                   npm run -w testbed build
+                  npm run -w testbed test
             - name: Testbed (esm)
               run: |
+                  rm -rf testbed/dist
                   npm pkg -w testbed set type=module
                   npm run -w testbed build
+                  npm run -w testbed test
