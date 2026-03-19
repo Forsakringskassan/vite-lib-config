@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [4.4.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.3.7...v4.4.0) (2026-03-19)
+
+### Features
+
+* **deps:** support vite v8 ([5db491e](https://github.com/Forsakringskassan/vite-lib-config/commit/5db491e6fa0d06f906f6d451e6b152b6a342b898))
+
+### Bug Fixes
+
+* **deps:** update dependency @microsoft/api-extractor to v7.57.7 ([eed06cd](https://github.com/Forsakringskassan/vite-lib-config/commit/eed06cd2b7b4915044f89767298b8247398a209c))
+* **deps:** update dependency @vitejs/plugin-vue to v6.0.5 ([9623769](https://github.com/Forsakringskassan/vite-lib-config/commit/962376977c0ed5f3e0cfea50d358021689e0a259))
+
 ## [4.3.7](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.3.6...v4.3.7) (2026-03-06)
 
 ### Bug Fixes
