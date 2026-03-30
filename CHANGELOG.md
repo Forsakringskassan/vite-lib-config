@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [4.5.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.4.0...v4.5.0) (2026-03-30)
+
+### Features
+
+* inject `/* #__PURE__ */` annotation on `defineComponent()` calls ([64fec9c](https://github.com/Forsakringskassan/vite-lib-config/commit/64fec9c29c8c0e41af35523d43340980e104c8a9)), closes [#__PURE__](https://github.com/Forsakringskassan/vite-lib-config/issues/__PURE__)
+
 ## [4.4.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.3.7...v4.4.0) (2026-03-19)
 
 ### Features
