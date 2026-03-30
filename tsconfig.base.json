@@ -3,8 +3,9 @@
         "rootDir": "./src",
         "outDir": "./dist",
 
-        "moduleResolution": "node",
+        "moduleResolution": "node16",
         "lib": ["esnext", "dom"],
+        "types": ["node", "jest"],
 
         "isolatedModules": true,
         "esModuleInterop": true,

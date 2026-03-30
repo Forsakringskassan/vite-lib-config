@@ -2,8 +2,8 @@
     "extends": "./tsconfig.base.json",
     "compilerOptions": {
         "composite": true,
-        "target": "es5",
-        "module": "commonjs"
+        "target": "es6",
+        "module": "node16"
     },
     "include": ["src/babel.config.ts"]
 }

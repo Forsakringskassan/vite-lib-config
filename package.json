@@ -109,7 +109,7 @@
     "npm-pkg-lint": "4.6.2",
     "npm-run-all2": "8.0.4",
     "ts-node": "10.9.2",
-    "typescript": "5.9.3",
+    "typescript": "6.0.2",
     "vite": "8.0.3",
     "vue": "3.5.31"
   },
@@ -117,7 +117,7 @@
     "@babel/core": "^7.22.0",
     "@babel/plugin-transform-nullish-coalescing-operator": "^7.22.0",
     "@forsakringskassan/apimock-express": "^1.1.0 || ^2.0.0",
-    "typescript": "^5.0.2",
+    "typescript": "^5.0.2 || ^6.0.2",
     "vite": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0",
     "vue": "^3.0.0"
   },
