@@ -7,6 +7,7 @@ import vue3plugin, {
 import deepmerge from "deepmerge";
 import { glob } from "glob";
 import colors from "picocolors";
+import { PluginPure } from "rollup-plugin-pure";
 import { type FKConfig } from "./fk-config";
 import {
     babelPlugin,
@@ -143,6 +144,10 @@ console.log();
 export const defaultPlugins = [
     indexHtmlPlugin(),
     packageJsonPlugin(),
+    PluginPure({
+        functions: ["defineComponent"],
+        sourcemap: true,
+    }),
     vuePlugin(),
     customMappingPlugin(),
     babelPlugin(),

@@ -7,12 +7,13 @@
 import { vitePlugin as apimockPlugin } from '@forsakringskassan/apimock-express';
 import { MockEntry } from '@forsakringskassan/apimock-express';
 import { Plugin as Plugin_2 } from 'vite';
+import { Plugin as Plugin_3 } from 'rollup';
 import { UserConfig as UserConfig_2 } from 'vite';
 
 export { apimockPlugin }
 
 // @public (undocumented)
-export const defaultPlugins: Plugin_2<any>[];
+export const defaultPlugins: (Plugin_2<any> | Plugin_3<any>)[];
 
 // @public (undocumented)
 export function defineConfig(config?: UserConfig): Promise<UserConfig>;
