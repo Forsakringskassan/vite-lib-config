@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [4.6.2](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.6.1...v4.6.2) (2026-04-06)
+
+### Bug Fixes
+
+* **deps:** update dependency vite to v8.0.5 [security] ([0cd75e2](https://github.com/Forsakringskassan/vite-lib-config/commit/0cd75e2ae22125f37ced842237037851bbbeff5d))
+
 ## [4.6.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.6.0...v4.6.1) (2026-04-03)
 
 ### Bug Fixes
