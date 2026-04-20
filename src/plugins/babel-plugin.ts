@@ -12,6 +12,12 @@ export function babelPlugin(): Plugin {
         enforce: "post",
         apply: "build",
         async transform(src, id) {
+            /* skip transforming rolldown runtime, it prevents functions such as
+             * `__commonJSMin` from being added properly to the bundle */
+            if (id === "\u0000rolldown/runtime.js") {
+                return null;
+            }
+
             const { pathname: filename } = new URL(id, "file://");
             if (!filter.test(filename)) {
                 return null;
