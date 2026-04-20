@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [4.6.5](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.6.4...v4.6.5) (2026-04-20)
+
+### Bug Fixes
+
+* fix issue with rolldown runtime begin corrupted by babel ([b479146](https://github.com/Forsakringskassan/vite-lib-config/commit/b47914671cb042e72f4dc57403dfdaae63efd5ce))
+
 ## [4.6.4](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.6.3...v4.6.4) (2026-04-17)
 
 ### Bug Fixes
