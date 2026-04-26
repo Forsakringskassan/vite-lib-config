@@ -39,6 +39,8 @@ jobs:
               run: npm ci
             - name: Build
               run: npm run --if-present build
+            - name: Downgrade esbuild # older vite versions require esbuild 0.27
+              run: npm install esbuild@0.27
             - name: Install Vite ${{ matrix.vite-version }}
               run: npm install --no-save $(npx -y npm-min-peer vite --major ${{ matrix.vite-version }} --with-name)
             - name: Testbed (commonjs)
