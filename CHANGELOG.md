@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [4.7.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.6.9...v4.7.0) (2026-04-28)
+
+### Features
+
+* new bin `fk-build-selectors` to build selectors and pageobjects ([09a221f](https://github.com/Forsakringskassan/vite-lib-config/commit/09a221f6bc753e8602507d4a6e01c7975880e0db))
+
 ## [4.6.9](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.6.8...v4.6.9) (2026-04-24)
 
 ### Bug Fixes
