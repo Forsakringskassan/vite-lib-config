@@ -5,6 +5,7 @@ Toolchain for building Vue framework libraries.
 - Hybrid ESM/CJS packages.
 - Transpiled with Babel.
 - Supports monorepo.
+- Optional: build pageobjects and selectors.
 
 ## Configuration
 
@@ -81,6 +82,21 @@ To fix global module augmentations use:
 > fk-api-extractor --patch-augmentations
 
 Use `--help` to see full description.
+
+### Optional: build pageobjects and selectors
+
+```diff
+ {
+     "scripts": {
+         "build": "fk-build-vue-lib",
++        "build:selectors": "fk-build-selectors",
+     }
+ }
+```
+
+If `src/selectors/index.ts` it will be built to `dist/${format}/selectors.${cjs,mjs}`.
+
+If `src/cypress/index.ts` it will be built to `dist/${format}/cypress.${cjs,mjs}`.
 
 ### Dev-server
 
