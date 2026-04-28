@@ -56,6 +56,7 @@ async function run() {
         entryPoints: [
             "src/api-extractor.ts",
             "src/babel.config.ts",
+            "src/build-selectors.ts",
             "src/index.ts",
         ],
     });
