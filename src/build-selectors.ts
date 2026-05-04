@@ -1,6 +1,12 @@
 import { existsSync } from "node:fs";
+import fs from "node:fs/promises";
 import path from "node:path/posix";
 import * as esbuild from "esbuild";
+
+interface PackageJson {
+    peerDependencies?: Partial<Record<string, string>>;
+    externalDependencies?: string[];
+}
 
 const extension = {
     cjs: ".cjs",
@@ -9,8 +15,13 @@ const extension = {
 
 async function build(
     entrypoint: string,
-    formats: readonly ["cjs", "esm"],
+    options: {
+        external: string[];
+        formats: readonly ["cjs", "esm"];
+    },
 ): Promise<void> {
+    const { external, formats } = options;
+
     if (!existsSync(entrypoint)) {
         return;
     }
@@ -27,6 +38,7 @@ async function build(
             format,
             target: "chrome119",
             sourcemap: true,
+            external,
             outExtension: {
                 ".js": extension[format],
             },
@@ -40,6 +52,26 @@ async function build(
     }
 }
 
+async function readJsonFile<T = unknown>(filePath: string): Promise<T> {
+    const content = await fs.readFile(filePath, "utf8");
+    return JSON.parse(content) as T;
+}
+
+/**
+ * @internal
+ */
+export function getExternals(pkg: PackageJson): string[] {
+    const { peerDependencies = {}, externalDependencies = [] } = pkg;
+    const unique = new Set([
+        ...Object.keys(peerDependencies),
+        ...externalDependencies,
+    ]);
+    return Array.from(unique).toSorted((a, b) => a.localeCompare(b));
+}
+
+/**
+ * @public
+ */
 export async function run(argv: string[]): Promise<void> {
     const flags = new Set(argv.filter((it) => it.startsWith("--")));
 
@@ -50,8 +82,11 @@ export async function run(argv: string[]): Promise<void> {
 `);
     }
 
+    const pkg = await readJsonFile<PackageJson>("package.json");
+    const external = getExternals(pkg);
+
     const formats = ["cjs", "esm"] as const;
 
-    await build("src/cypress/index.ts", formats);
-    await build("src/selectors/index.ts", formats);
+    await build("src/cypress/index.ts", { external, formats });
+    await build("src/selectors/index.ts", { external, formats });
 }
