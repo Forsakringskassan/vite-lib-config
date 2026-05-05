@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [4.7.2](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.7.1...v4.7.2) (2026-05-05)
+
+### Bug Fixes
+
+* stop after showing usage when using `--help` ([00bb392](https://github.com/Forsakringskassan/vite-lib-config/commit/00bb392e0e9349058858375c59b7b1ab963a0ff8))
+
 ## [4.7.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.7.0...v4.7.1) (2026-05-05)
 
 ### Bug Fixes
