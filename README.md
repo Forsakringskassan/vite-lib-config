@@ -6,8 +6,15 @@ Toolchain for building Vue framework libraries.
 - Transpiled with Babel.
 - Supports monorepo.
 - Optional: build pageobjects and selectors.
+- Optional: shared typescript configuration.
 
 ## Configuration
+
+Use `fk-write-config` to write boilerplate configuration files to the repository:
+
+    fk-write-config
+
+By default it assumes `vitest` is used as test runner, use `--with-jest` or `--with-vitest` to explicitly set a test runner.
 
 ### Bundled dependencies
 

@@ -56,7 +56,11 @@ async function run() {
         entryPoints: ["src/babel.config.ts", "src/index.ts"],
     });
     await build({
-        entryPoints: ["src/api-extractor.ts", "src/build-selectors.ts"],
+        entryPoints: [
+            "src/api-extractor.ts",
+            "src/build-selectors.ts",
+            "src/write-config.ts",
+        ],
         format: "esm",
         outExtension: { ".js": ".mjs" },
     });
