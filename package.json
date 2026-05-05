@@ -23,11 +23,11 @@
       "types": "./dist/babel.config.d.ts",
       "require": "./dist/babel.config.js"
     },
-    "./tsconfig.json": "./assets/tsconfig.json",
-    "./tsconfig.cypress.json": "./assets/tsconfig.cypress.json",
-    "./tsconfig.lib.json": "./assets/tsconfig.lib.json",
-    "./tsconfig.pageobjects.json": "./assets/tsconfig.pageobjects.json",
-    "./tsconfig.selectors.json": "./assets/tsconfig.selectors.json",
+    "./tsconfig.json": "./tsconfig/tsconfig.json",
+    "./tsconfig.cypress.json": "./tsconfig/tsconfig.cypress.json",
+    "./tsconfig.lib.json": "./tsconfig/tsconfig.lib.json",
+    "./tsconfig.pageobjects.json": "./tsconfig/tsconfig.pageobjects.json",
+    "./tsconfig.selectors.json": "./tsconfig/tsconfig.selectors.json",
     "./vite": {
       "types": "./dist/vite.config.d.ts",
       "import": "./dist/vite.config.mjs",
@@ -39,13 +39,15 @@
   "bin": {
     "fk-api-extractor": "bin/api-extractor.js",
     "fk-build-vue-lib": "bin/build-vue-lib.mjs",
-    "fk-build-selectors": "bin/build-selectors.mjs"
+    "fk-build-selectors": "bin/build-selectors.mjs",
+    "fk-write-config": "bin/write-config.mjs"
   },
   "files": [
     "*.d.ts",
     "assets",
     "bin",
-    "dist"
+    "dist",
+    "tsconfig"
   ],
   "workspaces": [
     "testbed"

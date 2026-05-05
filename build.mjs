@@ -58,6 +58,7 @@ async function run() {
             "src/babel.config.ts",
             "src/build-selectors.ts",
             "src/index.ts",
+            "src/write-config.ts",
         ],
     });
     await build({
