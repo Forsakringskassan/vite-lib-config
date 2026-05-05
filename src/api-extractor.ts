@@ -146,6 +146,7 @@ specify custom configuration filenames as the positional argument to this tool,
 e.g. \`fkui-api-extractor custom.json other.json\` would use those two filenames
 only.
 `);
+        return;
     }
 
     const configFiles = await getConfigFiles(positional);

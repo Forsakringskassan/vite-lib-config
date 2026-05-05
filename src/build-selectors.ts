@@ -80,6 +80,7 @@ export async function run(argv: string[]): Promise<void> {
         console.log(`
   --help                     Show this help.
 `);
+        return;
     }
 
     const pkg = await readJsonFile<PackageJson>("package.json");
