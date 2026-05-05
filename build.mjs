@@ -53,12 +53,12 @@ async function apiExtractor(filename) {
 
 async function run() {
     await build({
-        entryPoints: [
-            "src/api-extractor.ts",
-            "src/babel.config.ts",
-            "src/build-selectors.ts",
-            "src/index.ts",
-        ],
+        entryPoints: ["src/babel.config.ts", "src/index.ts"],
+    });
+    await build({
+        entryPoints: ["src/api-extractor.ts", "src/build-selectors.ts"],
+        format: "esm",
+        outExtension: { ".js": ".mjs" },
     });
     await build({
         entryPoints: ["src/vite.config.ts"],

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { run } from "../dist/build-selectors.mjs";
+import { run } from "../dist/api-extractor.mjs";
 
 const argv = process.argv.slice(2);
 
