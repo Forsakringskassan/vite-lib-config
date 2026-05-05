@@ -23,6 +23,7 @@ async function build(
     const { external, formats } = options;
 
     if (!existsSync(entrypoint)) {
+        console.log(entrypoint, "does not exist, skipping");
         return;
     }
 
