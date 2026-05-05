@@ -1,12 +1,83 @@
 jest.mock("find-up", () => ({}));
 
 import {
+    detectTestRunner,
     generateTsconfig,
     generateTsconfigCypress,
     generateTsconfigLib,
     generateTsconfigPageobjects,
     generateTsconfigSelectors,
 } from "./write-config";
+
+describe("detectTestRunner()", () => {
+    it("should return 'jest' when jest is in devDependencies", () => {
+        expect.assertions(1);
+        const pkg = { name: "my-lib", devDependencies: { jest: "^29.0.0" } };
+        expect(detectTestRunner(pkg)).toBe("jest");
+    });
+
+    it("should return 'jest' when @forsakringskassan/jest-config-vue is in devDependencies", () => {
+        expect.assertions(1);
+        const pkg = {
+            name: "my-lib",
+            devDependencies: {
+                "@forsakringskassan/jest-config-vue": "^1.0.0",
+            },
+        };
+        expect(detectTestRunner(pkg)).toBe("jest");
+    });
+
+    it("should return 'jest' when a jest package is in dependencies", () => {
+        expect.assertions(1);
+        const pkg = {
+            name: "my-lib",
+            dependencies: { "ts-jest": "^29.0.0" },
+        };
+        expect(detectTestRunner(pkg)).toBe("jest");
+    });
+
+    it("should return 'vitest' when vitest is in devDependencies", () => {
+        expect.assertions(1);
+        const pkg = {
+            name: "my-lib",
+            devDependencies: { vitest: "^1.0.0" },
+        };
+        expect(detectTestRunner(pkg)).toBe("vitest");
+    });
+
+    it("should return 'vitest' when vitest is in dependencies", () => {
+        expect.assertions(1);
+        const pkg = {
+            name: "my-lib",
+            dependencies: { vitest: "^1.0.0" },
+        };
+        expect(detectTestRunner(pkg)).toBe("vitest");
+    });
+
+    it("should prefer jest over vitest when both are present", () => {
+        expect.assertions(1);
+        const pkg = {
+            name: "my-lib",
+            devDependencies: { jest: "^29.0.0", vitest: "^1.0.0" },
+        };
+        expect(detectTestRunner(pkg)).toBe("jest");
+    });
+
+    it("should return undefined when neither jest nor vitest is present", () => {
+        expect.assertions(1);
+        const pkg = {
+            name: "my-lib",
+            devDependencies: { typescript: "^5.0.0" },
+        };
+        expect(detectTestRunner(pkg)).toBeUndefined();
+    });
+
+    it("should return undefined when no dependencies are set", () => {
+        expect.assertions(1);
+        const pkg = { name: "my-lib" };
+        expect(detectTestRunner(pkg)).toBeUndefined();
+    });
+});
 
 describe("generateTsconfig()", () => {
     it("should generate tsconfig.json extending the package tsconfig", () => {

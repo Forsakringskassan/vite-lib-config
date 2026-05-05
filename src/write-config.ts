@@ -3,6 +3,9 @@ import path from "node:path";
 
 interface PackageJson {
     name: string;
+    dependencies?: Record<string, string>;
+    devDependencies?: Record<string, string>;
+    peerDependencies?: Record<string, string>;
 }
 
 interface Reference {
@@ -12,7 +15,40 @@ interface Reference {
 /**
  * @internal
  */
-export function generateTsconfig(): string {
+export interface Options {
+    testRunner?: "jest" | "vitest";
+}
+
+/**
+ * Detects whether jest or vitest is used based on the package.json dependencies.
+ *
+ * @internal
+ */
+export function detectTestRunner(
+    pkg: PackageJson,
+): "jest" | "vitest" | undefined {
+    const allDeps = {
+        ...pkg.dependencies,
+        ...pkg.devDependencies,
+        ...pkg.peerDependencies,
+    };
+    const packages = Object.keys(allDeps);
+
+    if (packages.some((name) => name.includes("jest"))) {
+        return "jest";
+    }
+
+    if (packages.some((name) => name.includes("vitest"))) {
+        return "vitest";
+    }
+
+    return undefined;
+}
+
+/**
+ * @internal
+ */
+export function generateTsconfig(_options: Options = {}): string {
     const config = {
         extends: "@forsakringskassan/vite-lib-config/tsconfig.json",
         references: [
@@ -28,7 +64,10 @@ export function generateTsconfig(): string {
 /**
  * @internal
  */
-export function generateTsconfigLib(packageName: string): string {
+export function generateTsconfigLib(
+    packageName: string,
+    _options: Options = {},
+): string {
     const config = {
         extends: "@forsakringskassan/vite-lib-config/tsconfig.lib.json",
         compilerOptions: {
@@ -46,6 +85,7 @@ export function generateTsconfigLib(packageName: string): string {
 export function generateTsconfigCypress(
     packageName: string,
     cypressConfigPath: string,
+    _options: Options = {},
 ): string {
     const config = {
         extends: [
@@ -65,7 +105,10 @@ export function generateTsconfigCypress(
 /**
  * @internal
  */
-export function generateTsconfigSelectors(packageName: string): string {
+export function generateTsconfigSelectors(
+    packageName: string,
+    _options: Options = {},
+): string {
     const config = {
         extends: "@forsakringskassan/vite-lib-config/tsconfig.selectors.json",
         compilerOptions: {
@@ -81,7 +124,10 @@ export function generateTsconfigSelectors(packageName: string): string {
 /**
  * @internal
  */
-export function generateTsconfigPageobjects(packageName: string): string {
+export function generateTsconfigPageobjects(
+    packageName: string,
+    _options: Options = {},
+): string {
     const config = {
         extends: "@forsakringskassan/vite-lib-config/tsconfig.pageobjects.json",
         compilerOptions: {
@@ -117,6 +163,8 @@ export async function run(argv: string[]): Promise<void> {
         console.log("usage: fk-write-config [OPTIONS..]");
         console.log(`
   --help                     Show this help.
+  --with-jest                Apply jest workarounds.
+  --with-vitest              Apply vitest workarounds.
 `);
         return;
     }
@@ -125,6 +173,17 @@ export async function run(argv: string[]): Promise<void> {
     const pkg = await readJsonFile<PackageJson>("package.json");
     const packageName = pkg.name;
     const cypressConfigPath = await findCypressConfigPath(cwd);
+
+    let testRunner: "jest" | "vitest" | undefined;
+    if (flags.has("--with-jest")) {
+        testRunner = "jest";
+    } else if (flags.has("--with-vitest")) {
+        testRunner = "vitest";
+    } else {
+        testRunner = detectTestRunner(pkg);
+    }
+
+    const options: Options = { testRunner };
 
     const generated = new Set([
         "tsconfig.json",
@@ -147,22 +206,25 @@ export async function run(argv: string[]): Promise<void> {
         }
     }
 
-    await fs.writeFile(path.join(cwd, "tsconfig.json"), generateTsconfig());
+    await fs.writeFile(
+        path.join(cwd, "tsconfig.json"),
+        generateTsconfig(options),
+    );
     await fs.writeFile(
         path.join(cwd, "tsconfig.lib.json"),
-        generateTsconfigLib(packageName),
+        generateTsconfigLib(packageName, options),
     );
     await fs.writeFile(
         path.join(cwd, "tsconfig.cypress.json"),
-        generateTsconfigCypress(packageName, cypressConfigPath),
+        generateTsconfigCypress(packageName, cypressConfigPath, options),
     );
     await fs.writeFile(
         path.join(cwd, "tsconfig.selectors.json"),
-        generateTsconfigSelectors(packageName),
+        generateTsconfigSelectors(packageName, options),
     );
     await fs.writeFile(
         path.join(cwd, "tsconfig.pageobjects.json"),
-        generateTsconfigPageobjects(packageName),
+        generateTsconfigPageobjects(packageName, options),
     );
 
     console.log("Wrote tsconfig files");

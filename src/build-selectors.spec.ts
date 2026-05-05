@@ -1,4 +1,4 @@
-import { getExternals } from "./build-selectors";
+import { checkEntrypoints, getExternals } from "./build-selectors";
 
 describe("getExternals()", () => {
     it("should return packages from peerDependencies", () => {
@@ -40,5 +40,59 @@ describe("getExternals()", () => {
         const pkg = {};
         const result = getExternals(pkg);
         expect(result).toEqual([]);
+    });
+});
+
+describe("checkEntrypoints()", () => {
+    it("should not throw when both entrypoints exist", () => {
+        expect.assertions(1);
+        expect(() => {
+            checkEntrypoints(true, true);
+        }).not.toThrow();
+    });
+
+    it("should not throw when only cypress exists", () => {
+        expect.assertions(1);
+        expect(() => {
+            checkEntrypoints(true, false);
+        }).not.toThrow();
+    });
+
+    it("should not throw when only selectors exists", () => {
+        expect.assertions(1);
+        expect(() => {
+            checkEntrypoints(false, true);
+        }).not.toThrow();
+    });
+
+    it("should log when src/cypress/index.ts does not exist", () => {
+        expect.assertions(1);
+        const spy = jest.spyOn(console, "log").mockReturnValue(undefined);
+        checkEntrypoints(false, true);
+        expect(spy).toHaveBeenCalledWith(
+            "src/cypress/index.ts does not exist, skipping",
+        );
+        spy.mockRestore();
+    });
+
+    it("should log when src/selectors/index.ts does not exist", () => {
+        expect.assertions(1);
+        const spy = jest.spyOn(console, "log").mockReturnValue(undefined);
+        checkEntrypoints(true, false);
+        expect(spy).toHaveBeenCalledWith(
+            "src/selectors/index.ts does not exist, skipping",
+        );
+        spy.mockRestore();
+    });
+
+    it("should throw when neither entrypoint exists", () => {
+        expect.assertions(1);
+        const spy = jest.spyOn(console, "log").mockReturnValue(undefined);
+        expect(() => {
+            checkEntrypoints(false, false);
+        }).toThrow(
+            "Neither src/cypress/index.ts nor src/selectors/index.ts exists",
+        );
+        spy.mockRestore();
     });
 });

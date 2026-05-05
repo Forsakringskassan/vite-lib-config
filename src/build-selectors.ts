@@ -70,6 +70,31 @@ export function getExternals(pkg: PackageJson): string[] {
 }
 
 /**
+ * Logs a message when an entrypoint does not exist and throws if neither
+ * entrypoint exists.
+ *
+ * @internal
+ */
+export function checkEntrypoints(
+    cypressExists: boolean,
+    selectorsExists: boolean,
+): void {
+    if (!cypressExists) {
+        console.log("src/cypress/index.ts does not exist, skipping");
+    }
+
+    if (!selectorsExists) {
+        console.log("src/selectors/index.ts does not exist, skipping");
+    }
+
+    if (!cypressExists && !selectorsExists) {
+        throw new Error(
+            "Neither src/cypress/index.ts nor src/selectors/index.ts exists",
+        );
+    }
+}
+
+/**
  * @public
  */
 export async function run(argv: string[]): Promise<void> {
@@ -86,6 +111,11 @@ export async function run(argv: string[]): Promise<void> {
     const external = getExternals(pkg);
 
     const formats = ["cjs", "esm"] as const;
+
+    const cypressExists = existsSync("src/cypress/index.ts");
+    const selectorsExists = existsSync("src/selectors/index.ts");
+
+    checkEntrypoints(cypressExists, selectorsExists);
 
     await build("src/cypress/index.ts", { external, formats });
     await build("src/selectors/index.ts", { external, formats });
