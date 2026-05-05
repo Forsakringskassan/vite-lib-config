@@ -34,11 +34,11 @@ export function detectTestRunner(
     };
     const packages = Object.keys(allDeps);
 
-    if (packages.some((name) => name.includes("jest"))) {
+    if (packages.some((name) => /\bjest\b/.test(name))) {
         return "jest";
     }
 
-    if (packages.some((name) => name.includes("vitest"))) {
+    if (packages.some((name) => /\bvitest\b/.test(name))) {
         return "vitest";
     }
 

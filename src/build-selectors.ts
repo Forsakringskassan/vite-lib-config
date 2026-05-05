@@ -117,6 +117,11 @@ export async function run(argv: string[]): Promise<void> {
 
     checkEntrypoints(cypressExists, selectorsExists);
 
-    await build("src/cypress/index.ts", { external, formats });
-    await build("src/selectors/index.ts", { external, formats });
+    if (cypressExists) {
+        await build("src/cypress/index.ts", { external, formats });
+    }
+
+    if (selectorsExists) {
+        await build("src/selectors/index.ts", { external, formats });
+    }
 }
