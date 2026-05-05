@@ -18,16 +18,21 @@
       "types": "./dist/index.d.ts",
       "require": "./dist/index.js"
     },
+    "./assets/*": "./assets/*",
     "./babel": {
       "types": "./dist/babel.config.d.ts",
       "require": "./dist/babel.config.js"
     },
+    "./tsconfig.root.json": "./tsconfig/tsconfig.root.json",
+    "./tsconfig.cypress.json": "./tsconfig/tsconfig.cypress.json",
+    "./tsconfig.lib.json": "./tsconfig/tsconfig.lib.json",
+    "./tsconfig.pageobjects.json": "./tsconfig/tsconfig.pageobjects.json",
+    "./tsconfig.selectors.json": "./tsconfig/tsconfig.selectors.json",
     "./vite": {
       "types": "./dist/vite.config.d.ts",
       "import": "./dist/vite.config.mjs",
       "require": "./dist/vite.config.cjs"
-    },
-    "./assets/*": "./assets/*"
+    }
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -40,7 +45,8 @@
     "*.d.ts",
     "assets",
     "bin",
-    "dist"
+    "dist",
+    "tsconfig"
   ],
   "workspaces": [
     "testbed"
@@ -90,6 +96,7 @@
   "devDependencies": {
     "@babel/core": "7.29.0",
     "@babel/plugin-transform-nullish-coalescing-operator": "7.28.6",
+    "@fkui/tsconfig": "6.44.0",
     "@forsakringskassan/apimock-express": "2.15.1",
     "@forsakringskassan/commitlint-config": "3.3.13",
     "@forsakringskassan/eslint-config": "14.1.20",
@@ -117,6 +124,7 @@
   "peerDependencies": {
     "@babel/core": "^7.22.0",
     "@babel/plugin-transform-nullish-coalescing-operator": "^7.22.0",
+    "@fkui/tsconfig": "*",
     "@forsakringskassan/apimock-express": "^1.1.0 || ^2.0.0",
     "typescript": "^5.0.2 || ^6.0.2",
     "vite": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0",

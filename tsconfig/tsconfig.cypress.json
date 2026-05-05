@@ -1,0 +1,18 @@
+{
+    "$schema": "https://www.schemastore.org/tsconfig",
+    "compilerOptions": {
+        "composite": true,
+        "tsBuildInfoFile": "${configDir}/temp/tsconfig.cypress.tsbuildinfo",
+        "outDir": "${configDir}/temp",
+        "rootDir": "${configDir}/src",
+        "emitDeclarationOnly": true,
+        "declarationDir": "temp/cypress",
+        "skipLibCheck": true
+    },
+    "include": [
+        "${configDir}/src/**/*.ts",
+        "${configDir}/src/**/*.vue",
+        "${configDir}/src/**/*.cy.ts"
+    ],
+    "exclude": ["${configDir}/src/**/*.spec.ts"]
+}

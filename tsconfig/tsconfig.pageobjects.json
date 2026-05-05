@@ -1,0 +1,16 @@
+{
+    "extends": "@fkui/tsconfig/recommended",
+    "compilerOptions": {
+        "composite": true,
+        "tsBuildInfoFile": "${configDir}/temp/tsconfig.pageobjects.tsbuildinfo",
+        "types": ["cypress"],
+        "emitDeclarationOnly": true,
+        "skipLibCheck": true
+    },
+    "include": [
+        "${configDir}/src/cypress/**/*.ts",
+        "${configDir}/src/selectors/**/*.ts",
+        "${configDir}/src/**/*.pageobject.ts"
+    ],
+    "exclude": ["${configDir}/src/**/*.cy.ts", "${configDir}/src/**/*.spec.ts"]
+}
