@@ -1,0 +1,17 @@
+{
+    "files": [],
+    "references": [
+        {
+            "path": "${configDir}/tsconfig.lib.json"
+        },
+        {
+            "path": "${configDir}/tsconfig.pageobjects.json"
+        },
+        {
+            "path": "${configDir}/tsconfig.cypress.json"
+        },
+        {
+            "path": "${configDir}/tsconfig.selectors.json"
+        }
+    ]
+}

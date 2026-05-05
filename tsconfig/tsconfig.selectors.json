@@ -1,0 +1,10 @@
+{
+    "extends": "@fkui/tsconfig/recommended",
+    "compilerOptions": {
+        "composite": true,
+        "types": [],
+        "emitDeclarationOnly": true
+    },
+    "include": ["${configDir}/src/selectors/**/*.ts"],
+    "exclude": ["${configDir}/src/**/*.spec.ts"]
+}

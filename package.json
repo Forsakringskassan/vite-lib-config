@@ -18,16 +18,21 @@
       "types": "./dist/index.d.ts",
       "require": "./dist/index.js"
     },
+    "./assets/*": "./assets/*",
     "./babel": {
       "types": "./dist/babel.config.d.ts",
       "require": "./dist/babel.config.js"
     },
+    "./tsconfig.json": "./assets/tsconfig.json",
+    "./tsconfig.cypress.json": "./assets/tsconfig.cypress.json",
+    "./tsconfig.lib.json": "./assets/tsconfig.lib.json",
+    "./tsconfig.pageobjects.json": "./assets/tsconfig.pageobjects.json",
+    "./tsconfig.selectors.json": "./assets/tsconfig.selectors.json",
     "./vite": {
       "types": "./dist/vite.config.d.ts",
       "import": "./dist/vite.config.mjs",
       "require": "./dist/vite.config.cjs"
-    },
-    "./assets/*": "./assets/*"
+    }
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

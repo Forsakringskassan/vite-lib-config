@@ -1,0 +1,15 @@
+{
+    "$schema": "https://www.schemastore.org/tsconfig",
+    "compilerOptions": {
+        "composite": true,
+        "outDir": "${configDir}/temp",
+        "rootDir": "${configDir}/src",
+        "skipLibCheck": true
+    },
+    "include": [
+        "${configDir}/src/**/*.ts",
+        "${configDir}/src/**/*.vue",
+        "${configDir}/src/**/*.cy.ts"
+    ],
+    "exclude": ["${configDir}/src/**/*.spec.ts"]
+}
