@@ -39,7 +39,8 @@
   "bin": {
     "fk-api-extractor": "bin/api-extractor.mjs",
     "fk-build-vue-lib": "bin/build-vue-lib.mjs",
-    "fk-build-selectors": "bin/build-selectors.mjs"
+    "fk-build-selectors": "bin/build-selectors.mjs",
+    "fk-write-config": "bin/write-config.mjs"
   },
   "files": [
     "*.d.ts",
@@ -62,7 +63,7 @@
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
     "pretest": "run-s prettier:check eslint",
-    "test": "jest"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "commitlint": {
     "extends": "@forsakringskassan/commitlint-config/no-jira"
@@ -124,8 +125,9 @@
   "peerDependencies": {
     "@babel/core": "^7.22.0",
     "@babel/plugin-transform-nullish-coalescing-operator": "^7.22.0",
-    "@fkui/tsconfig": "*",
+    "@fkui/tsconfig": ">= 6.3.0",
     "@forsakringskassan/apimock-express": "^1.1.0 || ^2.0.0",
+    "prettier": "^3.0.0",
     "typescript": "^5.0.2 || ^6.0.2",
     "vite": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0",
     "vue": "^3.0.0"
