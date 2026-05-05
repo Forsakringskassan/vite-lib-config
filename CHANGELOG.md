@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [4.7.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.7.0...v4.7.1) (2026-05-05)
+
+### Bug Fixes
+
+* handle external dependencies when building selectors ([1de0e62](https://github.com/Forsakringskassan/vite-lib-config/commit/1de0e62e587021adc8ef414eeb9cb99aa110ef06))
+
 ## [4.7.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.6.9...v4.7.0) (2026-04-28)
 
 ### Features
