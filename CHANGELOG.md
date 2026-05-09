@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [4.8.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.7.2...v4.8.0) (2026-05-09)
+
+### Features
+
+* add `fk-write-config` cli utility to write configuration to repo ([9aee920](https://github.com/Forsakringskassan/vite-lib-config/commit/9aee920f8589f806d03e235592a79dafc83132a8))
+* add shared tsconfig files ([c1fa8c7](https://github.com/Forsakringskassan/vite-lib-config/commit/c1fa8c7307641bc3715891fd7a8135aba40f8b6a))
+
+### Bug Fixes
+
+* log when skipping selector or pageobjects build ([ea2b4ac](https://github.com/Forsakringskassan/vite-lib-config/commit/ea2b4ac896dd6469cb6ecfd761e46fd1ebdbc27a))
+
 ## [4.7.2](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.7.1...v4.7.2) (2026-05-05)
 
 ### Bug Fixes
