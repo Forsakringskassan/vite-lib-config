@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [4.9.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.8.2...v4.9.0) (2026-05-19)
+
+### Features
+
+* **deps:** support @forsakringskassan/apimock-express v3 ([09b9ddd](https://github.com/Forsakringskassan/vite-lib-config/commit/09b9dddbd9138c6176c9573b17f831e6de7ddc3e))
+
 ## [4.8.2](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.8.1...v4.8.2) (2026-05-19)
 
 ### Bug Fixes
