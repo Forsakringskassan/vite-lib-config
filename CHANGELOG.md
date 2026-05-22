@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [5.0.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.9.1...v5.0.0) (2026-05-22)
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** Needs Node 22 or higher to run
+
+### Features
+
+* **deps:** drop Node 20 support ([c14edd3](https://github.com/Forsakringskassan/vite-lib-config/commit/c14edd31c406f0cd8539456a7058c08e7cca7895))
+
 ## [4.9.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.9.0...v4.9.1) (2026-05-22)
 
 ### Bug Fixes
