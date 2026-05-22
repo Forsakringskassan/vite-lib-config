@@ -5,6 +5,7 @@
 ```ts
 
 import { vitePlugin as apimockPlugin } from '@forsakringskassan/apimock-express';
+import { Mock } from '@forsakringskassan/apimock-express';
 import { MockEntry } from '@forsakringskassan/apimock-express';
 import { Plugin as Plugin_2 } from 'vite';
 import { Plugin as Plugin_3 } from 'rollup';
@@ -23,7 +24,7 @@ export interface FKConfig {
     // @deprecated (undocumented)
     enableBanner?: boolean;
     entrypoint?: string;
-    mocks?: MockEntry[];
+    mocks?: MockEntry[] | Mock[];
 }
 
 export { MockEntry }

@@ -55,7 +55,7 @@ export interface FKConfig {
     /** path to component to mount by default (default `src/dev-vite/app.vue`) */
     entrypoint?: string;
     /** mocks to configure with apimock-express (default `[]`) */
-    mocks?: MockEntry[];
+    mocks?: MockEntry[] | Mock[]
 }
 ```
 
