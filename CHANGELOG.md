@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [4.9.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.9.0...v4.9.1) (2026-05-22)
+
+### Bug Fixes
+
+* support inline mocks for apimock-express ([ead7498](https://github.com/Forsakringskassan/vite-lib-config/commit/ead74987782659fa39162bd01fa2ec930a134b14))
+
 ## [4.9.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.8.2...v4.9.0) (2026-05-19)
 
 ### Features
