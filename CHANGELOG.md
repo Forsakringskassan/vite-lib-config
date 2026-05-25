@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.0.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.0.0...v5.0.1) (2026-05-25)
+
+### Bug Fixes
+
+* **deps:** update dependency semver to v7.8.1 ([59c54b9](https://github.com/Forsakringskassan/vite-lib-config/commit/59c54b93f4599745f3b00a492879d96a7bdc3929))
+
 ## [5.0.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v4.9.1...v5.0.0) (2026-05-22)
 
 ### ⚠ BREAKING CHANGES
