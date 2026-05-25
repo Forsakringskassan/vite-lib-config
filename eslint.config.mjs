@@ -29,7 +29,7 @@ export default [
     defineConfig({
         files: ["*.d.ts"],
         rules: {
-            "import/extensions": "off",
+            "import-x/extensions": "off",
         },
     }),
 ];
