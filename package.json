@@ -120,7 +120,7 @@
     "ts-node": "10.9.2",
     "typescript": "6.0.3",
     "vite": "8.0.14",
-    "vue": "3.5.34"
+    "vue": "3.5.35"
   },
   "peerDependencies": {
     "@babel/core": "^7.22.0",
