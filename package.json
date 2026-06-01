@@ -108,7 +108,7 @@
     "@forsakringskassan/eslint-config-vue": "15.0.4",
     "@forsakringskassan/jest-config": "30.3.2",
     "@forsakringskassan/prettier-config": "3.6.0",
-    "@html-validate/release-scripts": "7.2.3",
+    "@html-validate/release-scripts": "7.2.4",
     "@types/babel__core": "7.20.5",
     "@types/dedent": "0.7.2",
     "@types/is-ci": "3.0.4",
