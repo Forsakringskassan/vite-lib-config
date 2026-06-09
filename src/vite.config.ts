@@ -1,4 +1,9 @@
-import { type Plugin, type UserConfig as ViteUserConfig } from "vite";
+import {
+    type Plugin,
+    type UserConfig as ViteUserConfig,
+    type UserConfigFn,
+    defineConfig as viteDefineConfig,
+} from "vite";
 import { vitePlugin as apimockPlugin } from "@forsakringskassan/apimock-express";
 import uFuzzy from "@leeoniya/ufuzzy";
 import vue3plugin, {
@@ -190,7 +195,29 @@ function overwriteMerge<T>(_a: T[], b: T[]): T[] {
 /**
  * @public
  */
-export async function defineConfig(
+export function defineConfig(config: UserConfig = {}): UserConfigFn {
+    return viteDefineConfig(({ mode }) => {
+        return fkDefineConfig(mode, config);
+    });
+}
+
+/**
+ * @internal
+ */
+function determineEntrypoint(
+    config: UserConfig,
+    positional: string[],
+    mode: string,
+): boolean {
+    const isDev = mode === "development" ? true : false;
+    return isDev && positional.length > 0 && !config.fk?.entrypoint;
+}
+
+/**
+ * @internal
+ */
+async function fkDefineConfig(
+    mode: string,
     config: UserConfig = {},
 ): Promise<UserConfig> {
     const argv = process.argv.slice(2);
@@ -203,7 +230,8 @@ export async function defineConfig(
         defaultConfig.plugins.push(apimockPlugin(mocks));
     }
 
-    const userEntrypoint = positional.length > 0 && !config.fk.entrypoint;
+    const userEntrypoint = determineEntrypoint(config, positional, mode);
+
     if (userEntrypoint) {
         const entrypoint = await findEntrypoint(positional[0]);
         config.fk.entrypoint = `/${entrypoint}`;
