@@ -10,6 +10,7 @@ import { MockEntry } from '@forsakringskassan/apimock-express';
 import { Plugin as Plugin_2 } from 'vite';
 import { Plugin as Plugin_3 } from 'rollup';
 import { UserConfig as UserConfig_2 } from 'vite';
+import { UserConfigFn } from 'vite';
 
 export { apimockPlugin }
 
@@ -17,7 +18,7 @@ export { apimockPlugin }
 export const defaultPlugins: (Plugin_2<any> | Plugin_3<any>)[];
 
 // @public (undocumented)
-export function defineConfig(config?: UserConfig): Promise<UserConfig>;
+export function defineConfig(config?: UserConfig): UserConfigFn;
 
 // @public (undocumented)
 export interface FKConfig {
