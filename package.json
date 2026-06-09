@@ -115,7 +115,7 @@
     "@types/jest": "30.0.0",
     "@types/node": "22.19.20",
     "@types/semver": "7.7.1",
-    "npm-pkg-lint": "5.1.4",
+    "npm-pkg-lint": "5.1.5",
     "npm-run-all2": "9.0.1",
     "ts-node": "10.9.2",
     "typescript": "6.0.3",
