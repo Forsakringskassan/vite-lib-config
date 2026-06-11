@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.1.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.0.2...v5.1.0) (2026-06-11)
+
+### Features
+
+* no entrypoint for mode test (refs SFKUI-6500) ([fd8de57](https://github.com/Forsakringskassan/vite-lib-config/commit/fd8de57c9e2a459d0e85ca4efbff89565fad7069))
+
 ## [5.0.2](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.0.1...v5.0.2) (2026-06-07)
 
 ### Bug Fixes
