@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.1.3](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.1.2...v5.1.3) (2026-06-13)
+
+### Bug Fixes
+
+* **deps:** update dependency esbuild to v0.28.1 [security] ([3e746d4](https://github.com/Forsakringskassan/vite-lib-config/commit/3e746d4b267a22de58331df03e48054fe7c0417a))
+
 ## [5.1.2](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.1.1...v5.1.2) (2026-06-12)
 
 ### Bug Fixes
