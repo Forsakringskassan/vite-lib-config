@@ -38,8 +38,8 @@
   "types": "./dist/index.d.ts",
   "bin": {
     "fk-api-extractor": "bin/api-extractor.mjs",
-    "fk-build-vue-lib": "bin/build-vue-lib.mjs",
     "fk-build-selectors": "bin/build-selectors.mjs",
+    "fk-build-vue-lib": "bin/build-vue-lib.mjs",
     "fk-write-config": "bin/write-config.mjs"
   },
   "files": [
@@ -59,6 +59,7 @@
     "eslint:fix": "eslint --fix .",
     "prepack": "release-prepack --bundle",
     "postpack": "release-postpack",
+    "prepare": "commitlint-config",
     "prepublishOnly": "release-prepack --bundle",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
@@ -99,7 +100,7 @@
     "@babel/plugin-transform-nullish-coalescing-operator": "7.29.7",
     "@fkui/tsconfig": "6.49.0",
     "@forsakringskassan/apimock-express": "3.0.0",
-    "@forsakringskassan/commitlint-config": "3.6.9",
+    "@forsakringskassan/commitlint-config": "4.0.0",
     "@forsakringskassan/eslint-config": "15.0.18",
     "@forsakringskassan/eslint-config-cli": "15.0.0",
     "@forsakringskassan/eslint-config-jest": "15.0.0",
@@ -135,6 +136,12 @@
   "engines": {
     "node": "^22.12.0 || >= 24",
     "npm": ">= 11.0.0"
+  },
+  "allowScripts": {
+    "core-js": false,
+    "esbuild": true,
+    "fsevents": false,
+    "unrs-resolver": true
   },
   "externalDependencies": [
     "@microsoft/api-extractor",
