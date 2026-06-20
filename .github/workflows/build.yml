@@ -12,7 +12,7 @@ jobs:
             matrix:
                 node-version: [22.x, 24.x]
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v6
               with:
@@ -30,7 +30,7 @@ jobs:
             matrix:
                 vite-version: [5.x, 6.x, 7.x, 8.x]
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
             - name: Use Node.js 22.x
               uses: actions/setup-node@v6
               with:
@@ -62,7 +62,7 @@ jobs:
             matrix:
                 typescript-version: [5.x, 6.x]
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
             - name: Use Node.js 22.x
               uses: actions/setup-node@v6
               with:
@@ -82,7 +82,7 @@ jobs:
     testbed:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
             - name: Use Node.js 22.x
               uses: actions/setup-node@v6
               with:
