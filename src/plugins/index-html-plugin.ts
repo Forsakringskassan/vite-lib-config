@@ -79,8 +79,7 @@ export function indexHtmlPlugin(): Plugin {
             async handler() {
                 const content = await fs.readFile(templateFile, "utf8");
                 return content.replaceAll(
-                    /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
-                    /{{([^}]+)}}/g,
+                    /\{\{([^}]+)\}\}/g,
                     (match, key: string) => {
                         return templateData[key.trim()] ?? match;
                     },

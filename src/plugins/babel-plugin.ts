@@ -1,7 +1,7 @@
 import { type Plugin } from "vite";
 import * as babel from "@babel/core";
 
-const filter = /\.(js|ts|vue)$/;
+const filter = /\.(?:js|ts|vue)$/;
 
 /**
  * Transforms source code with babel.
