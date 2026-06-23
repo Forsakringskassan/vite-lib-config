@@ -5,7 +5,7 @@ import dedent from "dedent";
  */
 export function extractAugmentations(content: string): string[] {
     const matches = content.matchAll(
-        /^declare (?:module\s*"([^"]+)"|global)\s*{([^]+?)^}/gm,
+        /^declare (?:module\s*"([^"]+)"|global)\s*\{([\s\S]+?)^\}/gm,
     );
     return Array.from(matches).map((it) => {
         const [withDeclaration, name = "", withoutDeclaration] = it;
