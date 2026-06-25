@@ -89,8 +89,8 @@
     "semver": "7.8.5"
   },
   "devDependencies": {
-    "@babel/core": "7.29.7",
-    "@babel/plugin-transform-nullish-coalescing-operator": "7.29.7",
+    "@babel/core": "8.0.1",
+    "@babel/plugin-transform-nullish-coalescing-operator": "8.0.1",
     "@fkui/tsconfig": "6.51.0",
     "@forsakringskassan/apimock-express": "3.0.0",
     "@forsakringskassan/commitlint-config": "4.1.1",
@@ -103,7 +103,7 @@
     "@forsakringskassan/prettier-config": "3.7.2",
     "@forsakringskassan/vitest-config": "2.5.0",
     "@html-validate/release-scripts": "7.3.0",
-    "@types/babel__core": "7.20.5",
+    "@types/convert-source-map": "2.0.3",
     "@types/dedent": "0.7.2",
     "@types/is-ci": "3.0.4",
     "@types/node": "22.20.0",
@@ -117,8 +117,8 @@
     "vue": "3.5.38"
   },
   "peerDependencies": {
-    "@babel/core": "^7.22.0",
-    "@babel/plugin-transform-nullish-coalescing-operator": "^7.22.0",
+    "@babel/core": "^7.22.0 || ^8.0.0",
+    "@babel/plugin-transform-nullish-coalescing-operator": "^7.22.0 || ^8.0.0",
     "@fkui/tsconfig": ">= 6.3.0",
     "@forsakringskassan/apimock-express": "^1.1.0 || ^2.0.0 || ^3.0.0",
     "prettier": "^3.0.0",

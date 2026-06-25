@@ -24,6 +24,36 @@ jobs:
             - name: Build
               run: npm run --if-present build
 
+    babel:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                babel-version: [7.x, 8.x]
+        steps:
+            - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+            - name: Use Node.js 22.x
+              uses: actions/setup-node@v6
+              with:
+                  node-version: 22.x
+            - name: Install dependencies
+              run: npm ci
+            - name: Build
+              run: npm run --if-present build
+            - name: Install Babel ${{ matrix.babel-version }}
+              run: npm install --no-save $(npx -y npm-min-peer @babel/core --major ${{ matrix.babel-version }} --with-name) $(npx -y npm-min-peer @babel/plugin-transform-nullish-coalescing-operator --major ${{ matrix.babel-version }} --with-name)
+            - name: Testbed (commonjs)
+              run: |
+                  rm -rf testbed/dist
+                  npm pkg -w testbed set type=commonjs
+                  npm run -w testbed build
+                  npm run -w testbed test
+            - name: Testbed (esm)
+              run: |
+                  rm -rf testbed/dist
+                  npm pkg -w testbed set type=module
+                  npm run -w testbed build
+                  npm run -w testbed test
+
     vite:
         runs-on: ubuntu-latest
         strategy:
