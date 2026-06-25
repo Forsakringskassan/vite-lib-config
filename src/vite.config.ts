@@ -104,7 +104,10 @@ async function findEntrypoint(pattern: string | null): Promise<string> {
     }
 
     const uf = new uFuzzy({ intraIns: Infinity });
-    const files = await glob("**/*.vue", { posix: true, nodir: true });
+    const files = await glob("**/{examples,docs,tests}/**/*.vue", {
+        posix: true,
+        nodir: true,
+    });
     const idxs = uf.filter(files, pattern); // eslint-disable-line unicorn/no-array-method-this-argument -- false positive
     if (!idxs || idxs.length === 0) {
         throw new Error(`No files matching "${pattern}"`);

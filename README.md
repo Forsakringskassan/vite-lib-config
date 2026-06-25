@@ -138,7 +138,11 @@ When running in dev mode an optional filename (or part of filename) can be given
 vite -- MyAwesomeExample
 ```
 
-would search for any `.vue` file matching the given pattern (fuzzy).
+would search for `.vue` files matching the given pattern (fuzzy) in these folders:
+
+- `**/docs`
+- `**/examples`
+- `**/test`
 
 ### Appending Plugins
 
