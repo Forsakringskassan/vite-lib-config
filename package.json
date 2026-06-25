@@ -64,7 +64,7 @@
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
     "pretest": "run-s prettier:check eslint",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "test": "vitest run"
   },
   "commitlint": {
     "extends": "@forsakringskassan/commitlint-config/no-jira"
@@ -72,13 +72,6 @@
   "prettier": "@forsakringskassan/prettier-config",
   "release": {
     "extends": "@forsakringskassan/semantic-release-config"
-  },
-  "jest": {
-    "preset": "@forsakringskassan/jest-config",
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/testbed/"
-    ]
   },
   "dependencies": {
     "@leeoniya/ufuzzy": "1.0.19",
@@ -103,17 +96,16 @@
     "@forsakringskassan/commitlint-config": "4.1.1",
     "@forsakringskassan/eslint-config": "15.1.0",
     "@forsakringskassan/eslint-config-cli": "15.1.0",
-    "@forsakringskassan/eslint-config-jest": "15.1.0",
     "@forsakringskassan/eslint-config-typescript": "15.1.0",
     "@forsakringskassan/eslint-config-typescript-typeinfo": "15.1.0",
+    "@forsakringskassan/eslint-config-vitest": "15.1.0",
     "@forsakringskassan/eslint-config-vue": "15.1.0",
-    "@forsakringskassan/jest-config": "30.4.0",
     "@forsakringskassan/prettier-config": "3.7.2",
+    "@forsakringskassan/vitest-config": "2.5.0",
     "@html-validate/release-scripts": "7.3.0",
     "@types/babel__core": "7.20.5",
     "@types/dedent": "0.7.2",
     "@types/is-ci": "3.0.4",
-    "@types/jest": "30.0.0",
     "@types/node": "22.20.0",
     "@types/semver": "7.7.1",
     "npm-pkg-lint": "5.1.8",
@@ -121,6 +113,7 @@
     "ts-node": "10.9.2",
     "typescript": "6.0.3",
     "vite": "8.0.16",
+    "vitest": "4.1.9",
     "vue": "3.5.38"
   },
   "peerDependencies": {

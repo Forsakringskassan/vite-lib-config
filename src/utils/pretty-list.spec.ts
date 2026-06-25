@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { prettyList } from "./pretty-list";
 
 it("should output marker if list is empty", () => {

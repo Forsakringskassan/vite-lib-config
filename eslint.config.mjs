@@ -22,7 +22,7 @@ export default [
     }),
     typescriptConfig(),
     typeinfoConfig(import.meta.dirname, {
-        ignores: ["*.d.ts", "testbed/**/*.ts"],
+        ignores: ["*.d.ts", "testbed/**/*.ts", "vitest.config.mts"],
     }),
     vueConfig(),
 
