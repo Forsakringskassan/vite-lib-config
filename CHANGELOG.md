@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.1.7](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.1.6...v5.1.7) (2026-06-25)
+
+### Bug Fixes
+
+* filter entrypoints to only allow examples ([066c542](https://github.com/Forsakringskassan/vite-lib-config/commit/066c5424f9022b63b9fef71b663b50019935b5a3))
+
 ## [5.1.6](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.1.5...v5.1.6) (2026-06-22)
 
 ### Bug Fixes
