@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.1.8](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.1.7...v5.1.8) (2026-06-25)
+
+### Bug Fixes
+
+* skip writing config when package doesn't use this lib ([ccf863a](https://github.com/Forsakringskassan/vite-lib-config/commit/ccf863a73a8f88419228e133184ccbfd66d93dd9))
+
 ## [5.1.7](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.1.6...v5.1.7) (2026-06-25)
 
 ### Bug Fixes
