@@ -7,7 +7,6 @@ node_modules/
 CHANGELOG.md
 
 # build artifacts
-.jest-cache/
 coverage/
 dist/
 temp/

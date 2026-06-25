@@ -1,4 +1,5 @@
 import dedent from "dedent";
+import { describe, expect, it } from "vitest";
 import { extractAugmentations } from "./extract-augmentations";
 
 describe("extractAugmentations()", () => {

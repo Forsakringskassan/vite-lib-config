@@ -5,11 +5,8 @@ node_modules/
 
 # Build artifacts
 *.tsbuildinfo
+coverage/
 dist/
 temp/
 testbed/lib/
-
-# Jest output
-.jest-cache/
-coverage/
-jest-junit.xml
+test-results/
