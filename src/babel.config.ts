@@ -1,6 +1,4 @@
-import { type TransformOptions } from "@babel/core";
-
-function babelPreset(): TransformOptions {
+function babelPreset(): unknown {
     return {
         plugins: [
             /* we need this plugin for force `??` to be transpiled or Cypress/Webpack chokes on it */
