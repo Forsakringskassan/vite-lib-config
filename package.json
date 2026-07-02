@@ -108,7 +108,7 @@
     "@types/is-ci": "3.0.4",
     "@types/node": "22.20.0",
     "@types/semver": "7.7.1",
-    "npm-pkg-lint": "5.1.9",
+    "npm-pkg-lint": "5.1.10",
     "npm-run-all2": "9.0.2",
     "ts-node": "10.9.2",
     "typescript": "6.0.3",
