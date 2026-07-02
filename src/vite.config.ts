@@ -255,12 +255,10 @@ async function fkDefineConfig(
     const { build } = result;
     const external =
         (build?.rolldownOptions?.external as
-            | Array<string | RegExp>
-            | undefined) ??
+            Array<string | RegExp> | undefined) ??
         /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         (build?.rollupOptions?.external as
-            | Array<string | RegExp>
-            | undefined) ??
+            Array<string | RegExp> | undefined) ??
         [];
     console.group(colors.bold("Configuration:"));
     console.log(
