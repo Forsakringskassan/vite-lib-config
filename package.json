@@ -106,7 +106,7 @@
     "@types/babel__core": "7.20.5",
     "@types/dedent": "0.7.2",
     "@types/is-ci": "3.0.4",
-    "@types/node": "22.20.0",
+    "@types/node": "22.20.1",
     "@types/semver": "7.7.1",
     "npm-pkg-lint": "5.1.10",
     "npm-run-all2": "9.0.2",
