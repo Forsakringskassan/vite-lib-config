@@ -100,7 +100,7 @@
     "@forsakringskassan/eslint-config-typescript-typeinfo": "15.2.0",
     "@forsakringskassan/eslint-config-vitest": "15.2.0",
     "@forsakringskassan/eslint-config-vue": "15.2.0",
-    "@forsakringskassan/prettier-config": "3.7.6",
+    "@forsakringskassan/prettier-config": "3.7.7",
     "@forsakringskassan/vitest-config": "2.5.0",
     "@html-validate/release-scripts": "7.3.1",
     "@types/babel__core": "7.20.5",
