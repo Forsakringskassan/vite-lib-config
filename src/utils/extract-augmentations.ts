@@ -7,7 +7,7 @@ export function extractAugmentations(content: string): string[] {
     const matches = content.matchAll(
         /^declare (?:module\s*"([^"]+)"|global)\s*\{([\s\S]+?)^\}/gm,
     );
-    return Array.from(matches).map((it) => {
+    return Array.from(matches, (it) => {
         const [withDeclaration, name = "", withoutDeclaration] = it;
 
         /* if the augmentation refers to a local file we exclude the "declare
@@ -19,8 +19,7 @@ export function extractAugmentations(content: string): string[] {
                 "$1export interface",
             );
             return dedent(exported);
-        } else {
-            return withDeclaration;
         }
+        return withDeclaration;
     });
 }

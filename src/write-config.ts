@@ -44,11 +44,11 @@ export interface Options {
 function detectTestRunner(flags: Set<string>): "jest" | "vitest" {
     if (flags.has("--with-jest")) {
         return "jest";
-    } else if (flags.has("--with-vitest")) {
-        return "vitest";
-    } else {
+    }
+    if (flags.has("--with-vitest")) {
         return "vitest";
     }
+    return "vitest";
 }
 
 async function serializeJson(data: unknown): Promise<string> {
@@ -254,7 +254,7 @@ export async function run(cwd: string, argv: string[]): Promise<void> {
 
     /* write new files */
     const written = new Set<string>();
-    for (const [filename, promise] of generated.entries()) {
+    for (const [filename, promise] of generated) {
         const content = await promise;
         if (content) {
             await writeJsonFile(cwd, filename, content);
@@ -265,10 +265,12 @@ export async function run(cwd: string, argv: string[]): Promise<void> {
     /* remove any other tsconfig files */
     const entries = await fs.readdir(cwd);
     for (const entry of entries) {
-        if (isTSConfigFile(entry) && !written.has(entry)) {
-            await fs.unlink(path.join(cwd, entry));
-            console.log(entry, "removed");
+        if (!isTSConfigFile(entry) || written.has(entry)) {
+            continue;
         }
+
+        await fs.unlink(path.join(cwd, entry));
+        console.log(entry, "removed");
     }
 
     console.groupEnd();

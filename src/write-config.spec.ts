@@ -12,9 +12,7 @@ expect.addSnapshotSerializer({
     test(value) {
         return typeof value === "string";
     },
-    serialize(value) {
-        return String(value);
-    },
+    serialize: String,
 });
 
 it("should not reference tsconfig.pageobjects.json when pageobjects are not detected", async () => {
