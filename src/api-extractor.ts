@@ -13,10 +13,9 @@ import { extractAugmentations } from "./utils";
 async function getConfigFiles(configFiles: string[]): Promise<string[]> {
     if (configFiles.length > 0) {
         return configFiles.flatMap((it) => globSync(it));
-    } else {
-        const result = await findUp("api-extractor.json");
-        return result ? [result] : [];
     }
+    const result = await findUp("api-extractor.json");
+    return result ? [result] : [];
 }
 
 /**
@@ -86,9 +85,9 @@ async function patchAugmentations(config: ExtractorConfig): Promise<void> {
         "declaration files referenced by",
         mainEntryPointFilePath,
     );
-    const augmentations = await Promise.all(
-        Array.from(files).map(extract),
-    ).then((it) => it.flat());
+    const promises = Array.from(files, (it) => extract(it));
+    const result = await Promise.all(promises);
+    const augmentations = result.flat();
     console.log("Found", augmentations.length, "module augmentation(s)");
     if (augmentations.length > 0) {
         console.log("Writing", publicTrimmedFilePath);
@@ -129,8 +128,6 @@ async function patchDeclareVarVls(declarationDir: string): Promise<void> {
 
 export async function run(argv: string[]): Promise<void> {
     const flags = new Set(argv.filter((it) => it.startsWith("--")));
-    const positional = argv.filter((it) => !it.startsWith("--"));
-
     if (flags.has("--help")) {
         console.log("usage: fk-api-extractor [OPTIONS..] [FILENAME..]");
         console.log(`
@@ -149,6 +146,7 @@ only.
         return;
     }
 
+    const positional = argv.filter((it) => !it.startsWith("--"));
     const configFiles = await getConfigFiles(positional);
     const numFiles = configFiles.length;
     const strFiles = `${String(numFiles)} file${numFiles === 1 ? "" : "s"}`;

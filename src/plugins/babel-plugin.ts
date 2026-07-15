@@ -14,7 +14,7 @@ export function babelPlugin(): Plugin {
         async transform(src, id) {
             /* skip transforming rolldown runtime, it prevents functions such as
              * `__commonJSMin` from being added properly to the bundle */
-            if (id === "\u0000rolldown/runtime.js") {
+            if (id === "\u{0}rolldown/runtime.js") {
                 return null;
             }
 

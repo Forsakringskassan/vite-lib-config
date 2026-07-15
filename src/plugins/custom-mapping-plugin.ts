@@ -19,10 +19,13 @@ export function customMappingPlugin(): Plugin {
             const replacement = folder[format];
             return {
                 ...options,
-                dir: dir?.replace("[custom-format]", replacement),
+                dir: dir?.replace("[custom-format]", () => replacement),
                 entryFileNames:
                     typeof entryFileNames === "string"
-                        ? entryFileNames.replace("[custom-format]", replacement)
+                        ? entryFileNames.replace(
+                              "[custom-format]",
+                              () => replacement,
+                          )
                         : entryFileNames,
             };
         },

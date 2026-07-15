@@ -108,7 +108,7 @@ async function findEntrypoint(pattern: string | null): Promise<string> {
         posix: true,
         nodir: true,
     });
-    const idxs = uf.filter(files, pattern); // eslint-disable-line unicorn/no-array-method-this-argument -- false positive
+    const idxs = uf.filter(files, pattern);
     if (!idxs || idxs.length === 0) {
         throw new Error(`No files matching "${pattern}"`);
     }

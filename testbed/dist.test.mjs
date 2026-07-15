@@ -23,7 +23,7 @@ async function readJsonFile(filePath) {
 
 async function buildTree(dir, prefix = "") {
     const entries = await readdir(dir);
-    const sorted = entries.toSorted();
+    const sorted = entries.toSorted((a, b) => a.localeCompare(b));
     const lines = await Promise.all(
         sorted.map(async (entry, index) => {
             const isLast = index === sorted.length - 1;
@@ -31,14 +31,13 @@ async function buildTree(dir, prefix = "") {
             const st = await stat(fullPath);
             const isDir = st.isDirectory();
             const connector = isLast ? "└── " : "├── ";
-            const childPrefix = prefix + (isLast ? "    " : "│   ");
+            const childPrefix = prefix + (isLast ? " ".repeat(4) : "│   ");
             const line = `${prefix}${connector}${entry}${isDir ? "/" : ""}`;
             if (isDir) {
                 const subtree = await buildTree(fullPath, childPrefix);
                 return [line, ...subtree];
-            } else {
-                return [line];
             }
+            return [line];
         }),
     );
     return lines.flat();
