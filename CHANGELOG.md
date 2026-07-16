@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.2.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.1.8...v5.2.0) (2026-07-16)
+
+### Features
+
+* **deps:** support typescript v7 ([babb0b1](https://github.com/Forsakringskassan/vite-lib-config/commit/babb0b19852a3c235940738f9f8e0726dd5301ed))
+
 ## [5.1.8](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.1.7...v5.1.8) (2026-06-25)
 
 ### Bug Fixes
