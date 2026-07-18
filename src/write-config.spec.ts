@@ -1,11 +1,13 @@
 import { describe, expect, it } from "vitest";
 import {
     type Options,
+    type PackageJson,
     generateTsconfig,
     generateTsconfigCypress,
     generateTsconfigLib,
     generateTsconfigPageobjects,
     generateTsconfigSelectors,
+    updateBuildScripts,
 } from "./write-config";
 
 expect.addSnapshotSerializer({
@@ -21,6 +23,7 @@ it("should not reference tsconfig.pageobjects.json when pageobjects are not dete
         name: "@fkui/vue",
         cypressConfigPath: "../../cypress/tsconfig.json",
         testRunner: "vitest",
+        enableApiExtractor: false,
         enablePageobjects: false,
         enableSelectors: true,
     };
@@ -52,6 +55,7 @@ it("should not reference tsconfig.selectors.json when selectors are not detected
         name: "@fkui/vue",
         cypressConfigPath: "../../cypress/tsconfig.json",
         testRunner: "vitest",
+        enableApiExtractor: false,
         enablePageobjects: true,
         enableSelectors: false,
     };
@@ -82,6 +86,7 @@ describe("with vitest as test runner", () => {
         name: "@fkui/vue",
         cypressConfigPath: "../../cypress/tsconfig.json",
         testRunner: "vitest",
+        enableApiExtractor: false,
         enablePageobjects: true,
         enableSelectors: true,
     };
@@ -188,6 +193,7 @@ describe("with jest as test runner", () => {
         name: "@fkui/vue",
         cypressConfigPath: "../../cypress/tsconfig.json",
         testRunner: "jest",
+        enableApiExtractor: false,
         enablePageobjects: true,
         enableSelectors: true,
     };
@@ -298,6 +304,124 @@ describe("with jest as test runner", () => {
                 "extends": "@forsakringskassan/vite-lib-config/tsconfig.pageobjects.json"
             }
 
+        `);
+    });
+});
+
+describe("build scripts", () => {
+    it("should write build scripts", () => {
+        expect.assertions(1);
+        const pkg: PackageJson = {
+            name: "mock-pkg",
+        };
+        const updated = updateBuildScripts(pkg, {
+            enableApiExtractor: false,
+            enableSelectors: false,
+        });
+        expect(JSON.stringify(updated, null, 2)).toMatchInlineSnapshot(`
+          {
+            "name": "mock-pkg",
+            "scripts": {
+              "build": "run-s build:lib build:dts",
+              "build:dts": "vue-tsc -b",
+              "build:lib": "fk-build-vue-lib"
+            }
+          }
+        `);
+    });
+
+    it("should write build scripts (with api-extractor)", () => {
+        expect.assertions(1);
+        const pkg: PackageJson = {
+            name: "mock-pkg",
+        };
+        const updated = updateBuildScripts(pkg, {
+            enableApiExtractor: true,
+            enableSelectors: false,
+        });
+        expect(JSON.stringify(updated, null, 2)).toMatchInlineSnapshot(`
+          {
+            "name": "mock-pkg",
+            "scripts": {
+              "build": "run-s build:lib build:dts build:api",
+              "build:api": "fk-api-extractor api-extractor.*.json",
+              "build:dts": "vue-tsc -b",
+              "build:lib": "fk-build-vue-lib"
+            }
+          }
+        `);
+    });
+
+    it("should write build scripts (with selectors)", () => {
+        expect.assertions(1);
+        const pkg: PackageJson = {
+            name: "mock-pkg",
+        };
+        const updated = updateBuildScripts(pkg, {
+            enableApiExtractor: false,
+            enableSelectors: true,
+        });
+        expect(JSON.stringify(updated, null, 2)).toMatchInlineSnapshot(`
+          {
+            "name": "mock-pkg",
+            "scripts": {
+              "build": "run-s build:lib build:selectors build:dts",
+              "build:dts": "vue-tsc -b",
+              "build:lib": "fk-build-vue-lib",
+              "build:selectors": "fk-build-selectors"
+            }
+          }
+        `);
+    });
+
+    it("should remove obsolete pageobject build script", () => {
+        expect.assertions(1);
+        const pkg: PackageJson = {
+            name: "mock-pkg",
+            scripts: {
+                "build:pageobject": "something",
+            },
+        };
+        const updated = updateBuildScripts(pkg, {
+            enableApiExtractor: false,
+            enableSelectors: false,
+        });
+        expect(JSON.stringify(updated, null, 2)).toMatchInlineSnapshot(`
+          {
+            "name": "mock-pkg",
+            "scripts": {
+              "build": "run-s build:lib build:dts",
+              "build:dts": "vue-tsc -b",
+              "build:lib": "fk-build-vue-lib"
+            }
+          }
+        `);
+    });
+
+    it("should retain other existing build scripts", () => {
+        expect.assertions(1);
+        const pkg: PackageJson = {
+            name: "mock-pkg",
+            scripts: {
+                foo: "bar",
+                "build:foo": "bar",
+            },
+        };
+        const updated = updateBuildScripts(pkg, {
+            enableApiExtractor: false,
+            enableSelectors: false,
+        });
+        expect(JSON.stringify(updated, null, 2)).toMatchInlineSnapshot(`
+          {
+            "name": "mock-pkg",
+            "scripts": {
+              "foo": "bar",
+              "build:foo": "bar",
+              "build": "run-s build:lib build:dts",
+              "build:dts": "vue-tsc -b",
+              "build:lib": "fk-build-vue-lib"
+            }
+          }
         `);
     });
 });
