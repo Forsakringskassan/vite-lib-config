@@ -95,7 +95,7 @@
     "@fkui/tsconfig": "6.52.0",
     "@forsakringskassan/apimock-express": "3.0.0",
     "@forsakringskassan/commitlint-config": "4.2.1",
-    "@forsakringskassan/eslint-config": "15.3.16",
+    "@forsakringskassan/eslint-config": "15.3.17",
     "@forsakringskassan/eslint-config-cli": "15.3.0",
     "@forsakringskassan/eslint-config-typescript": "15.3.8",
     "@forsakringskassan/eslint-config-typescript-typeinfo": "15.3.8",
