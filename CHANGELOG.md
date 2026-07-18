@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.3.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.2.1...v5.3.0) (2026-07-18)
+
+### Features
+
+* `fk-write-config` updates build scripts in `package.json` ([d32df03](https://github.com/Forsakringskassan/vite-lib-config/commit/d32df03b77aab1038e2abc72f1a4ab0304f9fa6e))
+
 ## [5.2.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.2.0...v5.2.1) (2026-07-17)
 
 ### Bug Fixes
