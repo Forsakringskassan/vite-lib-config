@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.4.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.3.2...v5.4.0) (2026-07-24)
+
+### Features
+
+* handle css static assets when running api-extractor ([a57f359](https://github.com/Forsakringskassan/vite-lib-config/commit/a57f359185888efff0115abdfaca47dda98e7c40))
+
 ## [5.3.2](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.3.1...v5.3.2) (2026-07-20)
 
 ### Bug Fixes
