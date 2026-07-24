@@ -19,6 +19,13 @@ async function getConfigFiles(configFiles: string[]): Promise<string[]> {
 }
 
 /**
+ * Returns true if the module name is a static asset (e.g. `.css`).
+ */
+export function isStaticAsset(modname: string): boolean {
+    return /\.(?:s?css|sass|less|styl|stylus|pcss|sss)$/.test(modname);
+}
+
+/**
  * Find all `.d.ts` files referenced by a given entrypoing.
  */
 async function findReferencedFiles(
@@ -34,6 +41,9 @@ async function findReferencedFiles(
     for (const match of Array.from(matches)) {
         const modname = match[1];
         if (!modname.startsWith(".")) {
+            continue;
+        }
+        if (isStaticAsset(modname)) {
             continue;
         }
         const relPath = path.join(path.dirname(filename), modname);
