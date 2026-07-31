@@ -194,12 +194,13 @@ export async function generateTsconfigPageobjects(
 async function readJsonFile<T = unknown>(
     cwd: string,
     filename: string,
-): Promise<{ data: T; indent: string }> {
+): Promise<{ data: T; indent: string; trailer: string }> {
     const filePath = path.join(cwd, filename);
     const content = await fs.readFile(filePath, "utf8");
     const data = JSON.parse(content) as T;
     const { indent } = detectIndent(content);
-    return { data, indent };
+    const trailer = content.endsWith("\n") ? "\n" : "";
+    return { data, indent, trailer };
 }
 
 async function writeJsonFile(
@@ -243,13 +244,13 @@ export function updateBuildScripts(
 
 async function writeBuildScripts(cwd: string, options: Options): Promise<void> {
     const result = await readJsonFile<PackageJson>(cwd, "package.json");
-    const { data: pkg, indent } = result;
+    const { data: pkg, indent, trailer } = result;
     const updated = JSON.stringify(
         updateBuildScripts(pkg, options),
         undefined,
         indent,
     );
-    await writeJsonFile(cwd, "package.json", updated);
+    await writeJsonFile(cwd, "package.json", `${updated}${trailer}`);
 }
 
 async function findCypressConfigPath(cwd: string): Promise<string> {
