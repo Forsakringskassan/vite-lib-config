@@ -424,4 +424,29 @@ describe("build scripts", () => {
           }
         `);
     });
+
+    it("should call build:mock if present", () => {
+        expect.assertions(1);
+        const pkg: PackageJson = {
+            name: "mock-pkg",
+            scripts: {
+                "build:mock": "foo",
+            },
+        };
+        const updated = updateBuildScripts(pkg, {
+            enableApiExtractor: false,
+            enableSelectors: false,
+        });
+        expect(JSON.stringify(updated, null, 2)).toMatchInlineSnapshot(`
+          {
+            "name": "mock-pkg",
+            "scripts": {
+              "build:mock": "foo",
+              "build": "run-s build:mock build:lib build:dts",
+              "build:dts": "vue-tsc -b",
+              "build:lib": "fk-build-vue-lib"
+            }
+          }
+        `);
+    });
 });
