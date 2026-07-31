@@ -317,6 +317,7 @@ describe("build scripts", () => {
         const updated = updateBuildScripts(pkg, {
             enableApiExtractor: false,
             enableSelectors: false,
+            enablePageobjects: false,
         });
         expect(JSON.stringify(updated, null, 2)).toMatchInlineSnapshot(`
           {
@@ -338,6 +339,7 @@ describe("build scripts", () => {
         const updated = updateBuildScripts(pkg, {
             enableApiExtractor: true,
             enableSelectors: false,
+            enablePageobjects: false,
         });
         expect(JSON.stringify(updated, null, 2)).toMatchInlineSnapshot(`
           {
@@ -360,6 +362,30 @@ describe("build scripts", () => {
         const updated = updateBuildScripts(pkg, {
             enableApiExtractor: false,
             enableSelectors: true,
+            enablePageobjects: false,
+        });
+        expect(JSON.stringify(updated, null, 2)).toMatchInlineSnapshot(`
+          {
+            "name": "mock-pkg",
+            "scripts": {
+              "build": "run-s build:lib build:selectors build:dts",
+              "build:dts": "vue-tsc -b",
+              "build:lib": "fk-build-vue-lib",
+              "build:selectors": "fk-build-selectors"
+            }
+          }
+        `);
+    });
+
+    it("should write build scripts (with cypress pageobjects)", () => {
+        expect.assertions(1);
+        const pkg: PackageJson = {
+            name: "mock-pkg",
+        };
+        const updated = updateBuildScripts(pkg, {
+            enableApiExtractor: false,
+            enableSelectors: false,
+            enablePageobjects: true,
         });
         expect(JSON.stringify(updated, null, 2)).toMatchInlineSnapshot(`
           {
@@ -385,6 +411,7 @@ describe("build scripts", () => {
         const updated = updateBuildScripts(pkg, {
             enableApiExtractor: false,
             enableSelectors: false,
+            enablePageobjects: false,
         });
         expect(JSON.stringify(updated, null, 2)).toMatchInlineSnapshot(`
           {
@@ -410,6 +437,7 @@ describe("build scripts", () => {
         const updated = updateBuildScripts(pkg, {
             enableApiExtractor: false,
             enableSelectors: false,
+            enablePageobjects: false,
         });
         expect(JSON.stringify(updated, null, 2)).toMatchInlineSnapshot(`
           {
@@ -436,6 +464,7 @@ describe("build scripts", () => {
         const updated = updateBuildScripts(pkg, {
             enableApiExtractor: false,
             enableSelectors: false,
+            enablePageobjects: false,
         });
         expect(JSON.stringify(updated, null, 2)).toMatchInlineSnapshot(`
           {

@@ -218,15 +218,19 @@ async function writeJsonFile(
  */
 export function updateBuildScripts(
     pkg: PackageJson,
-    options: Pick<Options, "enableApiExtractor" | "enableSelectors">,
+    options: Pick<
+        Options,
+        "enableApiExtractor" | "enableSelectors" | "enablePageobjects"
+    >,
 ): PackageJson {
     const result = { ...pkg, scripts: { ...pkg.scripts } };
     const haveBuildMock = Boolean(result.scripts["build:mock"]);
+    const buildSelectors = options.enableSelectors || options.enablePageobjects;
     result.scripts.build = [
         "run-s",
         haveBuildMock ? "build:mock" : null,
         "build:lib",
-        options.enableSelectors ? "build:selectors" : null,
+        buildSelectors ? "build:selectors" : null,
         "build:dts",
         options.enableApiExtractor ? "build:api" : null,
     ]
@@ -237,7 +241,7 @@ export function updateBuildScripts(
         : undefined;
     result.scripts["build:dts"] = "vue-tsc -b";
     result.scripts["build:lib"] = "fk-build-vue-lib";
-    result.scripts["build:selectors"] = options.enableSelectors
+    result.scripts["build:selectors"] = buildSelectors
         ? "fk-build-selectors"
         : undefined;
     delete result.scripts["build:pageobject"];
