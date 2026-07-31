@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.4.3](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.4.2...v5.4.3) (2026-07-31)
+
+### Bug Fixes
+
+* build cypress pageobjects when selectors arent present ([7385f5a](https://github.com/Forsakringskassan/vite-lib-config/commit/7385f5ac63a1ff7d82f234e9be3d35d6a3ea21cd))
+
 ## [5.4.2](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.4.1...v5.4.2) (2026-07-31)
 
 ### Bug Fixes
