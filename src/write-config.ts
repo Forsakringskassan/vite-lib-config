@@ -221,8 +221,10 @@ export function updateBuildScripts(
     options: Pick<Options, "enableApiExtractor" | "enableSelectors">,
 ): PackageJson {
     const result = { ...pkg, scripts: { ...pkg.scripts } };
+    const haveBuildMock = Boolean(result.scripts["build:mock"]);
     result.scripts.build = [
         "run-s",
+        haveBuildMock ? "build:mock" : null,
         "build:lib",
         options.enableSelectors ? "build:selectors" : null,
         "build:dts",
