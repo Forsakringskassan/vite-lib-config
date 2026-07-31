@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [5.4.2](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.4.1...v5.4.2) (2026-07-31)
+
+### Bug Fixes
+
+* add workaround for `cy.mount()` "types of parameters props are incompatable" ([b089499](https://github.com/Forsakringskassan/vite-lib-config/commit/b0894990db81fefa9954533edc1e9b2970eb01bd))
+* call `build:mock` if present ([8ecfe92](https://github.com/Forsakringskassan/vite-lib-config/commit/8ecfe92a3bf41f8912a68477674f2a68e7cc6122))
+* preserve trailing newline when writing `package.json` ([640140f](https://github.com/Forsakringskassan/vite-lib-config/commit/640140f29bacc1cdb96ed793cbc0ae0318bd5945))
+
 ## [5.4.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.4.0...v5.4.1) (2026-07-25)
 
 ### Bug Fixes
