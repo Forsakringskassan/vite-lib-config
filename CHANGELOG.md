@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.5.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.4.3...v5.5.0) (2026-08-09)
+
+### Features
+
+* optionally clean dist folder ([da68173](https://github.com/Forsakringskassan/vite-lib-config/commit/da6817373e019cbed916de1a6a9bfb8d5999bd49))
+
 ## [5.4.3](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.4.2...v5.4.3) (2026-07-31)
 
 ### Bug Fixes
