@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.6.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.5.0...v5.6.0) (2026-08-09)
+
+### Features
+
+* slightly stricter tsconfig ([c7643e4](https://github.com/Forsakringskassan/vite-lib-config/commit/c7643e428da43d2ebaf95e76e9fee6d405c69260))
+
 ## [5.5.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.4.3...v5.5.0) (2026-08-09)
 
 ### Features
