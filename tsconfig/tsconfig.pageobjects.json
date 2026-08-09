@@ -5,7 +5,13 @@
         "tsBuildInfoFile": "${configDir}/temp/tsconfig.pageobjects.tsbuildinfo",
         "types": ["cypress"],
         "emitDeclarationOnly": true,
-        "skipLibCheck": true
+        "skipLibCheck": true,
+
+        /* stricter config */
+        "allowUnusedLabels": false,
+        "allowUnreachableCode": false,
+        "noImplicitOverride": true,
+        "noFallthroughCasesInSwitch": true
     },
     "include": [
         "${configDir}/src/cypress/**/*.ts",

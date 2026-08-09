@@ -4,7 +4,13 @@
     "compilerOptions": {
         "composite": true,
         "tsBuildInfoFile": "${configDir}/temp/tsconfig.lib.tsbuildinfo",
-        "types": ["node", "vite/client"]
+        "types": ["node", "vite/client"],
+
+        /* stricter config */
+        "allowUnusedLabels": false,
+        "allowUnreachableCode": false,
+        "noImplicitOverride": true,
+        "noFallthroughCasesInSwitch": true
     },
     "include": ["${configDir}/src/**/*.ts", "${configDir}/src/**/*.vue"],
     "exclude": [

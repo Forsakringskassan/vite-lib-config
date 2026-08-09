@@ -17,7 +17,13 @@
          * - "Types of property 'setup' are incompatable"
          * - etc...
          */
-        "strictFunctionTypes": false
+        "strictFunctionTypes": false,
+
+        /* stricter config */
+        "allowUnusedLabels": false,
+        "allowUnreachableCode": false,
+        "noImplicitOverride": true,
+        "noFallthroughCasesInSwitch": true
     },
     "include": [
         "${configDir}/src/**/*.ts",
