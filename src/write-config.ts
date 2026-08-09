@@ -228,8 +228,8 @@ export function updateBuildScripts(
     const buildSelectors = options.enableSelectors || options.enablePageobjects;
     result.scripts.build = [
         "run-s",
-        haveBuildMock ? "build:mock" : null,
         "build:lib",
+        haveBuildMock ? "build:mock" : null,
         buildSelectors ? "build:selectors" : null,
         "build:dts",
         options.enableApiExtractor ? "build:api" : null,
@@ -240,11 +240,12 @@ export function updateBuildScripts(
         ? "fk-api-extractor api-extractor.*.json"
         : undefined;
     result.scripts["build:dts"] = "vue-tsc -b";
-    result.scripts["build:lib"] = "fk-build-vue-lib";
+    result.scripts["build:lib"] = "fk-build-vue-lib --clean";
     result.scripts["build:selectors"] = buildSelectors
         ? "fk-build-selectors"
         : undefined;
     delete result.scripts["build:pageobject"];
+    result.scripts.prebuild = undefined;
     return result;
 }
 

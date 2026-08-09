@@ -325,7 +325,7 @@ describe("build scripts", () => {
             "scripts": {
               "build": "run-s build:lib build:dts",
               "build:dts": "vue-tsc -b",
-              "build:lib": "fk-build-vue-lib"
+              "build:lib": "fk-build-vue-lib --clean"
             }
           }
         `);
@@ -348,7 +348,7 @@ describe("build scripts", () => {
               "build": "run-s build:lib build:dts build:api",
               "build:api": "fk-api-extractor api-extractor.*.json",
               "build:dts": "vue-tsc -b",
-              "build:lib": "fk-build-vue-lib"
+              "build:lib": "fk-build-vue-lib --clean"
             }
           }
         `);
@@ -370,7 +370,7 @@ describe("build scripts", () => {
             "scripts": {
               "build": "run-s build:lib build:selectors build:dts",
               "build:dts": "vue-tsc -b",
-              "build:lib": "fk-build-vue-lib",
+              "build:lib": "fk-build-vue-lib --clean",
               "build:selectors": "fk-build-selectors"
             }
           }
@@ -393,7 +393,7 @@ describe("build scripts", () => {
             "scripts": {
               "build": "run-s build:lib build:selectors build:dts",
               "build:dts": "vue-tsc -b",
-              "build:lib": "fk-build-vue-lib",
+              "build:lib": "fk-build-vue-lib --clean",
               "build:selectors": "fk-build-selectors"
             }
           }
@@ -419,7 +419,7 @@ describe("build scripts", () => {
             "scripts": {
               "build": "run-s build:lib build:dts",
               "build:dts": "vue-tsc -b",
-              "build:lib": "fk-build-vue-lib"
+              "build:lib": "fk-build-vue-lib --clean"
             }
           }
         `);
@@ -447,7 +447,7 @@ describe("build scripts", () => {
               "build:foo": "bar",
               "build": "run-s build:lib build:dts",
               "build:dts": "vue-tsc -b",
-              "build:lib": "fk-build-vue-lib"
+              "build:lib": "fk-build-vue-lib --clean"
             }
           }
         `);
@@ -471,9 +471,9 @@ describe("build scripts", () => {
             "name": "mock-pkg",
             "scripts": {
               "build:mock": "foo",
-              "build": "run-s build:mock build:lib build:dts",
+              "build": "run-s build:lib build:mock build:dts",
               "build:dts": "vue-tsc -b",
-              "build:lib": "fk-build-vue-lib"
+              "build:lib": "fk-build-vue-lib --clean"
             }
           }
         `);
