@@ -32,6 +32,7 @@ function middleware(server: ViteDevServer): Connect.NextHandleFunction {
         const { url } = req;
         if (isHtmlPage(url)) {
             try {
+                res.setHeader("content-type", "text/html; charset=utf-8");
                 res.end(await server.transformIndexHtml(url, ""));
             } catch (err) {
                 console.error(err);
