@@ -2,6 +2,7 @@ import defaultConfig, { defineConfig } from "@forsakringskassan/eslint-config";
 import cliConfig from "@forsakringskassan/eslint-config-cli";
 import typescriptConfig from "@forsakringskassan/eslint-config-typescript";
 import typeinfoConfig from "@forsakringskassan/eslint-config-typescript-typeinfo";
+import vitestConfig from "@forsakringskassan/eslint-config-vitest";
 import vueConfig from "@forsakringskassan/eslint-config-vue";
 
 export default [
@@ -24,6 +25,7 @@ export default [
     typeinfoConfig(import.meta.dirname, {
         ignores: ["*.d.ts", "testbed/**/*.ts", "vitest.config.mts"],
     }),
+    vitestConfig(),
     vueConfig(),
 
     defineConfig({
