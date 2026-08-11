@@ -15,10 +15,12 @@ interface TemplateData {
     [key: string]: string | undefined;
 }
 
-const templateFile = path.resolve(__dirname, "../assets/index.html");
+const rootDir = process.env.ROOT_DIR ?? path.resolve(__dirname, "..");
+const templateFile = path.join(rootDir, "assets/index.html");
 const VIRTUAL_ENTRYPOINT = "index.html";
 
 function isHtmlPage(url: string | undefined): url is string {
+    /* v8 ignore if -- should not happen in real usage */
     if (!url) {
         return false;
     }

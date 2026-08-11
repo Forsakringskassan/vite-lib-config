@@ -70,12 +70,16 @@ async function run() {
         outExtension: { ".js": ".cjs" },
         define: {
             "import.meta.url": "__filename",
+            "process.env.ROOT_DIR": "undefined",
         },
     });
     await build({
         entryPoints: ["src/vite.config.ts"],
         format: "esm",
         outExtension: { ".js": ".mjs" },
+        define: {
+            "process.env.ROOT_DIR": "undefined",
+        },
         banner: {
             js: [
                 `import { dirname as $_dirname } from "node:path";`,
