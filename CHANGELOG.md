@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.6.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.6.0...v5.6.1) (2026-08-11)
+
+### Bug Fixes
+
+* add `Content-Type` header to index response ([90c392f](https://github.com/Forsakringskassan/vite-lib-config/commit/90c392fd6b25bacdbe9c3f45065d9ac0a13190c1))
+
 ## [5.6.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.5.0...v5.6.0) (2026-08-09)
 
 ### Features
