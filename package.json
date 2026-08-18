@@ -18,6 +18,7 @@
       "types": "./dist/index.d.ts",
       "require": "./dist/index.js"
     },
+    "./api-extractor/*.json": "./api-extractor/*.json",
     "./assets/*": "./assets/*",
     "./babel": {
       "types": "./dist/babel.config.d.ts",
@@ -44,6 +45,7 @@
   },
   "files": [
     "*.d.ts",
+    "api-extractor",
     "assets",
     "bin",
     "dist",

@@ -1,4 +1,3 @@
-import { existsSync } from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { styleText } from "node:util";
@@ -35,6 +34,9 @@ export interface Options {
     /** name from package.json */
     name: string;
 
+    /** path to "etc" folder or null to use default */
+    apiExtractorReportFolder: string | null;
+
     /** path to cypress tsconfig */
     cypressConfigPath: string;
 
@@ -61,12 +63,6 @@ function detectTestRunner(flags: Set<string>): "jest" | "vitest" {
     return "vitest";
 }
 
-function detectApiExtractor(cwd: string): boolean {
-    const haveBaseConfig = existsSync(path.join(cwd, "api-extractor.json"));
-    const haveLibConfig = existsSync(path.join(cwd, "api-extractor.lib.json"));
-    return haveBaseConfig || haveLibConfig;
-}
-
 async function serializeJson(data: unknown): Promise<string> {
     const { format, resolveConfig } = await import("prettier");
     const content = JSON.stringify(data, null, 4);
@@ -74,6 +70,114 @@ async function serializeJson(data: unknown): Promise<string> {
     const config = await resolveConfig(filepath, { editorconfig: true });
     const formatted = await format(content, { ...config, filepath });
     return formatted;
+}
+
+/**
+ * @internal
+ */
+export async function generateApiExtractorLib(
+    options: Pick<Options, "apiExtractorReportFolder" | "enableApiExtractor">,
+): Promise<string | null> {
+    if (!options.enableApiExtractor) {
+        return null;
+    }
+    const config = {
+        $schema:
+            "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+        extends:
+            "@forsakringskassan/vite-lib-config/api-extractor/api-extractor.json",
+        compiler: {
+            tsconfigFilePath: "<projectFolder>/tsconfig.lib.json",
+        },
+        apiReport: {
+            reportFileName: "<unscopedPackageName>.api.md",
+            reportFolder: options.apiExtractorReportFolder
+                ? `<projectFolder>/${options.apiExtractorReportFolder}`
+                : undefined,
+        },
+        docModel: {
+            enabled: true,
+        },
+        dtsRollup: {
+            publicTrimmedFilePath: "<projectFolder>/dist/types/index.d.ts",
+        },
+    };
+    return [boilerplate, await serializeJson(config)].join("\n\n");
+}
+
+/**
+ * @internal
+ */
+export async function generateApiExtractorCypress(
+    options: Pick<
+        Options,
+        "apiExtractorReportFolder" | "enableApiExtractor" | "enablePageobjects"
+    >,
+): Promise<string | null> {
+    if (!options.enableApiExtractor) {
+        return null;
+    }
+    if (!options.enablePageobjects) {
+        return null;
+    }
+    const config = {
+        $schema:
+            "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+        extends:
+            "@forsakringskassan/vite-lib-config/api-extractor/api-extractor.json",
+        mainEntryPointFilePath: "<projectFolder>/temp/types/cypress/index.d.ts",
+        compiler: {
+            tsconfigFilePath: "<projectFolder>/tsconfig.pageobjects.json",
+        },
+        apiReport: {
+            reportFileName: "<unscopedPackageName>-cypress.api.md",
+            reportFolder: options.apiExtractorReportFolder
+                ? `<projectFolder>/${options.apiExtractorReportFolder}`
+                : undefined,
+        },
+        dtsRollup: {
+            publicTrimmedFilePath: "<projectFolder>/dist/types/cypress.d.ts",
+        },
+    };
+    return [boilerplate, await serializeJson(config)].join("\n\n");
+}
+
+/**
+ * @internal
+ */
+export async function generateApiExtractorSelectors(
+    options: Pick<
+        Options,
+        "apiExtractorReportFolder" | "enableApiExtractor" | "enableSelectors"
+    >,
+): Promise<string | null> {
+    if (!options.enableApiExtractor) {
+        return null;
+    }
+    if (!options.enableSelectors) {
+        return null;
+    }
+    const config = {
+        $schema:
+            "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+        extends:
+            "@forsakringskassan/vite-lib-config/api-extractor/api-extractor.json",
+        mainEntryPointFilePath:
+            "<projectFolder>/temp/types/selectors/index.d.ts",
+        compiler: {
+            tsconfigFilePath: "<projectFolder>/tsconfig.selectors.json",
+        },
+        apiReport: {
+            reportFileName: "<unscopedPackageName>-selectors.api.md",
+            reportFolder: options.apiExtractorReportFolder
+                ? `<projectFolder>/${options.apiExtractorReportFolder}`
+                : undefined,
+        },
+        dtsRollup: {
+            publicTrimmedFilePath: "<projectFolder>/dist/types/selectors.d.ts",
+        },
+    };
+    return [boilerplate, await serializeJson(config)].join("\n\n");
 }
 
 /**
@@ -260,6 +364,26 @@ async function writeBuildScripts(cwd: string, options: Options): Promise<void> {
     await writeJsonFile(cwd, "package.json", `${updated}${trailer}`);
 }
 
+async function findApiExtractorReportFolder(
+    cwd: string,
+): Promise<string | null> {
+    const { findUp } = await import("find-up");
+    const absolutePath = await findUp("package-lock.json", { cwd });
+
+    /* use default path if not found */
+    if (!absolutePath) {
+        return null;
+    }
+
+    /* use default path if found in the current directory */
+    const rootDir = path.dirname(absolutePath);
+    if (path.resolve(cwd) === rootDir) {
+        return null;
+    }
+
+    return path.relative(cwd, path.join(rootDir, "etc")).replaceAll("\\", "/");
+}
+
 async function findCypressConfigPath(cwd: string): Promise<string> {
     const { findUp } = await import("find-up");
     const absolutePath = await findUp("cypress/tsconfig.json", { cwd });
@@ -269,8 +393,14 @@ async function findCypressConfigPath(cwd: string): Promise<string> {
     return "cypress/tsconfig.json";
 }
 
-function isTSConfigFile(filename: string): boolean {
-    return filename.startsWith("tsconfig.") && filename.endsWith(".json");
+function shouldPrune(filename: string): boolean {
+    if (filename.startsWith("tsconfig.") && filename.endsWith(".json")) {
+        return true;
+    }
+    if (filename.startsWith("api-extractor.") && filename.endsWith(".json")) {
+        return true;
+    }
+    return false;
 }
 
 function flagEnabled(value: boolean): string {
@@ -287,6 +417,7 @@ export async function run(cwd: string, argv: string[]): Promise<void> {
         console.log("usage: fk-write-config [OPTIONS..]");
         console.log(`
   --help                     Show this help.
+  --with-api-extractor       Use @microsoft/api-extractor.
   --with-jest                Use Jest as test runner.
   --with-vitest              Use Vitest as test runner.
 `);
@@ -306,18 +437,25 @@ export async function run(cwd: string, argv: string[]): Promise<void> {
         return;
     }
 
+    const apiExtractorReportFolder = await findApiExtractorReportFolder(cwd);
     const cypressConfigPath = await findCypressConfigPath(cwd);
     const testRunner = detectTestRunner(flags);
-    const enableApiExtractor = detectApiExtractor(cwd);
     const options: Options = {
         name: pkg.name,
+        apiExtractorReportFolder,
         cypressConfigPath,
         testRunner,
-        enableApiExtractor,
+        enableApiExtractor: flags.has("--with-api-extractor"),
         enablePageobjects: Boolean(pkg.exports?.["./cypress"]),
         enableSelectors: Boolean(pkg.exports?.["./selectors"]),
     };
     const generated = new Map([
+        ["api-extractor.lib.json", generateApiExtractorLib(options)],
+        ["api-extractor.cypress.json", generateApiExtractorCypress(options)],
+        [
+            "api-extractor.selectors.json",
+            generateApiExtractorSelectors(options),
+        ],
         ["tsconfig.json", generateTsconfig(options)],
         ["tsconfig.lib.json", generateTsconfigLib(options)],
         ["tsconfig.cypress.json", generateTsconfigCypress(options)],
@@ -325,39 +463,41 @@ export async function run(cwd: string, argv: string[]): Promise<void> {
         ["tsconfig.pageobjects.json", generateTsconfigPageobjects(options)],
     ]);
 
-    console.group("Writing TypeScript configuration");
+    console.group("Writing configuration files");
+    console.log("API Extractor:", flagEnabled(options.enableApiExtractor));
+    console.log("Cypress pageobjects:", flagEnabled(options.enablePageobjects));
+    console.log("Selector objects:", flagEnabled(options.enableSelectors));
     console.log("Test runner:", styleText("cyan", testRunner));
     console.log();
 
     /* write new files */
     const written = new Set<string>();
+    const omitted = new Set<string>();
     for (const [filename, promise] of generated) {
         const content = await promise;
         if (content) {
             await writeJsonFile(cwd, filename, content);
             written.add(filename);
+        } else {
+            omitted.add(filename);
         }
     }
 
     /* remove any other tsconfig files */
     const entries = await fs.readdir(cwd);
     for (const entry of entries) {
-        if (!isTSConfigFile(entry) || written.has(entry)) {
+        if (written.has(entry)) {
             continue;
         }
 
-        await fs.unlink(path.join(cwd, entry));
-        console.log(entry, "removed");
+        if (omitted.has(entry) || shouldPrune(entry)) {
+            await fs.unlink(path.join(cwd, entry));
+            console.log(entry, "removed");
+        }
     }
 
-    console.groupEnd();
-    console.log();
-
-    console.group("Writing package.json scripts");
-    console.log("API Extractor:", flagEnabled(options.enableApiExtractor));
-    console.log("Selector objects:", flagEnabled(options.enableSelectors));
-    console.log();
     await writeBuildScripts(cwd, options);
+
     console.groupEnd();
     console.log();
 }
