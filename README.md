@@ -14,6 +14,8 @@ Use `fk-write-config` to write boilerplate configuration files to the repository
 
     fk-write-config
 
+API Extractor is optiona and must be enabled with `--with-api-extractor`.
+
 By default it assumes `vitest` is used as test runner, use `--with-jest` or `--with-vitest` to explicitly set a test runner.
 
 ### Bundled dependencies
