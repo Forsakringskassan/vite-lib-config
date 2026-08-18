@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.7.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.6.1...v5.7.0) (2026-08-18)
+
+### Features
+
+* include api-extractor base config ([cb77b56](https://github.com/Forsakringskassan/vite-lib-config/commit/cb77b563a3b870e3cca0bfe52e9a7ed1658aa480))
+
 ## [5.6.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.6.0...v5.6.1) (2026-08-11)
 
 ### Bug Fixes
