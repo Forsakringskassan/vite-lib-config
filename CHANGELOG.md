@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [5.8.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.7.1...v5.8.0) (2026-08-21)
+
+### Features
+
+* set `resolve.alias.vue` by default ([a56fabc](https://github.com/Forsakringskassan/vite-lib-config/commit/a56fabc3ef3aa58355df2987df4261c7b692be2a))
+* set package itself by default ([0b7ba1c](https://github.com/Forsakringskassan/vite-lib-config/commit/0b7ba1c3f6a8c4c0fb8b26a50ff28a307711e5b6))
+
 ## [5.7.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.7.0...v5.7.1) (2026-08-21)
 
 ### Bug Fixes
