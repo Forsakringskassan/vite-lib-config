@@ -21,7 +21,7 @@ interface TSConfig {
     compilerOptions?: {
         declarationDir?: string;
         types?: string[];
-        paths?: Record<string, string[]>;
+        paths?: Record<string, string[] | undefined>;
     };
     include?: string[];
     exclude?: string[];
@@ -222,7 +222,12 @@ export async function generateTsconfig(options: Options): Promise<string> {
 /**
  * @internal
  */
-export async function generateTsconfigLib(options: Options): Promise<string> {
+export async function generateTsconfigLib(
+    options: Pick<
+        Options,
+        "name" | "testRunner" | "enablePageobjects" | "enableSelectors"
+    >,
+): Promise<string> {
     const { name, testRunner } = options;
     const config: TSConfig = {
         extends: "@forsakringskassan/vite-lib-config/tsconfig.lib.json",
@@ -232,8 +237,12 @@ export async function generateTsconfigLib(options: Options): Promise<string> {
                     ? ["node", "jest", "vite/client"]
                     : undefined,
             paths: {
-                [`${name}/cypress`]: ["./src/cypress/index.ts"],
-                [`${name}/selectors`]: ["./src/selectors/index.ts"],
+                [`${name}/cypress`]: options.enablePageobjects
+                    ? ["./src/cypress/index.ts"]
+                    : undefined,
+                [`${name}/selectors`]: options.enableSelectors
+                    ? ["./src/selectors/index.ts"]
+                    : undefined,
                 [name]: ["./src/index.ts"],
             },
         },
@@ -245,7 +254,10 @@ export async function generateTsconfigLib(options: Options): Promise<string> {
  * @internal
  */
 export async function generateTsconfigCypress(
-    options: Options,
+    options: Pick<
+        Options,
+        "name" | "cypressConfigPath" | "enablePageobjects" | "enableSelectors"
+    >,
 ): Promise<string> {
     const { name, cypressConfigPath } = options;
     const config: TSConfig = {
@@ -255,8 +267,12 @@ export async function generateTsconfigCypress(
         ],
         compilerOptions: {
             paths: {
-                [`${name}/cypress`]: ["./src/cypress/index.ts"],
-                [`${name}/selectors`]: ["./src/selectors/index.ts"],
+                [`${name}/cypress`]: options.enablePageobjects
+                    ? ["./src/cypress/index.ts"]
+                    : undefined,
+                [`${name}/selectors`]: options.enableSelectors
+                    ? ["./src/selectors/index.ts"]
+                    : undefined,
                 [name]: ["./src/index.ts"],
             },
         },
