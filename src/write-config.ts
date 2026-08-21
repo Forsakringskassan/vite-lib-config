@@ -450,6 +450,7 @@ export async function run(cwd: string, argv: string[]): Promise<void> {
         enableSelectors: Boolean(pkg.exports?.["./selectors"]),
     };
     const generated = new Map([
+        ["api-extractor.json", null],
         ["api-extractor.lib.json", generateApiExtractorLib(options)],
         ["api-extractor.cypress.json", generateApiExtractorCypress(options)],
         [
