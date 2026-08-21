@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [5.9.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.8.0...v5.9.0) (2026-08-21)
+
+### Features
+
+* write `vite.config.mts` configuration file ([3f1cc87](https://github.com/Forsakringskassan/vite-lib-config/commit/3f1cc87b273d233eaabdf97f946c3b74db827f17))
+
+### Bug Fixes
+
+* disable tsconfig aliases for cypress/selectors when disabled ([1b7299b](https://github.com/Forsakringskassan/vite-lib-config/commit/1b7299b1d8a998348bfe95677b2733b8b6e2b7b1))
+* remove incorrectly named `api-extractor.json` ([3601fc7](https://github.com/Forsakringskassan/vite-lib-config/commit/3601fc7f6e0b181dd764356eafa76687e9d3859c))
+
 ## [5.8.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.7.1...v5.8.0) (2026-08-21)
 
 ### Features
