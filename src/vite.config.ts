@@ -219,6 +219,12 @@ function shouldUseCustomEntrypoint(options: {
         return false;
     }
 
+    /* when running inside cypress we should not try to apply custom
+     * entrypoints, cypress will handle it itself */
+    if (process.env.CYPRESS) {
+        return false;
+    }
+
     /* no custom entrypoints requested */
     if (positional.length === 0) {
         return false;
