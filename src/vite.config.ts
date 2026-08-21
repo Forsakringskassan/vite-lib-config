@@ -1,3 +1,4 @@
+import path from "node:path";
 import {
     type Plugin,
     type UserConfig as ViteUserConfig,
@@ -182,6 +183,16 @@ const defaultConfig = {
                 },
             },
             external: Array.from(external),
+        },
+    },
+
+    resolve: {
+        alias: {
+            /* enable vue runtime template compiler needed by both jest/vitest
+             * and by cypress component.
+             *
+             * tests. https://github.com/vuejs/core/tree/main/packages/vue#which-dist-file-to-use */
+            vue: "vue/dist/vue.esm-bundler.js",
         },
     },
 
