@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.7.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.7.0...v5.7.1) (2026-08-21)
+
+### Bug Fixes
+
+* disable custom entrypoint when running inside cypress ([12d5124](https://github.com/Forsakringskassan/vite-lib-config/commit/12d51247f75f8508887a021237a456591eb816c8))
+
 ## [5.7.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.6.1...v5.7.0) (2026-08-18)
 
 ### Features
