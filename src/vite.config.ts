@@ -193,6 +193,11 @@ const defaultConfig = {
              *
              * tests. https://github.com/vuejs/core/tree/main/packages/vue#which-dist-file-to-use */
             vue: "vue/dist/vue.esm-bundler.js",
+
+            /* resolve the package itself to the source-code instead of the
+             * output `dist` folder, so examples can use the actual package name
+             * instead of relative paths */
+            [packageJson.name]: path.resolve("src/index.ts"),
         },
     },
 
