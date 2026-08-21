@@ -294,6 +294,25 @@ export async function generateTsconfigPageobjects(
     return [boilerplate, await serializeJson(config)].join("\n\n");
 }
 
+/**
+ * @internal
+ */
+export function generateViteConfig(): string {
+    const config = [
+        `import { defineConfig } from "@forsakringskassan/vite-lib-config/vite";`,
+        `import { defineTestConfig } from "@forsakringskassan/vitest-config-jsdom";`,
+        ``,
+        `export default defineConfig({`,
+        `    test: defineTestConfig({`,
+        `        setupFiles: ["./vitest.setup.ts"],`,
+        `    }),`,
+        `});`,
+    ]
+        .map((it) => `${it}\n`)
+        .join("");
+    return [boilerplate, config].join("\n\n");
+}
+
 /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- used to lie about the return value */
 async function readJsonFile<T = unknown>(
     cwd: string,
@@ -449,7 +468,7 @@ export async function run(cwd: string, argv: string[]): Promise<void> {
         enablePageobjects: Boolean(pkg.exports?.["./cypress"]),
         enableSelectors: Boolean(pkg.exports?.["./selectors"]),
     };
-    const generated = new Map([
+    const generated = new Map<string, string | null | Promise<string | null>>([
         ["api-extractor.json", null],
         ["api-extractor.lib.json", generateApiExtractorLib(options)],
         ["api-extractor.cypress.json", generateApiExtractorCypress(options)],
@@ -462,6 +481,8 @@ export async function run(cwd: string, argv: string[]): Promise<void> {
         ["tsconfig.cypress.json", generateTsconfigCypress(options)],
         ["tsconfig.selectors.json", generateTsconfigSelectors(options)],
         ["tsconfig.pageobjects.json", generateTsconfigPageobjects(options)],
+        ["vite.config.ts", null],
+        ["vite.config.mts", generateViteConfig()],
     ]);
 
     console.group("Writing configuration files");
