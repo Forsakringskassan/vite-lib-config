@@ -207,13 +207,24 @@ export function defineConfig(config: UserConfig = {}): UserConfigFn {
 /**
  * @internal
  */
-function determineEntrypoint(
-    config: UserConfig,
-    positional: string[],
-    mode: string,
-): boolean {
-    const isDev = mode === "development" ? true : false;
-    return isDev && positional.length > 0 && !config.fk?.entrypoint;
+function shouldUseCustomEntrypoint(options: {
+    config: UserConfig;
+    positional: string[];
+    mode: string;
+}): boolean {
+    const { config, positional, mode } = options;
+
+    /* only use custom entrypoints in development mode */
+    if (mode !== "development") {
+        return false;
+    }
+
+    /* no custom entrypoints requested */
+    if (positional.length === 0) {
+        return false;
+    }
+
+    return !config.fk?.entrypoint;
 }
 
 /**
@@ -233,9 +244,12 @@ async function fkDefineConfig(
         defaultConfig.plugins.push(apimockPlugin(mocks));
     }
 
-    const userEntrypoint = determineEntrypoint(config, positional, mode);
-
-    if (userEntrypoint) {
+    const useCustomEntrypoint = shouldUseCustomEntrypoint({
+        config,
+        positional,
+        mode,
+    });
+    if (useCustomEntrypoint) {
         const entrypoint = await findEntrypoint(positional[0]);
         config.fk.entrypoint = `/${entrypoint}`;
     }
@@ -273,7 +287,7 @@ async function fkDefineConfig(
         "Bundled dependencies:",
         prettyList(allDependencies, (it) => isBundled(external, it)),
     );
-    if (userEntrypoint) {
+    if (useCustomEntrypoint) {
         console.log("Entrypoint:", config.fk.entrypoint);
     }
     console.groupEnd();
