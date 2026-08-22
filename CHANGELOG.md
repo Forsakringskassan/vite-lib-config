@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [5.9.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.9.0...v5.9.1) (2026-08-22)
+
+### Bug Fixes
+
+* default cypress/tsconfig.json must be a relative path ([df192d2](https://github.com/Forsakringskassan/vite-lib-config/commit/df192d2ec0565ecfea520de7952a6ab5f80c82c9))
+* remove vitest.setup.ts ([60a7182](https://github.com/Forsakringskassan/vite-lib-config/commit/60a7182cd29030a2bb7d6a17080d3d2e310bd71c))
+
 ## [5.9.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.8.0...v5.9.0) (2026-08-21)
 
 ### Features
