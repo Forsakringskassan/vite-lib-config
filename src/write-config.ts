@@ -423,7 +423,7 @@ async function findCypressConfigPath(cwd: string): Promise<string> {
     if (absolutePath) {
         return path.relative(cwd, absolutePath).replaceAll("\\", "/");
     }
-    return "cypress/tsconfig.json";
+    return "./cypress/tsconfig.json";
 }
 
 function shouldPrune(filename: string): boolean {
