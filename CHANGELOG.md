@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.9.2](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.9.1...v5.9.2) (2026-08-22)
+
+### Bug Fixes
+
+* any cypress/tsconfig.json path must be a relative path ([0d161f2](https://github.com/Forsakringskassan/vite-lib-config/commit/0d161f2f43e8ed25eff6f78aa1f14b2a1ce6177d))
+
 ## [5.9.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.9.0...v5.9.1) (2026-08-22)
 
 ### Bug Fixes
