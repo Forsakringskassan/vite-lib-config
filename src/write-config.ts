@@ -319,9 +319,7 @@ export function generateViteConfig(): string {
         `import { defineTestConfig } from "@forsakringskassan/vitest-config-jsdom";`,
         ``,
         `export default defineConfig({`,
-        `    test: defineTestConfig({`,
-        `        setupFiles: ["./vitest.setup.ts"],`,
-        `    }),`,
+        `    test: defineTestConfig(),`,
         `});`,
     ]
         .map((it) => `${it}\n`)
@@ -499,6 +497,7 @@ export async function run(cwd: string, argv: string[]): Promise<void> {
         ["tsconfig.pageobjects.json", generateTsconfigPageobjects(options)],
         ["vite.config.ts", null],
         ["vite.config.mts", generateViteConfig()],
+        ["vitest.setup.ts", null],
     ]);
 
     console.group("Writing configuration files");

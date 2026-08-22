@@ -819,9 +819,7 @@ describe("vite.config.mts", () => {
           import { defineTestConfig } from "@forsakringskassan/vitest-config-jsdom";
 
           export default defineConfig({
-              test: defineTestConfig({
-                  setupFiles: ["./vitest.setup.ts"],
-              }),
+              test: defineTestConfig(),
           });
         `);
     });
