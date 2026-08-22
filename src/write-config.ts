@@ -421,7 +421,12 @@ async function findCypressConfigPath(cwd: string): Promise<string> {
     const { findUp } = await import("find-up");
     const absolutePath = await findUp("cypress/tsconfig.json", { cwd });
     if (absolutePath) {
-        return path.relative(cwd, absolutePath).replaceAll("\\", "/");
+        const relativePath = path
+            .relative(cwd, absolutePath)
+            .replaceAll("\\", "/");
+        return relativePath.startsWith(".")
+            ? relativePath
+            : `./${relativePath}`;
     }
     return "./cypress/tsconfig.json";
 }
