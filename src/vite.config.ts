@@ -15,6 +15,7 @@ import { glob } from "glob";
 import colors from "picocolors";
 import { PluginPure } from "rollup-plugin-pure";
 import { type FKConfig } from "./fk-config";
+import { type PackageJson } from "./package-json";
 import {
     babelPlugin,
     customMappingPlugin,
@@ -33,14 +34,6 @@ export {
  * @public
  */
 export type UserConfig = ViteUserConfig & { fk?: FKConfig };
-
-interface PackageJson {
-    name: string;
-    version: string;
-    dependencies?: Record<string, string>;
-    peerDependencies?: Record<string, string>;
-    externalDependencies?: string[];
-}
 
 function isExternal(externals: Array<string | RegExp>, name: string): boolean {
     for (const external of externals) {

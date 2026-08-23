@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
+import { type PackageJson } from "./package-json";
 import {
     type Options,
-    type PackageJson,
     generateApiExtractorCypress,
     generateApiExtractorLib,
     generateApiExtractorSelectors,
@@ -641,6 +641,7 @@ describe("build scripts", () => {
         expect.assertions(1);
         const pkg: PackageJson = {
             name: "mock-pkg",
+            version: "1.2.3",
         };
         const updated = updateBuildScripts(pkg, {
             enableApiExtractor: false,
@@ -650,6 +651,7 @@ describe("build scripts", () => {
         expect(JSON.stringify(updated, null, 2)).toMatchInlineSnapshot(`
           {
             "name": "mock-pkg",
+            "version": "1.2.3",
             "scripts": {
               "build": "run-s build:lib build:dts",
               "build:dts": "vue-tsc -b",
@@ -663,6 +665,7 @@ describe("build scripts", () => {
         expect.assertions(1);
         const pkg: PackageJson = {
             name: "mock-pkg",
+            version: "1.2.3",
         };
         const updated = updateBuildScripts(pkg, {
             enableApiExtractor: true,
@@ -672,6 +675,7 @@ describe("build scripts", () => {
         expect(JSON.stringify(updated, null, 2)).toMatchInlineSnapshot(`
           {
             "name": "mock-pkg",
+            "version": "1.2.3",
             "scripts": {
               "build": "run-s build:lib build:dts build:api",
               "build:api": "fk-api-extractor api-extractor.*.json",
@@ -686,6 +690,7 @@ describe("build scripts", () => {
         expect.assertions(1);
         const pkg: PackageJson = {
             name: "mock-pkg",
+            version: "1.2.3",
         };
         const updated = updateBuildScripts(pkg, {
             enableApiExtractor: false,
@@ -695,6 +700,7 @@ describe("build scripts", () => {
         expect(JSON.stringify(updated, null, 2)).toMatchInlineSnapshot(`
           {
             "name": "mock-pkg",
+            "version": "1.2.3",
             "scripts": {
               "build": "run-s build:lib build:selectors build:dts",
               "build:dts": "vue-tsc -b",
@@ -709,6 +715,7 @@ describe("build scripts", () => {
         expect.assertions(1);
         const pkg: PackageJson = {
             name: "mock-pkg",
+            version: "1.2.3",
         };
         const updated = updateBuildScripts(pkg, {
             enableApiExtractor: false,
@@ -718,6 +725,7 @@ describe("build scripts", () => {
         expect(JSON.stringify(updated, null, 2)).toMatchInlineSnapshot(`
           {
             "name": "mock-pkg",
+            "version": "1.2.3",
             "scripts": {
               "build": "run-s build:lib build:selectors build:dts",
               "build:dts": "vue-tsc -b",
@@ -732,6 +740,7 @@ describe("build scripts", () => {
         expect.assertions(1);
         const pkg: PackageJson = {
             name: "mock-pkg",
+            version: "1.2.3",
             scripts: {
                 "build:pageobject": "something",
             },
@@ -744,6 +753,7 @@ describe("build scripts", () => {
         expect(JSON.stringify(updated, null, 2)).toMatchInlineSnapshot(`
           {
             "name": "mock-pkg",
+            "version": "1.2.3",
             "scripts": {
               "build": "run-s build:lib build:dts",
               "build:dts": "vue-tsc -b",
@@ -757,6 +767,7 @@ describe("build scripts", () => {
         expect.assertions(1);
         const pkg: PackageJson = {
             name: "mock-pkg",
+            version: "1.2.3",
             scripts: {
                 foo: "bar",
                 "build:foo": "bar",
@@ -770,6 +781,7 @@ describe("build scripts", () => {
         expect(JSON.stringify(updated, null, 2)).toMatchInlineSnapshot(`
           {
             "name": "mock-pkg",
+            "version": "1.2.3",
             "scripts": {
               "foo": "bar",
               "build:foo": "bar",
@@ -785,6 +797,7 @@ describe("build scripts", () => {
         expect.assertions(1);
         const pkg: PackageJson = {
             name: "mock-pkg",
+            version: "1.2.3",
             scripts: {
                 "build:mock": "foo",
             },
@@ -797,6 +810,7 @@ describe("build scripts", () => {
         expect(JSON.stringify(updated, null, 2)).toMatchInlineSnapshot(`
           {
             "name": "mock-pkg",
+            "version": "1.2.3",
             "scripts": {
               "build:mock": "foo",
               "build": "run-s build:lib build:mock build:dts",
