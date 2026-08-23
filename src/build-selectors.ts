@@ -1,8 +1,7 @@
 import { existsSync } from "node:fs";
 import path from "node:path/posix";
 import * as esbuild from "esbuild";
-import { type PackageJson } from "./package-json";
-import { readJsonFile } from "./utils";
+import { getExternals, readJsonFile } from "./utils";
 
 const extension = {
     cjs: ".cjs",
@@ -47,18 +46,6 @@ async function build(
             console.log(output);
         }
     }
-}
-
-/**
- * @internal
- */
-export function getExternals(pkg: PackageJson): string[] {
-    const { peerDependencies = {}, externalDependencies = [] } = pkg;
-    const unique = new Set([
-        ...Object.keys(peerDependencies),
-        ...externalDependencies,
-    ]);
-    return Array.from(unique).toSorted((a, b) => a.localeCompare(b));
 }
 
 /**
