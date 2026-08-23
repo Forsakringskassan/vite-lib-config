@@ -1,8 +1,8 @@
 import { existsSync } from "node:fs";
-import fs from "node:fs/promises";
 import path from "node:path/posix";
 import * as esbuild from "esbuild";
 import { type PackageJson } from "./package-json";
+import { readJsonFile } from "./utils";
 
 const extension = {
     cjs: ".cjs",
@@ -49,11 +49,6 @@ async function build(
     }
 }
 
-async function readJsonFile<T = unknown>(filePath: string): Promise<T> {
-    const content = await fs.readFile(filePath, "utf8");
-    return JSON.parse(content) as T;
-}
-
 /**
  * @internal
  */
@@ -80,7 +75,7 @@ export async function run(argv: string[]): Promise<void> {
         return;
     }
 
-    const pkg = await readJsonFile<PackageJson>("package.json");
+    const pkg = readJsonFile("package.json") as PackageJson;
     const external = getExternals(pkg);
 
     const formats = ["cjs", "esm"] as const;
