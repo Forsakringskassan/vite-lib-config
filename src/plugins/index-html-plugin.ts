@@ -7,7 +7,7 @@ import {
     type ViteDevServer,
 } from "vite";
 import { type FKConfig } from "../fk-config";
-import { lookupFile } from "../utils/lookup-file";
+import { lookupFile } from "../utils";
 
 interface TemplateData {
     entrypoint: string;

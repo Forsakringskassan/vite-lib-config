@@ -21,8 +21,7 @@ import {
     indexHtmlPlugin,
     packageJsonPlugin,
 } from "./plugins";
-import { detectVueMajor, prettyList, readJsonFile } from "./utils";
-import { lookupFile } from "./utils/lookup-file";
+import { detectVueMajor, lookupFile, prettyList, readJsonFile } from "./utils";
 
 export { type FKConfig } from "./fk-config";
 export {
