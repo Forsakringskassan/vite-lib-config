@@ -353,12 +353,10 @@ export function updateBuildScripts(
 ): PackageJson {
     const result = { ...pkg, scripts: { ...pkg.scripts } };
     const haveBuildMock = Boolean(result.scripts["build:mock"]);
-    const buildSelectors = options.enableSelectors || options.enablePageobjects;
     result.scripts.build = [
         "run-s",
         "build:lib",
         haveBuildMock ? "build:mock" : null,
-        buildSelectors ? "build:selectors" : null,
         "build:dts",
         options.enableApiExtractor ? "build:api" : null,
     ]
@@ -368,11 +366,16 @@ export function updateBuildScripts(
         ? "fk-api-extractor api-extractor.*.json"
         : undefined;
     result.scripts["build:dts"] = "vue-tsc -b";
-    result.scripts["build:lib"] = "fk-build-vue-lib --clean";
-    result.scripts["build:selectors"] = buildSelectors
-        ? "fk-build-selectors"
-        : undefined;
+    result.scripts["build:lib"] = [
+        "fk-build-vue-lib",
+        "--clean",
+        options.enablePageobjects ? "--pageobjects" : undefined,
+        options.enableSelectors ? "--selectors" : undefined,
+    ]
+        .filter(Boolean)
+        .join(" ");
     delete result.scripts["build:pageobject"];
+    delete result.scripts["build:selectors"];
     result.scripts.prebuild = undefined;
     return result;
 }
