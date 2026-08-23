@@ -75,7 +75,7 @@ export async function run(argv: string[]): Promise<void> {
         return;
     }
 
-    const pkg = readJsonFile("package.json") as PackageJson;
+    const pkg = readJsonFile("package.json");
     const external = getExternals(pkg);
 
     const formats = ["cjs", "esm"] as const;

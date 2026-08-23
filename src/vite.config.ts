@@ -15,7 +15,6 @@ import { glob } from "glob";
 import colors from "picocolors";
 import { PluginPure } from "rollup-plugin-pure";
 import { type FKConfig } from "./fk-config";
-import { type PackageJson } from "./package-json";
 import {
     babelPlugin,
     customMappingPlugin,
@@ -120,7 +119,7 @@ async function findEntrypoint(pattern: string | null): Promise<string> {
 }
 
 const vueMajor = detectVueMajor();
-const packageJson = readJsonFile("package.json") as PackageJson;
+const packageJson = readJsonFile("package.json");
 const dependencies = Object.keys(packageJson.dependencies ?? {});
 const peerDependencies = Object.keys(packageJson.peerDependencies ?? {});
 const externalDependencies = packageJson.externalDependencies;
