@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getExternals } from "./build-selectors";
+import { getExternals } from "./get-externals";
 
 describe("getExternals()", () => {
     it("should return packages from peerDependencies", () => {
