@@ -702,10 +702,9 @@ describe("build scripts", () => {
             "name": "mock-pkg",
             "version": "1.2.3",
             "scripts": {
-              "build": "run-s build:lib build:selectors build:dts",
+              "build": "run-s build:lib build:dts",
               "build:dts": "vue-tsc -b",
-              "build:lib": "fk-build-vue-lib --clean",
-              "build:selectors": "fk-build-selectors"
+              "build:lib": "fk-build-vue-lib --clean --selectors"
             }
           }
         `);
@@ -727,10 +726,9 @@ describe("build scripts", () => {
             "name": "mock-pkg",
             "version": "1.2.3",
             "scripts": {
-              "build": "run-s build:lib build:selectors build:dts",
+              "build": "run-s build:lib build:dts",
               "build:dts": "vue-tsc -b",
-              "build:lib": "fk-build-vue-lib --clean",
-              "build:selectors": "fk-build-selectors"
+              "build:lib": "fk-build-vue-lib --clean --pageobjects"
             }
           }
         `);
