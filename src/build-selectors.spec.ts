@@ -5,6 +5,8 @@ describe("getExternals()", () => {
     it("should return packages from peerDependencies", () => {
         expect.assertions(1);
         const pkg = {
+            name: "mock-pkg",
+            version: "1.2.3",
             peerDependencies: {
                 foo: "^1.0.0",
                 bar: "^2.0.0",
@@ -17,6 +19,8 @@ describe("getExternals()", () => {
     it("should return packages from externalDependencies", () => {
         expect.assertions(1);
         const pkg = {
+            name: "mock-pkg",
+            version: "1.2.3",
             externalDependencies: ["foo", "bar"],
         };
         const result = getExternals(pkg);
@@ -26,6 +30,8 @@ describe("getExternals()", () => {
     it("should combine peerDependencies and externalDependencies", () => {
         expect.assertions(1);
         const pkg = {
+            name: "mock-pkg",
+            version: "1.2.3",
             peerDependencies: {
                 foo: "^1.0.0",
                 bar: "^2.0.0",
@@ -38,7 +44,10 @@ describe("getExternals()", () => {
 
     it("should return empty array when neither peerDependencies nor externalDependencies are set", () => {
         expect.assertions(1);
-        const pkg = {};
+        const pkg = {
+            name: "mock-pkg",
+            version: "1.2.3",
+        };
         const result = getExternals(pkg);
         expect(result).toEqual([]);
     });

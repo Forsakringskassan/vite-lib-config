@@ -2,11 +2,7 @@ import { existsSync } from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path/posix";
 import * as esbuild from "esbuild";
-
-interface PackageJson {
-    peerDependencies?: Partial<Record<string, string>>;
-    externalDependencies?: string[];
-}
+import { type PackageJson } from "./package-json";
 
 const extension = {
     cjs: ".cjs",
