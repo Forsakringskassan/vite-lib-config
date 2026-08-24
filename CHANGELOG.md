@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.10.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.9.3...v5.10.0) (2026-08-24)
+
+### Features
+
+* integrate building cypress pageobjects and selectors objects to the main build script ([eda1dd0](https://github.com/Forsakringskassan/vite-lib-config/commit/eda1dd0b9e479c5da95e5a9e125783bc1bf717e5))
+
 ## [5.9.3](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.9.2...v5.9.3) (2026-08-23)
 
 ### Bug Fixes
