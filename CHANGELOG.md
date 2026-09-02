@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.10.2](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.10.1...v5.10.2) (2026-09-02)
+
+### Bug Fixes
+
+* disable custom entrypoint when running inside vitest ([621d509](https://github.com/Forsakringskassan/vite-lib-config/commit/621d50977b32ef99b09beaa80a0978f4f1b68ac5))
+
 ## [5.10.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.10.0...v5.10.1) (2026-08-26)
 
 ### Bug Fixes
