@@ -226,9 +226,8 @@ function shouldUseCustomEntrypoint(options: {
         return false;
     }
 
-    /* when running inside cypress we should not try to apply custom
-     * entrypoints, cypress will handle it itself */
-    if (process.env.CYPRESS) {
+    /* don't apply custom entrypoints when running inside vitest or cypress */
+    if (process.env.VITEST || process.env.CYPRESS) {
         return false;
     }
 
