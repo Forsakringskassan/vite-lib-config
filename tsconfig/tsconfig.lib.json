@@ -5,6 +5,7 @@
         "composite": true,
         "tsBuildInfoFile": "${configDir}/temp/tsconfig.lib.tsbuildinfo",
         "types": ["node", "vite/client"],
+        "allowImportingTsExtensions": true,
 
         /* stricter config */
         "allowUnusedLabels": false,

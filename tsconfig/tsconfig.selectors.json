@@ -5,6 +5,7 @@
         "tsBuildInfoFile": "${configDir}/temp/tsconfig.selectors.tsbuildinfo",
         "types": [],
         "emitDeclarationOnly": true,
+        "allowImportingTsExtensions": true,
 
         /* stricter config */
         "allowUnusedLabels": false,
