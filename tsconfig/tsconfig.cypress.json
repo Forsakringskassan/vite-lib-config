@@ -27,6 +27,7 @@
     },
     "include": [
         "${configDir}/src/**/*.ts",
+        "${configDir}/src/**/*.mts",
         "${configDir}/src/**/*.vue",
         "${configDir}/src/**/*.cy.ts"
     ],

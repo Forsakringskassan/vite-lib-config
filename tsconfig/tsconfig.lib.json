@@ -12,7 +12,11 @@
         "noImplicitOverride": true,
         "noFallthroughCasesInSwitch": true
     },
-    "include": ["${configDir}/src/**/*.ts", "${configDir}/src/**/*.vue"],
+    "include": [
+        "${configDir}/src/**/*.ts",
+        "${configDir}/src/**/*.mts",
+        "${configDir}/src/**/*.vue"
+    ],
     "exclude": [
         "${configDir}/src/@types/cypress.d.ts",
         "${configDir}/src/cypress/**/*.ts",

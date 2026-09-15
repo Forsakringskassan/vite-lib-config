@@ -12,6 +12,9 @@
         "noImplicitOverride": true,
         "noFallthroughCasesInSwitch": true
     },
-    "include": ["${configDir}/src/selectors/**/*.ts"],
+    "include": [
+        "${configDir}/src/selectors/**/*.ts",
+        "${configDir}/src/selectors/**/*.mts"
+    ],
     "exclude": ["${configDir}/src/**/*.spec.ts"]
 }
