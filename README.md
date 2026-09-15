@@ -162,3 +162,21 @@ export default defineConfig({
     plugins: [...defaultPlugins, myFancyPlugin],
 });
 ```
+
+## Cleaning up directories before build
+
+If you need to clean up existing folders before running a build, you can use the `fk-rm-dir` utility.
+
+Example package.json:
+
+```json
+{
+    name: "my-app",
+    ...
+    scripts: {
+        prebuild: "fk-rm-dir dist temp",
+        build: ""
+    }
+    ...
+}
+```
