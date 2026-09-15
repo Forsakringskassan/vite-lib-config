@@ -15,8 +15,9 @@
     },
     "include": [
         "${configDir}/src/cypress/**/*.ts",
-        "${configDir}/src/selectors/**/*.ts",
-        "${configDir}/src/**/*.pageobject.ts"
+        "${configDir}/src/cypress/**/*.mts",
+        "${configDir}/src/**/*.pageobject.ts",
+        "${configDir}/src/**/*.pageobject.mts"
     ],
     "exclude": ["${configDir}/src/**/*.cy.ts", "${configDir}/src/**/*.spec.ts"]
 }
