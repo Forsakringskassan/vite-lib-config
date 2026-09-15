@@ -15,7 +15,9 @@
     },
     "include": [
         "${configDir}/src/selectors/**/*.ts",
-        "${configDir}/src/selectors/**/*.mts"
+        "${configDir}/src/selectors/**/*.mts",
+        "${configDir}/src/**/*.selectors.ts",
+        "${configDir}/src/**/*.selectors.mts"
     ],
     "exclude": ["${configDir}/src/**/*.spec.ts"]
 }
