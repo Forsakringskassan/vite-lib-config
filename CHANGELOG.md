@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [5.12.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.11.1...v5.12.0) (2026-09-15)
+
+### Features
+
+* allow using mts as extension ([08c72a4](https://github.com/Forsakringskassan/vite-lib-config/commit/08c72a4e99f8b43c440f69bd8138e5d8a10c01a5))
+* enable `allowImportingTsExtension` to support running ts with typestripping in esm ([d898b8d](https://github.com/Forsakringskassan/vite-lib-config/commit/d898b8d3dfd166f0398b20ead8b4f4f5ad9eac4c))
+* support selector objects outside of `src/selectors` folder ([ce1e51e](https://github.com/Forsakringskassan/vite-lib-config/commit/ce1e51ec24ac27cd61b598c844d893f260f4b12a))
+
 ## [5.11.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.11.0...v5.11.1) (2026-09-12)
 
 ### Bug Fixes
