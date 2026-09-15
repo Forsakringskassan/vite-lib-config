@@ -17,6 +17,7 @@
     "include": [
         "${configDir}/src/cypress/**/*.ts",
         "${configDir}/src/cypress/**/*.mts",
+        "${configDir}/src/selectors/**/*.ts", // needed when cypress pageobjects references selector objects
         "${configDir}/src/**/*.pageobject.ts",
         "${configDir}/src/**/*.pageobject.mts"
     ],
