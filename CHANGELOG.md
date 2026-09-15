@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.12.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.12.0...v5.12.1) (2026-09-15)
+
+### Bug Fixes
+
+* **tsconfig:** fix build error when cypress pageobject references selector objects ([c9f5557](https://github.com/Forsakringskassan/vite-lib-config/commit/c9f55574017a7a536c3adb98ef33d68bd4e12430))
+
 ## [5.12.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.11.1...v5.12.0) (2026-09-15)
 
 ### Features
