@@ -153,6 +153,17 @@ export const defaultPlugins = [
     babelPlugin(),
 ];
 
+let entries: string[] = [];
+if (process.env.CYPRESS) {
+    /* Prevent Page reloading during test run */
+    entries = [
+        "packages/**/src/**/*.{ts,vue}",
+        "src/**/*.{ts,vue}",
+        "cypress/**/*.{ts,vue}",
+        "!**/*.spec.ts",
+    ];
+}
+
 const defaultConfig = {
     fk: {},
     plugins: defaultPlugins,
@@ -175,6 +186,10 @@ const defaultConfig = {
             },
             external: Array.from(external),
         },
+    },
+
+    optimizeDeps: {
+        entries,
     },
 
     resolve: {
