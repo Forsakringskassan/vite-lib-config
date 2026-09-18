@@ -176,6 +176,9 @@ const defaultConfig = {
         lib: {
             entry: lookupFile("src/index"),
             formats: ["es", "cjs"],
+
+            /* use a fixed and deterministic filename */
+            cssFileName: "style",
         },
         rollupOptions: {
             output: {
