@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.12.2](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.12.1...v5.12.2) (2026-09-18)
+
+### Bug Fixes
+
+* cypress prevent reload ([e4602fd](https://github.com/Forsakringskassan/vite-lib-config/commit/e4602fde99115710ba98a093b5a6e011c3763742))
+
 ## [5.12.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.12.0...v5.12.1) (2026-09-15)
 
 ### Bug Fixes
