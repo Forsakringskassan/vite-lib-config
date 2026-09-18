@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.12.4](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.12.3...v5.12.4) (2026-09-18)
+
+### Bug Fixes
+
+* use `style.css` as a fixed and determinstic filename for css output ([1f4550f](https://github.com/Forsakringskassan/vite-lib-config/commit/1f4550f71d7fdaea5b5956dff361e65b948f092e))
+
 ## [5.12.3](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.12.2...v5.12.3) (2026-09-18)
 
 ### Bug Fixes
