@@ -526,10 +526,12 @@ export async function run(cwd: string, argv: string[]): Promise<void> {
             continue;
         }
 
-        if (omitted.has(entry) || shouldPrune(entry)) {
-            await fs.unlink(path.join(cwd, entry));
-            console.log(entry, "removed");
+        if (!(omitted.has(entry) || shouldPrune(entry))) {
+            continue;
         }
+
+        await fs.unlink(path.join(cwd, entry));
+        console.log(entry, "removed");
     }
 
     await writeBuildScripts(cwd, options);

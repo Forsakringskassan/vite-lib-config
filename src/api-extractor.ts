@@ -122,11 +122,13 @@ async function patchDeclareVarVls(declarationDir: string): Promise<void> {
             /declare var (__VLS_\d+)/,
             "declare const $1",
         );
-        if (content !== updated) {
-            await fs.writeFile(filePath, updated, "utf8");
-            numPatchedFiles++;
-            console.log(filename);
+        if (content === updated) {
+            return;
         }
+
+        await fs.writeFile(filePath, updated, "utf8");
+        numPatchedFiles++;
+        console.log(filename);
     });
     await Promise.all(promises);
 
