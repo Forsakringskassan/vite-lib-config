@@ -26,7 +26,11 @@ export default [
         ignores: ["*.d.ts", "testbed/**/*.ts", "vitest.config.mts"],
     }),
     vitestConfig(),
-    vueConfig(),
+    vueConfig({
+        rules: {
+            "vue/no-restricted-block": "off",
+        },
+    }),
 
     defineConfig({
         files: ["*.d.ts"],
