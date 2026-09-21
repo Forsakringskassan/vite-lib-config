@@ -8,5 +8,5 @@
         "skipLibCheck": true
     },
     "include": ["src/**/*.ts"],
-    "exclude": ["src/babel.config.ts"]
+    "exclude": ["src/babel.config.ts", "src/fallback/**"]
 }

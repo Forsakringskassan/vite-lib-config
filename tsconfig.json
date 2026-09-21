@@ -13,6 +13,9 @@
         },
         {
             "path": "./tsconfig.esm.json"
+        },
+        {
+            "path": "./tsconfig.vue.json"
         }
     ]
 }

@@ -49,7 +49,7 @@ function middleware(server: ViteDevServer): Connect.NextHandleFunction {
 
 export function indexHtmlPlugin(): Plugin {
     const templateData: TemplateData = {
-        entrypoint: "/src/vite-dev/app.vue",
+        entrypoint: "", // Defined by config
         entrypointLocal: `/${lookupFile("src/local")}`,
     };
     return {
@@ -91,9 +91,11 @@ export function indexHtmlPlugin(): Plugin {
         },
 
         config(config: UserConfig & { fk?: FKConfig }) {
-            if (config.fk?.entrypoint) {
-                templateData.entrypoint = config.fk.entrypoint;
+            if (!config.fk?.entrypoint) {
+                return;
             }
+
+            templateData.entrypoint = config.fk.entrypoint;
         },
 
         configureServer(server: ViteDevServer) {

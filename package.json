@@ -33,6 +33,9 @@
       "types": "./dist/vite.config.d.ts",
       "import": "./dist/vite.config.mjs",
       "require": "./dist/vite.config.cjs"
+    },
+    "./vue-fallback": {
+      "default": "./dist/fallback.mjs"
     }
   },
   "main": "./dist/index.js",
@@ -55,7 +58,7 @@
     "testbed"
   ],
   "scripts": {
-    "prebuild": "tsc -b",
+    "prebuild": "vue-tsc -b",
     "build": "node build.mjs",
     "eslint": "eslint --cache .",
     "eslint:fix": "eslint --fix .",
@@ -117,8 +120,11 @@
     "ts-node": "10.9.2",
     "typescript": "npm:@typescript/typescript6@6.0.2",
     "vite": "8.3.0",
+    "vite-plugin-css-injected-by-js": "5.0.2",
     "vitest": "5.0.1",
-    "vue": "3.5.43"
+    "vue": "3.5.43",
+    "vue-router": "5.3.1",
+    "vue-tsc": "3.3.11"
   },
   "peerDependencies": {
     "@babel/core": "^7.22.0",
@@ -128,7 +134,8 @@
     "prettier": "^3.0.0",
     "typescript": "^5.0.2 || ^6.0.2 || ^7.0.0",
     "vite": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0",
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "vue-router": "^5.0.0"
   },
   "engines": {
     "node": "^22.12.0 || >= 24",

@@ -1,0 +1,5 @@
+{
+    "extends": ["@fkui/tsconfig/recommended", "@fkui/tsconfig/vue"],
+    "compilerOptions": {},
+    "include": ["src/fallback/*.ts", "src/fallback/*.vue"]
+}
