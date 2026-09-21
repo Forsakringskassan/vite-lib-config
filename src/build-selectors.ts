@@ -41,10 +41,11 @@ async function build(
             logLevel: "info",
             metafile: true,
         });
-        if (format === "esm") {
-            const output = await esbuild.analyzeMetafile(result.metafile);
-            console.log(output);
+        if (format !== "esm") {
+            continue;
         }
+        const output = await esbuild.analyzeMetafile(result.metafile);
+        console.log(output);
     }
 }
 

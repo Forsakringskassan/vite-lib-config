@@ -90,8 +90,8 @@ export function vuePlugin(config?: Record<string, unknown>): Plugin {
 }
 
 async function findEntrypoint(pattern: string | null): Promise<string> {
-    const defaultEntrypoint = "/src/vite-dev/app.vue";
     if (!pattern) {
+        const defaultEntrypoint = "/src/vite-dev/app.vue";
         return defaultEntrypoint;
     }
 
