@@ -1,3 +1,4 @@
+import { existsSync } from "node:fs";
 import path from "node:path";
 import {
     type Plugin,
@@ -28,6 +29,8 @@ export {
     type MockEntry,
     vitePlugin as apimockPlugin,
 } from "@forsakringskassan/apimock-express";
+
+const defaultEntrypoint = "src/vite-dev/app.vue";
 
 /**
  * @public
@@ -89,17 +92,21 @@ export function vuePlugin(config?: Record<string, unknown>): Plugin {
     }
 }
 
+async function getExamples(): Promise<string[]> {
+    const files = await glob("**/{examples,docs,tests}/**/*.vue", {
+        posix: true,
+        nodir: true,
+    });
+    return files;
+}
+
 async function findEntrypoint(pattern: string | null): Promise<string> {
-    const defaultEntrypoint = "/src/vite-dev/app.vue";
     if (!pattern) {
         return defaultEntrypoint;
     }
 
     const uf = new uFuzzy({ intraIns: Infinity });
-    const files = await glob("**/{examples,docs,tests}/**/*.vue", {
-        posix: true,
-        nodir: true,
-    });
+    const files = await getExamples();
     const idxs = uf.filter(files, pattern);
     if (!idxs || idxs.length === 0) {
         throw new Error(`No files matching "${pattern}"`);
@@ -167,6 +174,7 @@ if (process.env.CYPRESS) {
 const defaultConfig = {
     fk: {},
     plugins: defaultPlugins,
+    define: {},
 
     build: {
         emptyOutDir: false,
@@ -279,10 +287,17 @@ async function fkDefineConfig(
         positional,
         mode,
     });
-    if (useCustomEntrypoint) {
-        const entrypoint = await findEntrypoint(positional[0]);
-        config.fk.entrypoint = `/${entrypoint}`;
+    let entrypoint = defaultEntrypoint;
+
+    if (!existsSync(entrypoint)) {
+        entrypoint = path.resolve(__dirname, "FallbackEntrypoint.vue");
     }
+
+    if (useCustomEntrypoint) {
+        entrypoint = await findEntrypoint(positional[0]);
+    }
+
+    config.fk.entrypoint = path.posix.join("/", entrypoint);
 
     let result: UserConfig & { fk: FKConfig };
     /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
@@ -295,6 +310,11 @@ async function fkDefineConfig(
     } else {
         result = defaultConfig;
     }
+
+    result.define = {
+        ...result.define,
+        __AVAILABLE_EXAMPLES__: JSON.stringify(await getExamples()),
+    };
 
     const { build } = result;
     const external =
