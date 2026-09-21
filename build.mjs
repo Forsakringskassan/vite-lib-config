@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import { cp } from "node:fs/promises";
 import { Extractor, ExtractorConfig } from "@microsoft/api-extractor";
 import esbuild from "esbuild";
 import isCI from "is-ci";
@@ -25,6 +26,8 @@ async function build(options) {
     });
     console.log(await esbuild.analyzeMetafile(result.metafile));
 }
+
+await cp("src/FallbackEntrypoint.vue", "dist/FallbackEntrypoint.vue");
 
 /**
  * @param {string} filename
