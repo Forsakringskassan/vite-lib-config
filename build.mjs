@@ -1,7 +1,10 @@
 import fs from "node:fs";
+import { build as viteBuild } from "vite";
 import { Extractor, ExtractorConfig } from "@microsoft/api-extractor";
+import vue from "@vitejs/plugin-vue";
 import esbuild from "esbuild";
 import isCI from "is-ci";
+import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 
 const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
 const externalDependencies = Object.values(pkg.externalDependencies);
@@ -106,6 +109,28 @@ async function run() {
 
     await apiExtractor("api-extractor.vite.json");
     await apiExtractor("api-extractor.lib.json");
+
+    await viteBuild({
+        plugins: [vue(), cssInjectedByJsPlugin()],
+        build: {
+            emptyOutDir: false,
+            outDir: "dist",
+            lib: {
+                entry: "src/fallback/index.ts",
+                formats: ["es"],
+                fileName: () => `fallback.mjs`,
+            },
+            rollupOptions: {
+                external: ["vue", "vue-router"],
+                output: {
+                    globals: {
+                        vue: "Vue",
+                        "vue-router": "VueRouter",
+                    },
+                },
+            },
+        },
+    });
 }
 
 try {
