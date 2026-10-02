@@ -105,7 +105,7 @@
     "@forsakringskassan/eslint-config-typescript": "15.11.7",
     "@forsakringskassan/eslint-config-typescript-typeinfo": "15.11.7",
     "@forsakringskassan/eslint-config-vitest": "15.11.6",
-    "@forsakringskassan/eslint-config-vue": "15.11.7",
+    "@forsakringskassan/eslint-config-vue": "15.11.8",
     "@forsakringskassan/prettier-config": "3.7.11",
     "@forsakringskassan/vitest-config": "5.0.0",
     "@html-validate/release-scripts": "7.6.12",
