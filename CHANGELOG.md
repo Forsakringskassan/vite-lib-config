@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.13.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.12.6...v5.13.0) (2026-10-02)
+
+### Features
+
+* fallback entry ([5e77b3d](https://github.com/Forsakringskassan/vite-lib-config/commit/5e77b3d6e786696ab0a7ebb4341070551ccf4d98))
+
 ## [5.12.6](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.12.5...v5.12.6) (2026-10-02)
 
 ### Bug Fixes
