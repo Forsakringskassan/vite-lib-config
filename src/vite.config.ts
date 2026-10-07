@@ -314,6 +314,7 @@ async function fkDefineConfig(
     result.define = {
         ...result.define,
         __AVAILABLE_EXAMPLES__: JSON.stringify(await getExamples()),
+        __PACKAGE_NAME__: JSON.stringify(packageJson.name),
     };
 
     const { build } = result;
