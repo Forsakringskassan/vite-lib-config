@@ -2,6 +2,7 @@
 import { RouterLink } from "vue-router";
 
 defineProps<{
+    name: string;
     examples: string[];
 }>();
 </script>
@@ -9,7 +10,7 @@ defineProps<{
 <template>
     <div>
         <header>
-            <h1>@forsakringskassan/vite-lib-config</h1>
+            <h1>{{ name }}</h1>
         </header>
 
         <p v-if="examples.length === 0">Create a new vue example at <b>./src/examples/**</b> to get started.</p>
