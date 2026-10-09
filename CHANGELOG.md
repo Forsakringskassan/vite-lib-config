@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.13.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.13.0...v5.13.1) (2026-10-09)
+
+### Bug Fixes
+
+* fallback header should use application name ([5ffe1f3](https://github.com/Forsakringskassan/vite-lib-config/commit/5ffe1f3c49f1deccab7f8bbe64fb232fe53bb544))
+
 ## [5.13.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.12.6...v5.13.0) (2026-10-02)
 
 ### Features
