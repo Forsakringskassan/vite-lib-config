@@ -123,7 +123,7 @@
     "vite-plugin-css-injected-by-js": "5.0.2",
     "vitest": "5.0.3",
     "vue": "3.5.43",
-    "vue-router": "5.3.1",
+    "vue-router": "5.4.0",
     "vue-tsc": "3.3.12"
   },
   "peerDependencies": {
