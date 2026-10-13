@@ -110,7 +110,7 @@
     "@forsakringskassan/vitest-config": "5.0.1",
     "@html-validate/release-scripts": "7.6.12",
     "@types/babel__core": "7.20.5",
-    "@types/dedent": "0.7.2",
+    "@types/dedent": "1.7.2",
     "@types/is-ci": "3.0.4",
     "@types/node": "22.20.5",
     "@types/semver": "7.8.0",
