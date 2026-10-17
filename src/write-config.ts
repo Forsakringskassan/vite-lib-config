@@ -321,6 +321,7 @@ export function generateViteConfig(): string {
 /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- used to lie about the return value */
 async function readJsonFile<T = unknown>(
     cwd: string,
+    /* eslint-disable-next-line unicorn/no-unnecessary-parameters -- dont want to hardcode filename */
     filename: string,
 ): Promise<{ data: T; indent: string; trailer: string }> {
     const filePath = path.join(cwd, filename);
@@ -381,8 +382,11 @@ export function updateBuildScripts(
 }
 
 async function writeBuildScripts(cwd: string, options: Options): Promise<void> {
-    const result = await readJsonFile<PackageJson>(cwd, "package.json");
-    const { data: pkg, indent, trailer } = result;
+    const {
+        data: pkg,
+        indent,
+        trailer,
+    } = await readJsonFile<PackageJson>(cwd, "package.json");
     const updated = JSON.stringify(
         updateBuildScripts(pkg, options),
         undefined,
