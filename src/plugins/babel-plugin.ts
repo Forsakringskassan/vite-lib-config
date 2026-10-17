@@ -30,10 +30,10 @@ export function babelPlugin(): Plugin {
             if (!transformed) {
                 return null;
             }
-            const { code, map } = transformed;
+            const { code, map = null } = transformed;
             return {
                 code: code ?? src,
-                map: map ?? null,
+                map,
             };
         },
     };
