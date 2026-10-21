@@ -114,7 +114,7 @@
     "@forsakringskassan/eslint-config-vue": "15.12.1",
     "@forsakringskassan/prettier-config": "3.7.13",
     "@forsakringskassan/vitest-config": "5.0.1",
-    "@html-validate/release-scripts": "7.6.16",
+    "@html-validate/release-scripts": "7.6.17",
     "@types/babel__core": "7.20.5",
     "@types/is-ci": "3.0.4",
     "@types/node": "22.20.5",
