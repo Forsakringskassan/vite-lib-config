@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.13.4](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.13.3...v5.13.4) (2026-10-23)
+
+### Bug Fixes
+
+* add optimizeDeps to vitest.config ([f3ef6cf](https://github.com/Forsakringskassan/vite-lib-config/commit/f3ef6cfec1f1e9de576043a3737728fe118bb921))
+
 ## [5.13.3](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.13.2...v5.13.3) (2026-10-14)
 
 ### Bug Fixes
