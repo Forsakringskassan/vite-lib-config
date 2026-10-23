@@ -8,4 +8,8 @@ export default defineConfig({
     test: defineTestConfig({
         exclude: ["**/node_modules/**", "testbed/**"],
     }),
+    optimizeDeps: {
+        entries: ["src/**/*.{ts,vue}", "cypress/**/*.{ts,vue}"],
+        include: ["@forsakringskassan/vite-lib-config/vue-fallback"],
+    },
 });
