@@ -166,9 +166,9 @@ const optimizeDeps = (() => {
         /* Prevent Page reloading during test run */
         return {
             entries: [
+                "cypress/**/*.{ts,vue}",
                 "packages/**/src/**/*.{ts,vue}",
                 "src/**/*.{ts,vue}",
-                "cypress/**/*.{ts,vue}",
                 "!**/*.spec.ts",
             ],
         };
