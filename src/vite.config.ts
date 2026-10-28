@@ -161,16 +161,20 @@ export const defaultPlugins = [
     babelPlugin(),
 ];
 
-let entries: string[] = [];
-if (process.env.CYPRESS) {
-    /* Prevent Page reloading during test run */
-    entries = [
-        "packages/**/src/**/*.{ts,vue}",
-        "src/**/*.{ts,vue}",
-        "cypress/**/*.{ts,vue}",
-        "!**/*.spec.ts",
-    ];
-}
+const optimizeDeps = (() => {
+    if (process.env.CYPRESS) {
+        /* Prevent Page reloading during test run */
+        return {
+            entries: [
+                "packages/**/src/**/*.{ts,vue}",
+                "src/**/*.{ts,vue}",
+                "cypress/**/*.{ts,vue}",
+                "!**/*.spec.ts",
+            ],
+        };
+    }
+    return {};
+})();
 
 const defaultConfig = {
     fk: {},
@@ -200,9 +204,7 @@ const defaultConfig = {
         },
     },
 
-    optimizeDeps: {
-        entries,
-    },
+    optimizeDeps,
 
     resolve: {
         alias: {
