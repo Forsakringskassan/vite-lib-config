@@ -171,6 +171,7 @@ const optimizeDeps = (() => {
                 "src/**/*.{ts,vue}",
                 "!**/*.spec.ts",
             ],
+            include: ["@forsakringskassan/vite-lib-config/vue-fallback"],
         };
     }
     return {};
