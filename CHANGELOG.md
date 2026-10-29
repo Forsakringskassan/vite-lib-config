@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.14.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.13.6...v5.14.0) (2026-10-29)
+
+### Features
+
+* add `--mocks` option to `fk-build-vue-lib` ([e895241](https://github.com/Forsakringskassan/vite-lib-config/commit/e8952413c35d5d99680b697db7053991815675e2))
+
 ## [5.13.6](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.13.5...v5.13.6) (2026-10-29)
 
 ### Bug Fixes
