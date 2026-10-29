@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [5.13.5](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.13.4...v5.13.5) (2026-10-29)
+
+### Bug Fixes
+
+* force /vue-fallback entrypoint to be prebundled ([811f85e](https://github.com/Forsakringskassan/vite-lib-config/commit/811f85e0cf986a35a59be0c14421916f42fa5cb3))
+
+### Reverts
+
+* Revert "fix: add optimizeDeps to vitest.config" ([5cfed0f](https://github.com/Forsakringskassan/vite-lib-config/commit/5cfed0f84d2c239b089fe01b754b62ac75af6f00))
+
 ## [5.13.4](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.13.3...v5.13.4) (2026-10-23)
 
 ### Bug Fixes
