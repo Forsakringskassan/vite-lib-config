@@ -62,6 +62,9 @@ export async function cli(args: string[]): Promise<void> {
             selectors: {
                 type: "boolean",
             },
+            mocks: {
+                type: "boolean",
+            },
             help: {
                 type: "boolean",
                 default: false,
@@ -75,6 +78,7 @@ export async function cli(args: string[]): Promise<void> {
   --clean                    Clean dist folder before building.
   --pageobjects              Build cypress pageobjects.
   --selectors                Build selector objects.
+  --mocks                    Build mocks.
   --help                     Show this help.
 `);
         return;
@@ -96,5 +100,9 @@ export async function cli(args: string[]): Promise<void> {
 
     if (flags.selectors) {
         await build("src/selectors/index.ts", { external, formats });
+    }
+
+    if (flags.mocks) {
+        await build("src/mocks/index.ts", { external, formats });
     }
 }
