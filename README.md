@@ -5,7 +5,7 @@ Toolchain for building Vue framework libraries.
 - Hybrid ESM/CJS packages.
 - Transpiled with Babel.
 - Supports monorepo.
-- Optional: build pageobjects and selectors.
+- Optional: build pageobjects, selectors, and mocks.
 - Optional: shared typescript configuration.
 
 ## Configuration
@@ -106,6 +106,27 @@ Use `--help` to see full description.
 If `src/selectors/index.ts` it will be built to `dist/${format}/selectors.${cjs,mjs}`.
 
 If `src/cypress/index.ts` it will be built to `dist/${format}/cypress.${cjs,mjs}`.
+
+### Optional: build mocks
+
+```diff
+ {
+     "scripts": {
+         "build": "fk-build-vue-lib --mocks",
+     }
+ }
+```
+
+This builds `src/mocks/index.ts` to `dist/${format}/mocks.${cjs,mjs}`. The file must export a list of mocks of type [`apimock-express`](https://github.com/Forsakringskassan/apimock-express) (`MockEntry[]` or `Mock[]`).
+
+**src/mocks/index.ts**
+
+```typescript
+import { type Mock } from "@forsakringskassan/apimock-express";
+
+const mocks: Mock[] = [...];
+export default mocks;
+```
 
 ### Dev-server
 
