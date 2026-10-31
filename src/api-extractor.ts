@@ -3,7 +3,6 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { Extractor, ExtractorConfig } from "@microsoft/api-extractor";
 import { findUp } from "find-up";
-import { glob, globSync } from "glob";
 import isCI from "is-ci";
 import { extractAugmentations } from "./utils";
 
@@ -12,7 +11,7 @@ import { extractAugmentations } from "./utils";
  */
 async function getConfigFiles(configFiles: string[]): Promise<string[]> {
     if (configFiles.length > 0) {
-        return configFiles.flatMap((it) => globSync(it));
+        return await Array.fromAsync(fs.glob(configFiles));
     }
     const result = await findUp("api-extractor.json");
     return result ? [result] : [];
@@ -114,7 +113,9 @@ async function patchDeclareVarVls(declarationDir: string): Promise<void> {
     );
 
     let numPatchedFiles = 0;
-    const filenames = await glob("**/*.vue.d.ts", { cwd: declarationDir });
+    const filenames = await Array.fromAsync(
+        fs.glob("**/*.vue.d.ts", { cwd: declarationDir }),
+    );
     const promises = filenames.map(async (filename) => {
         const filePath = path.join(declarationDir, filename);
         const content = await fs.readFile(filePath, "utf8");

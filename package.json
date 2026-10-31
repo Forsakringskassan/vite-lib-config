@@ -94,7 +94,6 @@
     "detect-indent": "7.0.2",
     "esbuild": "^0.28.0",
     "find-up": "8.0.0",
-    "glob": "13.0.6",
     "is-ci": "4.1.0",
     "picocolors": "1.1.1",
     "rollup-plugin-pure": "0.4.0",
