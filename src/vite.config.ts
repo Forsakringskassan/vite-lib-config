@@ -1,4 +1,5 @@
 import { existsSync } from "node:fs";
+import fs from "node:fs/promises";
 import path from "node:path";
 import {
     type Plugin,
@@ -12,7 +13,6 @@ import vue3plugin, {
     type Options as Vue3PluginOptions,
 } from "@vitejs/plugin-vue";
 import deepmerge from "deepmerge";
-import { glob } from "glob";
 import colors from "picocolors";
 import { PluginPure } from "rollup-plugin-pure";
 import { type FKConfig } from "./fk-config";
@@ -92,12 +92,17 @@ export function vuePlugin(config?: Record<string, unknown>): Plugin {
     }
 }
 
-async function getExamples(): Promise<string[]> {
-    const files = await glob("**/{examples,docs,tests}/**/*.vue", {
-        posix: true,
-        nodir: true,
+async function* getExamples(): AsyncGenerator<string, void> {
+    const iterator = fs.glob("**/{examples,docs,tests}/**/*.vue", {
+        withFileTypes: true,
     });
-    return files;
+    for await (const dirent of iterator) {
+        if (!dirent.isFile()) {
+            continue;
+        }
+        const filePath = path.join(dirent.parentPath, dirent.name);
+        yield filePath.replaceAll("\\", "/");
+    }
 }
 
 async function findEntrypoint(pattern: string | null): Promise<string> {
@@ -107,7 +112,7 @@ async function findEntrypoint(pattern: string | null): Promise<string> {
     }
 
     const uf = new uFuzzy({ intraIns: Infinity });
-    const files = await getExamples();
+    const files = await Array.fromAsync(getExamples());
     const idxs = uf.filter(files, pattern);
     if (!idxs || idxs.length === 0) {
         throw new Error(`No files matching "${pattern}"`);
@@ -314,9 +319,11 @@ async function fkDefineConfig(
         result = defaultConfig;
     }
 
+    const examples = await Array.fromAsync(getExamples());
+
     result.define = {
         ...result.define,
-        __AVAILABLE_EXAMPLES__: JSON.stringify(await getExamples()),
+        __AVAILABLE_EXAMPLES__: JSON.stringify(examples),
         __PACKAGE_NAME__: JSON.stringify(packageJson.name),
     };
 
