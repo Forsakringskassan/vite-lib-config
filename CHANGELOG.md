@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.15.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.14.1...v5.15.0) (2026-11-02)
+
+### Features
+
+* **deps:** replace `glob` with native glob from `node:fs` ([9707cd7](https://github.com/Forsakringskassan/vite-lib-config/commit/9707cd7c8a24f9ce507866f764db8773591daff5))
+
 ## [5.14.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.14.0...v5.14.1) (2026-10-30)
 
 ### Bug Fixes
