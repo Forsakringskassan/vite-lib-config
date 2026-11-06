@@ -47,7 +47,7 @@ module.exports = {
 ```ts
 import { defineConfig } from "@forsakringskassan/vite-lib-config/vite";
 
-export default defineConfig();
+export default defineConfig(import.meta.dirname);
 ```
 
 In addition to the regular Vite configuration you can also pass the optional `fk` property:
@@ -179,7 +179,7 @@ import {
     defaultPlugins,
 } from "@forsakringskassan/vite-lib-config/vite";
 
-export default defineConfig({
+export default defineConfig(import.meta.dirname, {
     plugins: [...defaultPlugins, myFancyPlugin],
 });
 ```

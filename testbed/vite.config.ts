@@ -1,3 +1,3 @@
 import { defineConfig } from "@forsakringskassan/vite-lib-config/vite";
 
-export default defineConfig();
+export default defineConfig(import.meta.dirname);
