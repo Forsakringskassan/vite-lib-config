@@ -240,9 +240,12 @@ function overwriteMerge<T>(_a: T[], b: T[]): T[] {
 /**
  * @public
  */
-export function defineConfig(config: UserConfig = {}): UserConfigFn {
+export function defineConfig(
+    rootDir: string,
+    config: UserConfig = {},
+): UserConfigFn {
     return viteDefineConfig(({ mode }) => {
-        return fkDefineConfig(mode, config);
+        return fkDefineConfig(rootDir, mode, config);
     });
 }
 
@@ -278,6 +281,7 @@ function shouldUseCustomEntrypoint(options: {
  * @internal
  */
 async function fkDefineConfig(
+    _rootDir: string,
     mode: string,
     config: UserConfig = {},
 ): Promise<UserConfig> {
