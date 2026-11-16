@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [5.15.3](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.15.2...v5.15.3) (2026-11-16)
+
+### Bug Fixes
+
+* **deps:** update dependency @vitejs/plugin-vue to v6.0.11 ([0463eac](https://github.com/Forsakringskassan/vite-lib-config/commit/0463eacecf1386d95b44849aaaeb6cb2bf49e408))
+
 ## [5.15.2](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.15.1...v5.15.2) (2026-11-06)
 
 ### Bug Fixes
