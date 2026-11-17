@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## [6.0.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.15.3...v6.0.0) (2026-11-17)
+
+### ⚠ BREAKING CHANGES
+
+* defineConfig now requires rootDir as its first argument.
+
+Update existing Vite configs as follows:
+
+```diff
+- export default defineConfig();
++ export default defineConfig(import.meta.dirname);
+```
+
+```diff
+- export default defineConfig({
++ export default defineConfig(import.meta.dirname, {
+     // existing options
+ });
+```
+
+### Features
+
+* require rootDir in defineConfig ([1bb8c9a](https://github.com/Forsakringskassan/vite-lib-config/commit/1bb8c9aa817ec44148a0735771e3e87bebfbd8c2))
+
 ## [5.15.3](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.15.2...v5.15.3) (2026-11-16)
 
 ### Bug Fixes
