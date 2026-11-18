@@ -244,6 +244,13 @@ export function defineConfig(
     rootDir: string,
     config: UserConfig = {},
 ): UserConfigFn {
+    /* this can only happen when the `vite.config.mts` file is not typechecked */
+    if (typeof rootDir !== "string") {
+        throw new TypeError(
+            `Expected first argument to be a "string", got "${typeof rootDir}"`,
+        );
+    }
+
     return viteDefineConfig(({ mode }) => {
         return fkDefineConfig(rootDir, mode, config);
     });
