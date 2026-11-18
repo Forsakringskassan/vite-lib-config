@@ -92,8 +92,10 @@ export function vuePlugin(config?: Record<string, unknown>): Plugin {
     }
 }
 
-async function* getExamples(): AsyncGenerator<string, void> {
+async function* getExamples(rootDir: string): AsyncGenerator<string, void> {
     const iterator = fs.glob("**/{examples,docs,tests}/**/*.vue", {
+        cwd: rootDir,
+        exclude: ["node_modules/**"],
         withFileTypes: true,
     });
     for await (const dirent of iterator) {
@@ -105,14 +107,17 @@ async function* getExamples(): AsyncGenerator<string, void> {
     }
 }
 
-async function findEntrypoint(pattern: string | null): Promise<string> {
+async function findEntrypoint(
+    rootDir: string,
+    pattern: string | null,
+): Promise<string> {
     if (!pattern) {
         const defaultEntrypoint = "/src/vite-dev/app.vue";
         return defaultEntrypoint;
     }
 
     const uf = new uFuzzy({ intraIns: Infinity });
-    const files = await Array.fromAsync(getExamples());
+    const files = await Array.fromAsync(getExamples(rootDir));
     const idxs = uf.filter(files, pattern);
     if (!idxs || idxs.length === 0) {
         throw new Error(`No files matching "${pattern}"`);
@@ -288,7 +293,7 @@ function shouldUseCustomEntrypoint(options: {
  * @internal
  */
 async function fkDefineConfig(
-    _rootDir: string,
+    rootDir: string,
     mode: string,
     config: UserConfig = {},
 ): Promise<UserConfig> {
@@ -315,7 +320,7 @@ async function fkDefineConfig(
     }
 
     if (useCustomEntrypoint) {
-        config.fk.entrypoint = `/${await findEntrypoint(positional[0])}`;
+        config.fk.entrypoint = `/${await findEntrypoint(rootDir, positional[0])}`;
     }
 
     let result: UserConfig & { fk: FKConfig };
@@ -330,7 +335,7 @@ async function fkDefineConfig(
         result = defaultConfig;
     }
 
-    const examples = await Array.fromAsync(getExamples());
+    const examples = await Array.fromAsync(getExamples(rootDir));
 
     result.define = {
         ...result.define,
