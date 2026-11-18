@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [6.0.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v6.0.0...v6.0.1) (2026-11-18)
+
+### Bug Fixes
+
+* add runtime check for rootDir type ([8b5ec0e](https://github.com/Forsakringskassan/vite-lib-config/commit/8b5ec0ef8b6671a5d65f3d198d679cf4f1603f4e))
+
 ## [6.0.0](https://github.com/Forsakringskassan/vite-lib-config/compare/v5.15.3...v6.0.0) (2026-11-17)
 
 ### ⚠ BREAKING CHANGES
