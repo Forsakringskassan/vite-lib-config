@@ -46,6 +46,7 @@ jobs:
             - name: Testbed (commonjs)
               run: |
                   rm -rf testbed/dist
+                  sed -i 's/import.meta.dirname/__dirname/g' testbed/vite.config.ts
                   npm pkg -w testbed set type=commonjs
                   npm run -w testbed build
                   npm run -w testbed test
