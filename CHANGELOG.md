@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [6.0.2](https://github.com/Forsakringskassan/vite-lib-config/compare/v6.0.1...v6.0.2) (2026-11-19)
+
+### Bug Fixes
+
+* scope example discovery to configured root ([978badf](https://github.com/Forsakringskassan/vite-lib-config/commit/978badf108d073cd8e521d6a0ab4fed808367096))
+
 ## [6.0.1](https://github.com/Forsakringskassan/vite-lib-config/compare/v6.0.0...v6.0.1) (2026-11-18)
 
 ### Bug Fixes
